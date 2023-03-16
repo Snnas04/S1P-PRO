@@ -1,0 +1,8 @@
+posar la mateixa imatge al costat pero amb blanc i negre
+    formula: (R+G+B)/3 o PR * R + PG * G + PB * B
+
+edge detector (filtre de deteccio de bordes)
+    https://en.wikipedia.org/wiki/Edge_detection
+
+emboss (es un filtro que done un efecte com quan en han solo esta congelat)
+    https://en.wikipedia.org/wiki/Image_embossing

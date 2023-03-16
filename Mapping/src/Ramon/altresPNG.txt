@@ -1,0 +1,72 @@
+
+    // private void genImage()
+    // {
+    //     try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("shapesP3.ppm"))))
+    //     {
+    //         pw.println("P3");
+    //         pw.format("%d %d\n", width, height);
+    //         pw.println("255");
+
+    //         Figura c = new Cercle(0.0, 0.0, 1.0);
+
+    //         for (int h = 0; h < height; h++)
+    //             for (int w = 0; w < width; w++)
+    //             {
+    //                 int[] color = c.function(x[w], y[h]);
+    //                 for (int k : color)
+    //                     pw.format("%4d", k);
+    //             }
+    //     }
+    //     catch (IOException e)
+    //     {
+    //         System.err.println(e.getMessage());
+    //     }
+    // }
+
+    // private void genBinary()
+    // {
+    //     try (OutputStream os = new BufferedOutputStream(new FileOutputStream("shapesP6.ppm")))
+    //     {
+    //         os.write(String.format("P6\n%d %d\n255\n", width, height).getBytes());
+
+    //         Figura c = new Poligon(0.0, 0.0, 1.0, 4);
+
+    //         for (int h = 0; h < height; h++)
+    //             for (int w = 0; w < width; w++)
+    //             {
+    //                 int[] color = c.function(x[w], y[h]);
+    //                 for (int k : color)
+    //                     os.write(k);
+    //             }
+    //     }
+    //     catch (IOException e)
+    //     {
+    //         System.err.println(e.getMessage());
+    //     }
+    // }
+
+    // public void genPNG()
+    // {
+    //     BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+    //     for (int h = 0; h < height; h++)
+    //         for (int w = 0; w < width; w++)
+    //             image.setRGB(w, h, 0x223344);
+
+    //     Figura c = new Poligon(0.0, 0.0, 1.0, 3);
+
+    //     for (int h = 0; h < height; h++)
+    //         for (int w = 0; w < width; w++)
+    //             if (c.inside(x[w], y[h]))
+    //                 image.setRGB(w, h, 0xFFAA55);
+
+    //     try
+    //     {
+    //         ImageIO.write(image, "png", new File("imatge.png"));
+    //     }
+    //     catch (IOException e)
+    //     {
+    //         System.err.println(e.getMessage());
+    //     }
+
+    // }

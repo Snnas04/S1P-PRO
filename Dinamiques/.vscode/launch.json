@@ -1,0 +1,77 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Recursivos",
+            "request": "launch",
+            "mainClass": "recursivo.Recursivos",
+            "projectName": "Dinamiques_fe39c460"
+        },
+        {
+            "type": "java",
+            "name": "Launch TwoLink",
+            "request": "launch",
+            "mainClass": "Node2.TwoLink",
+            "projectName": "Dinamiques_fe39c460"
+        },
+        {
+            "type": "java",
+            "name": "Launch Remove",
+            "request": "launch",
+            "mainClass": "actRemove.Remove",
+            "projectName": "Dinamiques_fe39c460"
+        },
+        {
+            "type": "java",
+            "name": "Launch Insert",
+            "request": "launch",
+            "mainClass": "activitat.Insert",
+            "projectName": "Dinamiques_fe39c460"
+        },
+        {
+            "type": "java",
+            "name": "Launch yep",
+            "request": "launch",
+            "mainClass": "yep",
+            "projectName": "Dinamiques_fe39c460"
+        },
+        {
+            "type": "java",
+            "name": "Launch Insert",
+            "request": "launch",
+            "mainClass": "Insert",
+            "projectName": "Dinamiques_fe39c460"
+        },
+        {
+            "type": "java",
+            "name": "Launch OneLink",
+            "request": "launch",
+            "mainClass": "OneLink",
+            "projectName": "Dinamiques_fe39c460"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Pila",
+            "request": "launch",
+            "mainClass": "Pila",
+            "projectName": "Dinamiques_9182121c"
+        },
+        {
+            "type": "java",
+            "name": "Launch Queue",
+            "request": "launch",
+            "mainClass": "Queue",
+            "projectName": "Dinamiques_9182121c"
+        }
+    ]
+}
