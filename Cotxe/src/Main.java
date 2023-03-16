@@ -1,7 +1,20 @@
 import java.io.FileNotFoundException;
 
+/**
+ * The Main class is the entry point for the program. It creates an array of Car objects and starts the main menu.
+ */
+
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
+
+        /**
+         *
+         * The main method is the entry point for the program. It creates an array of Car objects and starts the main menu.
+         *
+         * @param args the command line arguments.
+         *
+         * @throws FileNotFoundException if an error occurs while accessing a file.
+         */
         Car[] cars = new Car[] {
             new Car("Nissan", "skyline GTR R-32", "Blau", 40000, 1993, 86000, 640, 3, 3),
             new Car("BMW", "M4 competition", "Blanc", 150000, 2021, 20000, 510, 3, 2),
@@ -12,9 +25,6 @@ public class Main {
             new Car("Renault", "Clio", "Groc", 18000, 2017, 76000, 90, 5, 1),
             new Car("Rayo", "McQueen", "Vermell", 120000000, 2006, 120000, 760, 0, 3)
         };
-
-        // Info.Comparation(car4, car5);
-        // Info.Information(car8);
 
         Menu.mainMenu(cars);
     }
