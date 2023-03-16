@@ -6,42 +6,18 @@ import java.io.PrintWriter;
  */
 
 public class Info {
-    /**
-     * Displays the information about a single car.
-     *
-     * @param carX the car to display the information of
-     * @throws FileNotFoundException if the file to write the information to cannot be found
-     */
     public static void Information(Car carX) throws FileNotFoundException {
         ShowInfo(carX);
     }
 
-     /**
-     * Compares the information of two cars.
-     *
-     * @param carX the first car to compare
-     * @param carY the second car to compare
-     * @throws FileNotFoundException if the file to write the comparison to cannot be found
-     */
     public static void Comparation(Car carX, Car carY) throws FileNotFoundException {
         ShowComparation(carX, carY);
     }
 
-    /**
-     * Displays the information of an array of cars.
-     *
-     * @param cars the array of cars to display the information of
-     */
     public static void showCars(Car[] cars) {
         getCars(cars);
     }
 
-    /**
-     * Displays the information about a single car.
-     *
-     * @param carX the car to display the information of
-     * @throws FileNotFoundException if the file to write the information to cannot be found
-     */
     private static void ShowInfo(Car carX) throws FileNotFoundException {
         String carInfo = carX.getBrand();
 
@@ -71,13 +47,6 @@ public class Info {
         }
     }
 
-    /**
-     * Compares the information of two cars.
-     *
-     * @param carX the first car to compare
-     * @param carY the second car to compare
-     * @throws FileNotFoundException if the file to write the comparison to cannot be found
-     */
     private static void ShowComparation(Car carX, Car carY) throws FileNotFoundException {
         String option1 = carX.getBrand();
         String option2 = carY.getBrand();
@@ -108,11 +77,6 @@ public class Info {
         }
     }
 
-    /**
-     * Displays the information of an array of cars.
-     *
-     * @param cars the array of cars to display the information of
-     */
     private static void getCars(Car[] cars) {
         int lineLength = 45;
             char c = '-';

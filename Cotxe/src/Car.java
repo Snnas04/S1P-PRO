@@ -5,9 +5,6 @@
 */
 
 public class Car {
-    /**
-     * Car characteristics
-     */
     private String brand;
     private String model;
     private String color;
@@ -18,19 +15,6 @@ public class Car {
     private int doors;
     private int state; // 0 = bad, 1 = average, 2 = good, 3 = perfect
 
-    /**
-    * Constructs a Car object with the specified brand, model, color, initial price, year, number of kilometers, number of CV, number of doors, and state.
-    *
-    * @param brand the car's brand.
-    * @param model the car's model.
-    * @param color the car's color.
-    * @param initialPrice the car's initial price.
-    * @param year the car's year.
-    * @param numKm the car's number of kilometers.
-    * @param numCV the car's number of CV.
-    * @param doors the car's number of doors.
-    * @param state the car's state.
-    */
     public Car(String brand, String model, String color, double initialPrice, int year, int numKm, int numCV, int doors, int state) {
         this.brand = brand;
         this.model = model;
@@ -43,10 +27,6 @@ public class Car {
         this.state = state;
     }
 
-    /**
-    * Returns the characteristics of the car.
-    * @return the characteristics of the car.
-    */
     public String getBrand() {
         return brand;
     }
@@ -87,12 +67,6 @@ public class Car {
         return state;
     }
 
-    
-    /**
-    * Calculates the price of a car based on its initial price, kilometers driven, state, and age.
-    *
-    * @return the calculated price of the car.
-    */
     public double priceCalcul() {
         // reduce price for the kilometers number
         double kmReduction = numKm / 10000.0 * 0.1;

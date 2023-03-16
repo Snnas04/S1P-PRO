@@ -7,14 +7,6 @@ import java.io.FileNotFoundException;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
-        /**
-         *
-         * The main method is the entry point for the program. It creates an array of Car objects and starts the main menu.
-         *
-         * @param args the command line arguments.
-         *
-         * @throws FileNotFoundException if an error occurs while accessing a file.
-         */
         Car[] cars = new Car[] {
             new Car("Nissan", "skyline GTR R-32", "Blau", 40000, 1993, 86000, 640, 3, 3),
             new Car("BMW", "M4 competition", "Blanc", 150000, 2021, 20000, 510, 3, 2),
