@@ -1,9 +1,9 @@
-public class Nascar {
+public abstract class Vehicle {
     private String marca;
     private String model;
     private int any;
 
-    public Nascar(String marca, String model, int any) {
+    public Vehicle(String marca, String model, int any) {
         this.marca = marca;
         this.model = model;
         this.any = any;
