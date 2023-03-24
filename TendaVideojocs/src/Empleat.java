@@ -34,6 +34,10 @@ public class Empleat extends Presona implements AccionsPersona, AccionsEmpleat {
         System.out.println("L'empleat mira els productes del client");
     }
 
+    public void Comprar() {
+        System.out.println("L'empeat compra els productes del client");
+    }
+
     public void Vendre() {
         System.out.println("L'empleat ven els productes al client");
     }

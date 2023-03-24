@@ -23,16 +23,16 @@ public class Client extends Presona implements AccionsPersona, AccionsClient{
     public void Mirar() {
         System.out.println("El client mira els productes de la tenda");
     }
+    
+    public void Comprar() {
+        System.out.println("El client comra els productes");
+    }
 
     public void Vendre() {
         System.out.println("El client ven els productes al client");
     }
 
     /* metodes de la interfici AccionsClient */
-    public void Comprar() {
-        System.out.println("El client comra els productes");
-    }
-
     public void Registar() {
         System.out.println(targeta = true);
     }
