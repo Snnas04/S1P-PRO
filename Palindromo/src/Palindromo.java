@@ -34,7 +34,7 @@ public class Palindromo {
     }
 
     public static void main(String[] args) {
-        Palindromo p = new Palindromo("hoh");
+        Palindromo p = new Palindromo("Iker");
         p.Depurar();
         p.Resposta();
     }

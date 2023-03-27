@@ -1,5 +1,5 @@
 public class Test {
-    static final int maxVal = 100; 
+    static final int maxVal = 1000; 
 
     public static int obtenerHipotenusaValida(int a, int b) {
         double hypot = Math.hypot(a, b);

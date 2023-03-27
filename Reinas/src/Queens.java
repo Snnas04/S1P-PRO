@@ -63,6 +63,6 @@ public class Queens {
     }
 
     public static void main(String[] args) {
-        new Queens(9);
+        new Queens(11);
     }
 }
