@@ -1,11 +1,6 @@
 public class Client extends Presona implements AccionsPersona, AccionsClient{
     /* atributs de la classe client */
-    private boolean targeta = false;
-
-    /* metodes de la calsse persona */
-    public void getTargeta() {
-        System.out.println(targeta);
-    }
+    protected boolean targeta = false;
 
     /* metodes de la interfici AccionsPersona */
     public void Entrar() {
@@ -25,7 +20,7 @@ public class Client extends Presona implements AccionsPersona, AccionsClient{
     }
     
     public void Comprar() {
-        System.out.println("El client comra els productes");
+        System.out.println("El client compra els productes");
     }
 
     public void Vendre() {
@@ -34,7 +29,8 @@ public class Client extends Presona implements AccionsPersona, AccionsClient{
 
     /* metodes de la interfici AccionsClient */
     public void Registar() {
-        System.out.println(targeta = true);
+        targeta = true;
+        System.out.println("El client s'ha registrat");
     }
 
     public void Demanar() {

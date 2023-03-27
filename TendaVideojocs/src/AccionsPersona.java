@@ -1,4 +1,4 @@
-interface AccionsPersona {
+public interface AccionsPersona {
     public void Entrar();
     public void Sortir();
     public void Camina();
