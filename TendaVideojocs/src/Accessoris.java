@@ -3,6 +3,10 @@ public class Accessoris extends Producte {
     private String marca;
     private String tamany;
 
+    public Accessoris(String nom) {
+        super(nom);
+    }
+
     /* Metodes de la calsse Accessori */
     public void getMarca() {
         System.out.println(marca);

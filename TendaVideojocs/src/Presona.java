@@ -7,4 +7,8 @@ public abstract class Presona {
     public String direccio;
     public String telefon;
     public String dataNaixament;
+
+    public Presona(String nom) {
+        this.nom = nom;
+    }
 }

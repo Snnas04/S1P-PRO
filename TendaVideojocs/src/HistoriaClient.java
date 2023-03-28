@@ -6,13 +6,32 @@ public class HistoriaClient {
     Client carlos = new Client("Carlos");
 
     /* videojocs */
-    
+    Videojocs[] videojoc = new Videojocs[] {
+        new Videojocs("GTA V"),
+        new Videojocs("Rainbow Six Siege"),
+        new Videojocs("The Last of Us II"),
+        new Videojocs("Far Cry 6"),
+        new Videojocs("God of War Ragnarok")
+    };
 
     /* accessoris */
+    Accessoris[] accessori = new Accessoris[] {
+        new Accessoris("Peluche 1"),
+        new Accessoris("Coixi"),
+        new Accessoris("Figura 1"),
+        new Accessoris("Figura 2"),
+        new Accessoris("Figura 3")
+    };
 
 
     /* periferics */
-
+    Periferics[] periferic = new Periferics[] {
+        new Periferics("Monitor"),
+        new Periferics("Teclat"),
+        new Periferics("Ratoli"),
+        new Periferics("Estoreta"),
+        new Periferics("Cadira")
+    };
 
 
     public HistoriaClient() {
@@ -57,7 +76,7 @@ public class HistoriaClient {
     }
 
     private void mirarVideojocs() {
-
+        
     }
 
     private void mirarAcessoris() {

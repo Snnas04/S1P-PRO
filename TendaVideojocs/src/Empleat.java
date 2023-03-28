@@ -5,7 +5,7 @@ public class Empleat extends Presona implements AccionsPersona, AccionsEmpleat {
     private String carreg;
 
     public Empleat(String nom) {
-        this.nom = nom;
+        super(nom);
     }
 
     /* metodes de la classe empleat */

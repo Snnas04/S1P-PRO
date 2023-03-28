@@ -4,6 +4,10 @@ public class Periferics extends Producte {
     private String color;
     private boolean inalambric;
 
+    public Periferics(String nom) {
+        super(nom);
+    }
+
     /* metodes de la classe periferics */
     public void getMarca() {
         System.out.println(marca);

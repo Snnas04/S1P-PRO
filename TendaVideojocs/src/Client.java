@@ -3,7 +3,7 @@ public class Client extends Presona implements AccionsPersona, AccionsClient{
     protected boolean targeta = false;
 
     public Client(String nom) {
-        this.nom = nom;
+        super(nom);
     }
 
     /* metodes de la interfici AccionsPersona */

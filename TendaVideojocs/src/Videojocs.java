@@ -6,7 +6,7 @@ public class Videojocs extends Producte {
     private String genere;
 
     public Videojocs(String nom) {
-        this.nom = nom;
+        super(nom);
     }
 
     /* metodes de la classe videojoc */
