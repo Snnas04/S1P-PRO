@@ -11,6 +11,10 @@ public class Historia {
     private int incisos = 0;
 
     public Historia() {
+        HistoriaEmpleat();
+    }
+
+    public void HistoriaEmpleat() {
         /* historia del dia 1 */
         introDia1();
         dia1();

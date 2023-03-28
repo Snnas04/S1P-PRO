@@ -1,0 +1,12 @@
+------------------------------------------------------------------
+|Marca                 |                 BMW|              Porche|
+|Model                 |      M4 competition|          911 GT3 RS|
+|Color                 |               Blanc|                Gris|
+|Preu de compra        |            150000.0|            220000.0|
+|Preu de venta         |             95010.0|            141812.0|
+|Any                   |                2021|                2019|
+|Numero de kilometres  |             20000.0|             37000.0|
+|Numero de Cavalls     |                 510|                 620|
+|Numero de Portes      |                   3|                   3|
+|Estat                 |                   2|                   3|
+------------------------------------------------------------------

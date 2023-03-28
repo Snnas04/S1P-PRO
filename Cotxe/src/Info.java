@@ -21,7 +21,7 @@ public class Info {
     private static void ShowInfo(Car carX) throws FileNotFoundException {
         String carInfo = carX.getBrand();
 
-        try (PrintWriter pw = new PrintWriter("./Information/Info-" + carInfo + ".txt")) {
+        try (PrintWriter pw = new PrintWriter("Info-" + carInfo + ".txt")) {
             int lineLength = 45;
             char c = '-';
 
@@ -51,7 +51,7 @@ public class Info {
         String option1 = carX.getBrand();
         String option2 = carY.getBrand();
 
-        try (PrintWriter pw = new PrintWriter("./Comparation/Comparacio-" + option1 + "_" + option2 + ".txt")) {
+        try (PrintWriter pw = new PrintWriter("Comparacio-" + option1 + "_" + option2 + ".txt")) {
             int lineLength = 66;
             char c = '-';
 

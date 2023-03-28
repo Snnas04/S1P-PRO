@@ -1,0 +1,12 @@
+---------------------------------------------
+|Brand                 |                 BMW|
+|Model                 |      M4 competition|
+|Color                 |               Blanc|
+|Initial price         |            150000.0|
+|Final price           |             95010.0|
+|Year                  |                2021|
+|Kilometres number     |             20000.0|
+|Horsepower number     |                 510|
+|Doors numbers         |                   3|
+|State                 |                   2|
+---------------------------------------------

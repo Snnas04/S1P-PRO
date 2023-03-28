@@ -90,7 +90,7 @@ public class Car {
         double yearPrice = initialPrice * (1 - yearReduction);
 
         // calcul the price
-        double finalPrice =  initialPrice - (kmPrice + statePrice + yearPrice) * 0.1;
+        double finalPrice =  (initialPrice - (kmPrice + statePrice + yearPrice)) * 0.1;
 
         // verify that the price is not less than 80% of the base price
         if (finalPrice < initialPrice * 0.2)
