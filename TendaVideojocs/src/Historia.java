@@ -295,7 +295,7 @@ public class Historia {
             segueixTraballant();
         }
 
-        if (incisos >= 4) {
+        if (incisos >= 5) {
             System.out.println("El jefe esta molt enfadat amb el teu comportament i amb el teu comportament");
             joan.Despedir();
             joan.Camina();
