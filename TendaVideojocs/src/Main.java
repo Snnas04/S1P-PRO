@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) throws Exception {
-        Historia empleat = new Historia();
+        HistoriaEmpleat historia1 = new HistoriaEmpleat();
+        // HistoriaClient historia2 = new HistoriaClient();
     }
 }

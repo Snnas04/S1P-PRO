@@ -5,6 +5,10 @@ public class Videojocs extends Producte {
     private String empresa;
     private String genere;
 
+    public Videojocs(String nom) {
+        this.nom = nom;
+    }
+
     /* metodes de la classe videojoc */
     public void getPlataforma() {
         System.out.println(plataforma);

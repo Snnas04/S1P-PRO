@@ -2,38 +2,46 @@ public class Client extends Presona implements AccionsPersona, AccionsClient{
     /* atributs de la classe client */
     protected boolean targeta = false;
 
+    public Client(String nom) {
+        this.nom = nom;
+    }
+
     /* metodes de la interfici AccionsPersona */
     public void Entrar() {
-        System.out.println("El client entra a la tenda");
+        System.out.println(nom + " entra a la tenda");
     }
 
     public void Sortir() {
-        System.out.println("El client surt de la tenda");
+        System.out.println(nom + " surt de la tenda");
     }
 
     public void Camina() {
-        System.out.println("El client camina");
+        System.out.println(nom + " camina");
     }
 
     public void Mirar() {
-        System.out.println("El client mira els productes de la tenda");
+        System.out.println(nom + " mira els productes de la tenda");
     }
     
     public void Comprar() {
-        System.out.println("El client compra els productes");
+        System.out.println(nom + " compra els productes");
     }
 
     public void Vendre() {
-        System.out.println("El client ven els productes al client");
+        System.out.println(nom + " ven els productes al client");
     }
 
     /* metodes de la interfici AccionsClient */
     public void Registar() {
         targeta = true;
-        System.out.println("El client s'ha registrat");
+        System.out.println(nom + " s'ha registrat");
     }
 
     public void Demanar() {
-        System.out.println("El client demana infroamció sobre un producate");
+        System.out.println(nom + " demana infroamció sobre un producate");
+    }
+
+    public void Agafar() {
+        System.out.println(nom + " agafa el producte");
     }
 }
