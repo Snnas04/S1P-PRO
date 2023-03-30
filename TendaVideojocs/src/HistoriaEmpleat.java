@@ -4,11 +4,11 @@ public class HistoriaEmpleat {
     Empleat xisca = new Empleat("Xisca");
 
     /* clients */
-    Client pep = new Client("Pep");
-    Client maria = new Client("Maria");
-    Client xavier = new Client("Xavier");
-    Client ruben = new Client("Ruben");
-    Client andreu = new Client("Andreu");
+    Client pep = new Client("Pep", false);
+    Client maria = new Client("Maria", false);
+    Client xavier = new Client("Xavier", false);
+    Client ruben = new Client("Ruben", false);
+    Client andreu = new Client("Andreu", false);
 
     /* incisos */
     private int incisosJoan = 0;
@@ -326,7 +326,7 @@ public class HistoriaEmpleat {
         }
 
         if (incisosJoan >= 5) {
-            System.out.println("El jefe esta molt enfadat amb el teu comportament i amb el teu comportament");
+            System.out.println("El jefe esta molt enfadat amb el teu comportament");
             joan.Despedir();
             joan.Camina();
             joan.Sortir();

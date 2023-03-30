@@ -2,8 +2,9 @@ public class Client extends Presona implements AccionsPersona, AccionsClient{
     /* atributs de la classe client */
     protected boolean targeta = false;
 
-    public Client(String nom) {
+    public Client(String nom, boolean targeta) {
         super(nom);
+        this.targeta = targeta;
     }
 
     /* metodes de la interfici AccionsPersona */

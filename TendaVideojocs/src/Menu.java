@@ -12,7 +12,7 @@ public class Menu {
     public void Show() {
         int line = 30;
 
-        System.out.println("-".repeat(line));
+        System.out.println("\n");
         System.out.format("%-26s \n", header);
         System.out.println("-".repeat(line));
 
