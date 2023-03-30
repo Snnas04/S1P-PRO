@@ -3,8 +3,8 @@ public class Accessoris extends Producte {
     private String marca;
     private String tamany;
 
-    public Accessoris(String nom) {
-        super(nom);
+    public Accessoris(String nom, double preu) {
+        super(nom, preu);
     }
 
     /* Metodes de la calsse Accessori */

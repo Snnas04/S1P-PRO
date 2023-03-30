@@ -5,8 +5,9 @@ public abstract class Producte {
     private String descripcio;
     private String categoria;
 
-    public Producte(String nom) {
+    public Producte(String nom, double preu) {
         this.nom = nom;
+        this.preu = preu;
     }
 
     public String getNom() {

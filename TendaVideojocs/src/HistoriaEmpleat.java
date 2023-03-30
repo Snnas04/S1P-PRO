@@ -43,7 +43,8 @@ public class HistoriaEmpleat {
 
     /* s'ah acabat el dia */
     private void outro() {
-        System.out.println("\n------------------------------");       
+        System.out.println("------------------------------");
+
         System.out.println("Ja has fet totes les hores que et tocaben aquest dia");
 
         Menu menu = new Menu("Que fas?", new String[]{"Anar a casa", "Revisar els productes de la tenda"});
@@ -70,7 +71,7 @@ public class HistoriaEmpleat {
 
     /* dia 1 */
     public void dia1() {
-        System.out.println("\n------------------------------");
+        System.out.println("------------------------------");
 
         Menu menu = new Menu("Que fas?", new String[]{"Entrar", "No entrar"});
 
@@ -95,7 +96,9 @@ public class HistoriaEmpleat {
         }
     }
 
-    /* l'empeat espera al mostrador */
+    /* l'empeat espera al mostrador
+     * aquest te tres opcions fer fer, depennent de l'opcio que agafi sumara o restara incidents
+     */
     public void esperarMostrador() {
         System.out.println("\n------------------------------");
 
@@ -130,7 +133,12 @@ public class HistoriaEmpleat {
         }
     }
 
-    /* entra un client */
+    /* entra un client 
+     * aquest vol comprar un producte
+     * pero te duptes i crida a l'empleat
+     * si l'empleat ignora el client aquest s'enva de la tenda fora comprar res
+     * Depenent de la opcio seleccionada  sumara o restara incidents
+    */
     public void entraClientComprarDia1() {
         System.out.println("\n------------------------------");
 
@@ -147,6 +155,7 @@ public class HistoriaEmpleat {
             
             switch (answer) {
                 case 1:
+                    System.out.println("\n------------------------------");
                     joan.Camina();
                     joan.Ajudar();
                     joan.Camina();
@@ -159,6 +168,7 @@ public class HistoriaEmpleat {
                 case 2:
                     pep.Sortir();
                     incisosJoan += 3;
+                    entraClientVendreDia1();
                     return;
                 default:
                     menu.doNothing();
@@ -166,7 +176,11 @@ public class HistoriaEmpleat {
         }
     }
 
-    /* el client va al mostrador per comprar productes */
+    /* el client va al mostrador per comprar productes 
+     * Si anteriorment has l'epleat ha ajudat el client aquest accedeix al mostrador per pagar
+     * L'empleat pot demanar si esta registrat o no
+     * pot restar incidens
+    */
     public void clientComprar() {
         System.out.println("\n------------------------------");
 
@@ -183,11 +197,13 @@ public class HistoriaEmpleat {
             switch (answer) {
                 case 1:
                     if (pep.targeta = false) {
+                        System.out.println("\n------------------------------");
                         System.out.println("Empeat demana si es vol registrar");
                         System.out.println("El client diu que si");
                         pep.Registar();
                     }
                     else {
+                        System.out.println("\n------------------------------");
                         System.out.println("El client diu que ja esta registrat");
                     }
 
@@ -209,13 +225,19 @@ public class HistoriaEmpleat {
         }
     }
 
-    /* entren dos clients a vendre els seus productes */
+    /* entren dos clients a vendre els seus productes
+     * Si ofereixs el preu aconsellat per la base de dades els clients estaran contents
+     * si tiram per lo alt, els clients estaran mol contents
+     * si tiram per lo baix, els clients estran enfadats i demanaran més.
+     */
     public void entraClientVendreDia1() {
         System.out.println("\n------------------------------");
 
         System.out.println("Entren dos clients amb una capsa amb productes per vendre");
         maria.Entrar();
         xavier.Entrar();
+        
+        System.out.println("\n------------------------------");
         System.out.println("Els dos clients caminen fins al mostrador i volen vendre la capsa de prooductes");
 
         joan.Mirar();
@@ -255,9 +277,12 @@ public class HistoriaEmpleat {
         }
     }
 
+    /* 
+     * Si hem donat un preu tirant per lo baix el client es queixara
+     * aquest proposora un nou preu
+     * el podem acceptar o rebutjar
+     */
     private void discutirDia1() {
-        System.out.println("\n------------------------------");
-
         System.out.println("El client no li agrada el preu i demana més pels productes");
         System.out.println("El client proposa un preu");
 
@@ -280,7 +305,6 @@ public class HistoriaEmpleat {
                     joan.Esperar();
 
                     incisosJoan += 3;
-                    
                     return;
                 default:
                     menu.doNothing();
@@ -292,17 +316,19 @@ public class HistoriaEmpleat {
     /* dia 2 com a empleat */
     /* intro */
     public void introDia2() {
-        System.out.println("\n------------------------------");
-
         System.out.println("Ets l'empleat de la tenda de videojocs");
         System.out.println("Estas a la porta de la tenda arribant puntual");
         System.out.println("Pero veus que esta obert, entres i t'espera el jefe");
     }
 
-    /* dia 2 */
+    /* dia 2 
+     * en el dia dos depenent del incidents que tengui l'epleat sera:
+     * ascendit
+     * descendit
+     * despedit
+     * o es quedara igual que estaba
+    */
     public void dia2() {
-        System.out.println("\n------------------------------");
-
         if (incisosJoan <= 0) {
             System.out.println("El jefe et dona l'enorabona i t'ascendeix");
             joan.Ascendir();
@@ -334,9 +360,8 @@ public class HistoriaEmpleat {
         }
     }
 
+    /* Si el traballador ha estat despedit es contrata un de nou */
     public void contratarNouTraballador() {
-        System.out.println("\n------------------------------");
-
         System.out.println("El jefe contrata un nou traballador");
         System.out.println("Ara ets un nou traballador");
         System.out.println("Has arribat puntual");
@@ -364,9 +389,8 @@ public class HistoriaEmpleat {
         }
     }
 
+    /* En el nou empleat espera a que entri algun client */
     public void esperarMostradorDia2() {
-        System.out.println("\n------------------------------");
-
         xisca.Camina();
 
         Menu menu = new Menu("Que fas?", new String[]{"Mirar es movil", "Colocar els productes", "Comprar productes"});
@@ -397,9 +421,10 @@ public class HistoriaEmpleat {
         }
     }
 
+    /* Entra un client a vendre els seus productes
+     * tenim les mateixes opcions que anteriorment
+     */
     public void entraClientVendreDia2() {
-        System.out.println("\n------------------------------");
-
         andreu.Entrar();
         System.out.println("Entra un client amb una capsa per vendra 3 productes");
 
@@ -438,9 +463,8 @@ public class HistoriaEmpleat {
         }
     }
 
+    /* tenim les mateixes opcions de discutir que anteriorment */
     private void discutirDia2() {
-        System.out.println("\n------------------------------");
-
         System.out.println("El client no li agrada el preu i demana més pels productes");
         System.out.println("El client proposa un preu");
 
@@ -470,11 +494,11 @@ public class HistoriaEmpleat {
     }
     
 
-    /* esta darrera el mostrador metres esperea a que entri algun client */
+    /* L'empeat no ha estat despedit
+     * aquest esta darrera el mostrador metres esperea a que entri algun client 
+    */
     public void segueixTraballant() {
         ferFeina = true;
-
-        System.out.println("\n------------------------------");
 
         System.out.println("Segueixes amb la teva feina metre esperes a que entri algun client");
 
@@ -506,9 +530,10 @@ public class HistoriaEmpleat {
         }
     }
 
+    /* entra un client a comprar algun producte
+     * l'empleat te tres opcions metre espera a que el client vulgui algo d'ell
+     */
     public void entraClientComprarDia2() {
-        System.out.println("\n------------------------------");
-
         System.out.println("Entra un clint a la tenda");
         ruben.Entrar();
         ruben.Camina();
@@ -541,9 +566,8 @@ public class HistoriaEmpleat {
         }
     }
 
+    /* El client va a comprar productes */
     public void clientComprarDia2() {
-        System.out.println("\n------------------------------");
-
         System.out.println("El client ha agafat dos productes i es dirigeix al mostrador");
         System.out.println("El client posa els porductes damunt el mostrador");
 

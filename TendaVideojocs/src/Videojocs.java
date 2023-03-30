@@ -5,8 +5,8 @@ public class Videojocs extends Producte {
     private String empresa;
     private String genere;
 
-    public Videojocs(String nom) {
-        super(nom);
+    public Videojocs(String nom, double preu) {
+        super(nom, preu);
     }
 
     /* metodes de la classe videojoc */

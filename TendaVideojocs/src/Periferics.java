@@ -4,8 +4,8 @@ public class Periferics extends Producte {
     private String color;
     private boolean inalambric;
 
-    public Periferics(String nom) {
-        super(nom);
+    public Periferics(String nom, double preu) {
+        super(nom, preu);
     }
 
     /* metodes de la classe periferics */

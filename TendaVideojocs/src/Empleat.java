@@ -9,16 +9,16 @@ public class Empleat extends Presona implements AccionsPersona, AccionsEmpleat {
     }
 
     /* metodes de la classe empleat */
-    public void getHorari() {
-        System.out.println(horari);
+    public String getHorari() {
+        return horari;
     }
 
-    public void getPaga() {
-        System.out.println(paga);
+    public double getPaga() {
+        return paga;
     }
 
-    public void getCarreg() {
-        System.out.println(carreg);
+    public String getCarreg() {
+        return carreg;
     }
 
     /* metodes de la interfici AccionsPersona */

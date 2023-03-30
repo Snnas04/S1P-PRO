@@ -1,34 +1,44 @@
 public class Tenda {
     /* atributs de la classe tenda */
     private String ubicacio;
+    private String nom;
     private String horari;
     private String productes;
     private String clients;
     private String empleat;
     private String proveidor;
 
+    public Tenda(String nom, String horari) {
+        this.nom = nom;
+        this.horari = horari;
+    }
+
     /* metodes de la calsse tenda */
-    public void getUbicacio() {
-        System.out.println(ubicacio);
+    public String getUbicacio() {
+        return ubicacio;
     }
 
-    public void getHorari() {
-        System.out.println(horari);
+    public String getNom() {
+        return nom;
     }
 
-    public void getProductes() {
-        System.out.println(productes);
+    public String getHorari() {
+        return horari;
     }
 
-    public void getClients() {
-        System.out.println(clients);
+    public String getProductes() {
+        return productes;
     }
 
-    public void getEmpleat() {
-        System.out.println(empleat);
+    public String getClients() {
+        return clients;
     }
 
-    public void getProveidor() {
-        System.out.println(proveidor);
+    public String getEmpleat() {
+        return empleat;
+    }
+
+    public String getProveidor() {
+        return proveidor;
     }
 }
