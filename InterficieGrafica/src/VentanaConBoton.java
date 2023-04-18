@@ -12,7 +12,7 @@ public class VentanaConBoton extends JFrame {
         this.setSize(width, height); //set size of the window
         //this.getContentPane().setPreferredSize(new Dimension(width, height)); //PENDENT
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Close the window when exit
-        Image imagen = Toolkit.getDefaultToolkit().getImage("./Images/130188.png"); //Load an image
+        Image imagen = Toolkit.getDefaultToolkit().getImage("./img/Smile-Icon-PNG-Picture"); //Load an image
         this.setIconImage(imagen); //Change the icon image
         this.setLayout(null);
 
@@ -49,4 +49,3 @@ public class VentanaConBoton extends JFrame {
     }
 
 }
-

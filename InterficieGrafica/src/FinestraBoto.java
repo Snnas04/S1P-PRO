@@ -18,9 +18,9 @@ public class FinestraBoto extends JFrame {
         this.setIconImage(imagen);
         this.setLayout(null);
 
-        JButton button = new JButton();
-        button.setBounds(0, 0, 200, 200);
-        button.addActionListener();
+        JButton button = new JButton("Button");
+        button.setBounds(WIDTH/2-120,HEIGHT/4*3+50,200,25);
+        // button.addActionListener();
         
         this.add(button);
         
