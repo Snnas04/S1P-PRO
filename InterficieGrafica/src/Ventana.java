@@ -41,7 +41,6 @@ public class Ventana extends JFrame {
             sortida.setText(campoTexto.getText());
         });
 
-
         panel1.add(boton);
         this.add(combowombo);
         this.add(sortida);
