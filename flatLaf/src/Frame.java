@@ -76,19 +76,6 @@ public class Frame extends JFrame {
     JTextArea neDisTextArea;
     JTextArea nspTextArea;
 
-    // editorPane
-    JEditorPane enEditorPane;
-    JEditorPane disEditorPane;
-    JEditorPane neEditorPane;
-    JEditorPane neDisEditorPane;
-
-    // textPane
-    JTextPane enTextPane;
-    JTextPane disTextPane;
-    JTextPane neTextPane;
-    JTextPane neDisTextPane;
-
-
     public Frame() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -131,48 +118,41 @@ public class Frame extends JFrame {
         int fila8 = 190;
         int fila9 = 215;
         int fila10 = 240;
-        int fila11 = 265;
-        int fila12 = 290;
 
         int width = 120;
         int height = 25;
 
         // components names
-        label = new JLabel("JLabel:");
+        label = new JLabel("Label:");
         label.setBounds(columna1, fila1, width, height);
 
-        button = new JLabel("JButton");
+        button = new JLabel("Button:");
         button.setBounds(columna1, fila2, width, height);
 
-        checkBox = new JLabel("CheckBox");
+        checkBox = new JLabel("CheckBox:");
         checkBox.setBounds(columna1, fila3, width, height);
 
-        radioButton = new JLabel("RadioButton");
+        radioButton = new JLabel("RadioButton:");
         radioButton.setBounds(columna1, fila4, width, height);
 
-        comboBox = new JLabel("ComboBox");
+        comboBox = new JLabel("ComboBox:");
         comboBox.setBounds(columna1, fila5, width, height);
 
-        spinner = new JLabel("Spinner");
+        spinner = new JLabel("Spinner:");
         spinner.setBounds(columna1, fila6, width, height);
 
-        textField = new JLabel("TextField");
+        textField = new JLabel("TextField:");
         textField.setBounds(columna1, fila7, width, height);
 
-        formattedTextField = new JLabel("formattedTextField");
+        formattedTextField = new JLabel("FormattedTextField:");
         formattedTextField.setBounds(columna1, fila8, width, height);
 
-        passwordField = new JLabel("passwordField");
+        passwordField = new JLabel("PasswordField:");
         passwordField.setBounds(columna1, fila9, width, height);
 
-        textArea = new JLabel("textArea");
+        textArea = new JLabel("TextArea:");
         textArea.setBounds(columna1, fila10, width, height);
 
-        editorPane = new JLabel("editorPane");
-        editorPane.setBounds(columna1, fila11, width, height);
-
-        textPane = new JLabel("textPane");
-        textPane.setBounds(columna1, fila12, width, height);
 
         add(label);
         add(button);
@@ -184,8 +164,7 @@ public class Frame extends JFrame {
         add(formattedTextField);
         add(passwordField);
         add(textArea);
-        add(editorPane);
-        add(textPane);
+
 
         // lables
         enLabel = new JLabel("Enables");
@@ -331,7 +310,74 @@ public class Frame extends JFrame {
         add(disTextField);
         add(neTextField);
         add(neDisTextField);
-        add(phTextField);
+
+        // formatedTextField
+
+        enFormattedTextField = new JFormattedTextField("Enabled");
+        enFormattedTextField.setBounds(columna2, fila8, width, height);
+
+        disFormattedTextField = new JFormattedTextField("Disabled");
+        disFormattedTextField.setBounds(columna3, fila8, width, height);
+        disFormattedTextField.setEnabled(false);
+
+        neFormattedTextField = new JFormattedTextField("Not editable");
+        neFormattedTextField.setBounds(columna4, fila8, width, height);
+        neFormattedTextField.setEditable(false);
+
+        neDisFormattedTextField = new JFormattedTextField("Not editable diabled");
+        neDisFormattedTextField.setBounds(columna5, fila8, width, height);
+        neDisFormattedTextField.setEditable(false);
+        neDisFormattedTextField.setEnabled(false);
+
+        add(enFormattedTextField);
+        add(disFormattedTextField);
+        add(neFormattedTextField);
+        add(neDisFormattedTextField);
+
+        // passwordField
+
+        enPasswordField = new JPasswordField("Enable");
+        enPasswordField.setBounds(columna2, fila9, width, height);
+
+        disPasswordField = new JPasswordField("Disabled");
+        disPasswordField.setBounds(columna3, fila9, width, height);
+        disPasswordField.setEnabled(false);
+
+        nePasswordField = new JPasswordField("Not enabled");
+        nePasswordField.setBounds(columna4, fila9, width, height);
+        nePasswordField.setEditable(false);
+
+        neDisPasswordField = new JPasswordField("Not edabled disabled");
+        neDisPasswordField.setBounds(columna5, fila9, width, height);
+        neDisPasswordField.setEnabled(false);
+        neDisPasswordField.setEditable(false);
+
+        add(enPasswordField);
+        add(disPasswordField);
+        add(nePasswordField);
+        add(neDisPasswordField);
+
+        // textArea
+        enTextArea = new JTextArea("Enable");
+        enTextArea.setBounds(columna2, fila10, width, height);
+
+        disTextArea = new JTextArea("Disabled");
+        disTextArea.setBounds(columna3, fila10, width, height);
+        disTextArea.setEnabled(false);
+
+        neTextArea = new JTextArea("Not editable");
+        neTextArea.setBounds(columna4, fila10, width, height);
+        neTextArea.setEditable(false);
+
+        neDisTextArea = new JTextArea("Not editable disable");
+        neDisTextArea.setBounds(columna5, fila10, width, height);
+        neDisTextArea.setEnabled(false);
+        neDisTextArea.setEditable(false);
+
+        add(enTextArea);
+        add(disTextArea);
+        add(neTextArea);
+        add(neDisTextArea);
 
 
         // centrar i mostrar finestre
