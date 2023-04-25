@@ -7,6 +7,16 @@ public class Frame extends JFrame {
     // components name
     JLabel label;
     JLabel button;
+    JLabel checkBox;
+    JLabel radioButton;
+    JLabel comboBox;
+    JLabel spinner;
+    JLabel textField;
+    JLabel formattedTextField;
+    JLabel passwordField;
+    JLabel textArea;
+    JLabel editorPane;
+    JLabel textPane;
 
     // labels
     JLabel enLabel;
@@ -17,6 +27,67 @@ public class Frame extends JFrame {
     JButton disButton;
     JButton squButton;
     JButton rouButton;
+
+    // checkbox
+    JCheckBox enCheckBox;
+    JCheckBox disCheckBox;
+    JCheckBox selCheckBox;
+    JCheckBox selDisCheckBox;
+
+    // radioButton
+    JRadioButton enRadioButton;
+    JRadioButton disRadioButton;
+    JRadioButton selRadioButton;
+    JRadioButton selDisRadioButton;
+
+    // comboBox
+    JComboBox enComboBox;
+    JComboBox disComboBox;
+    JComboBox neComboBox;
+    JComboBox neDisComboBox;
+    JComboBox wideComboBox;
+
+    // spinne
+    JSpinner enSpinner;
+    JSpinner disSpinner;
+
+    // textField
+    JTextField enTextField;
+    JTextField disTextField;
+    JTextField neTextField;
+    JTextField neDisTextField;
+
+    // formattedTextField
+    JFormattedTextField enFormattedTextField;
+    JFormattedTextField disFormattedTextField;
+    JFormattedTextField neFormattedTextField;
+    JFormattedTextField neDisFormattedTextField;
+
+    // passwordField
+    JPasswordField enPasswordField;
+    JPasswordField disPasswordField;
+    JPasswordField nePasswordField;
+    JPasswordField neDisPasswordField;
+
+    // textArea
+    JTextArea enTextArea;
+    JTextArea disTextArea;
+    JTextArea neTextArea;
+    JTextArea neDisTextArea;
+    JTextArea nspTextArea;
+
+    // editorPane
+    JEditorPane enEditorPane;
+    JEditorPane disEditorPane;
+    JEditorPane neEditorPane;
+    JEditorPane neDisEditorPane;
+
+    // textPane
+    JTextPane enTextPane;
+    JTextPane disTextPane;
+    JTextPane neTextPane;
+    JTextPane neDisTextPane;
+
 
     public Frame() {
         SwingUtilities.invokeLater(new Runnable() {
@@ -38,43 +109,90 @@ public class Frame extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        getContentPane().setPreferredSize(new Dimension(800, 600));
+        getContentPane().setPreferredSize(new Dimension(900, 600));
         setLayout(null);
         pack();
 
         //posicions
-        int columna1 = 15;
+        int columna1 = 20;
         int columna2 = 150;
         int columna3 = 300;
         int columna4 = 450;
         int columna5 = 600;
+        int columna6 = 750;
 
         int fila1 = 15;
-        int fila2 = 35;
+        int fila2 = 40;
+        int fila3 = 65;
+        int fila4 = 90;
+        int fila5 = 115;
+        int fila6 = 140;
+        int fila7 = 165;
+        int fila8 = 190;
+        int fila9 = 215;
+        int fila10 = 240;
+        int fila11 = 265;
+        int fila12 = 290;
 
-        int labWidth = 70;
-        int labHeight = 25;
-
-        int butWidth = 100;
-        int butHeigth = 25;
+        int width = 120;
+        int height = 25;
 
         // components names
         label = new JLabel("JLabel:");
-        label.setBounds(columna1, fila1, labWidth, labHeight);
+        label.setBounds(columna1, fila1, width, height);
 
         button = new JLabel("JButton");
-        button.setBounds(columna1, fila2, labWidth, labHeight);
+        button.setBounds(columna1, fila2, width, height);
+
+        checkBox = new JLabel("CheckBox");
+        checkBox.setBounds(columna1, fila3, width, height);
+
+        radioButton = new JLabel("RadioButton");
+        radioButton.setBounds(columna1, fila4, width, height);
+
+        comboBox = new JLabel("ComboBox");
+        comboBox.setBounds(columna1, fila5, width, height);
+
+        spinner = new JLabel("Spinner");
+        spinner.setBounds(columna1, fila6, width, height);
+
+        textField = new JLabel("TextField");
+        textField.setBounds(columna1, fila7, width, height);
+
+        formattedTextField = new JLabel("formattedTextField");
+        formattedTextField.setBounds(columna1, fila8, width, height);
+
+        passwordField = new JLabel("passwordField");
+        passwordField.setBounds(columna1, fila9, width, height);
+
+        textArea = new JLabel("textArea");
+        textArea.setBounds(columna1, fila10, width, height);
+
+        editorPane = new JLabel("editorPane");
+        editorPane.setBounds(columna1, fila11, width, height);
+
+        textPane = new JLabel("textPane");
+        textPane.setBounds(columna1, fila12, width, height);
 
         add(label);
         add(button);
+        add(checkBox);
+        add(radioButton);
+        add(comboBox);
+        add(spinner);
+        add(textField);
+        add(formattedTextField);
+        add(passwordField);
+        add(textArea);
+        add(editorPane);
+        add(textPane);
 
         // lables
         enLabel = new JLabel("Enables");
-        enLabel.setBounds(columna2, fila1, labWidth, labHeight);
-        enLabel.setEnabled(true);
+        enLabel.setBounds(columna2, fila1, width, height);
 
         disLabel = new JLabel("Disabled");
-        disLabel.setBounds(columna3, fila1, labWidth, labHeight);
+        disLabel.setBounds(columna3, fila1, width, height);
         disLabel.setEnabled(false);
 
         add(enLabel);
@@ -82,19 +200,18 @@ public class Frame extends JFrame {
 
         // buttons
         enButton = new JButton("Enable");
-        enButton.setBounds(columna2, fila2, butWidth, butHeigth);
-        enButton.setEnabled(true);
+        enButton.setBounds(columna2, fila2, width, height);
 
         disButton = new JButton("Disabled");
-        disButton.setBounds(columna3, fila2, butWidth, butHeigth);
+        disButton.setBounds(columna3, fila2, width, height);
         disButton.setEnabled(false);
 
         squButton = new JButton("Square");
-        squButton.setBounds(columna4, fila2, butWidth, butHeigth);
+        squButton.setBounds(columna4, fila2, width, height);
         squButton.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
 
         rouButton = new JButton("Round");
-        rouButton.setBounds(columna5, fila2, butWidth, butHeigth);
+        rouButton.setBounds(columna5, fila2, width, height);
         rouButton.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
 
         add(enButton);
@@ -102,7 +219,122 @@ public class Frame extends JFrame {
         add(squButton);
         add(rouButton);
 
+        // checkBox
+        enCheckBox = new JCheckBox("Enabled");
+        enCheckBox.setBounds(columna2, fila3, width, height);
 
+        disCheckBox = new JCheckBox("Disabled");
+        disCheckBox.setBounds(columna3, fila3, width, height);
+        disCheckBox.setEnabled(false);
+
+        selCheckBox = new JCheckBox("Selected");
+        selCheckBox.setBounds(columna4, fila3, width, height);
+        selCheckBox.setSelected(true);
+
+        selDisCheckBox = new JCheckBox("Selected disabled");
+        selDisCheckBox.setBounds(columna5, fila3, width, height);
+        selDisCheckBox.setSelected(true);
+        selDisCheckBox.setEnabled(false);
+
+        add(enCheckBox);
+        add(disCheckBox);
+        add(selCheckBox);
+        add(selDisCheckBox);
+
+        // radioButton
+        enRadioButton = new JRadioButton("Enabled");
+        enRadioButton.setBounds(columna2, fila4, width, height);
+
+        disRadioButton = new JRadioButton("Disabled");
+        disRadioButton.setBounds(columna3, fila4, width, height);
+        disRadioButton.setEnabled(false);
+
+        selRadioButton = new JRadioButton("Selected");
+        selRadioButton.setBounds(columna4, fila4, width, height);
+        selRadioButton.setSelected(true);
+
+        selDisRadioButton = new JRadioButton("Selected disabled");
+        selDisRadioButton.setBounds(columna5, fila4, width, height);
+        selDisRadioButton.setSelected(true);
+        selDisRadioButton.setEnabled(false);
+
+        add(enRadioButton);
+        add(disRadioButton);
+        add(selRadioButton);
+        add(selDisRadioButton);
+
+        // comboBox
+        String[] enOpciones = {"Enabled", "Opción 1", "Opción 2", "Opción 3", "Opción 4", "Opción 5"};
+        String[] disOpciones = {"Disabled", "Opción 1", "Opción 2", "Opción 3", "Opción 4", "Opción 5"};
+        String[] neOpciones = {"Not editable", "Opción 1", "Opción 2", "Opción 3", "Opción 4", "Opción 5"};
+        String[] neDisOpciones = {"Not editable disabled", "Opción 1", "Opción 2", "Opción 3", "Opción 4", "Opción 5"};
+        String[] wideOpciones = {"Wide Popup, for loger texts", "Opción 1", "Opción 2", "Opción 3", "Opción 4", "Opción 5"};
+
+        enComboBox = new JComboBox(enOpciones);
+        enComboBox.setBounds(columna2, fila5, width, height);
+
+        disComboBox = new JComboBox(disOpciones);
+        disComboBox.setBounds(columna3, fila5, width, height);
+        disComboBox.setEnabled(false);
+
+        neComboBox = new JComboBox(neOpciones);
+        neComboBox.setBounds(columna4, fila5, width, height);
+        neComboBox.setEditable(false);
+
+        neDisComboBox = new JComboBox(neDisOpciones);
+        neDisComboBox.setBounds(columna5, fila5, width, height);
+        neDisComboBox.setEnabled(false);
+
+        wideComboBox = new JComboBox(wideOpciones);
+        wideComboBox.setBounds(columna6, fila5, width, height);
+        wideComboBox.setLightWeightPopupEnabled(true);
+
+        add(enComboBox);
+        add(disComboBox);
+        add(neComboBox);
+        add(neDisComboBox);
+        add(wideComboBox);
+
+
+        // spinner
+        SpinnerModel enModel = new SpinnerNumberModel(0, -25, 25, 1);
+        SpinnerModel disModel = new SpinnerNumberModel(0, -10, 10, 1);
+
+        enSpinner = new JSpinner(enModel);
+        enSpinner.setBounds(columna2, fila6, width, height);
+
+        disSpinner = new JSpinner(disModel);
+        disSpinner.setBounds(columna3, fila6, width, height);
+        disSpinner.setEnabled(false);
+
+        add(enSpinner);
+        add(disSpinner);
+
+        // textField
+        enTextField = new JTextField("Enabled");
+        enTextField.setBounds(columna2, fila7, width, height);
+
+        disTextField = new JTextField("Disabled");
+        disTextField.setBounds(columna3, fila7, width, height);
+        disTextField.setEnabled(false);
+
+        neTextField = new JTextField("Not editable");
+        neTextField.setBounds(columna4, fila7, width, height);
+        neTextField.setEditable(false);
+
+        neDisTextField = new JTextField("Not editable disabled");
+        neDisTextField.setBounds(columna5, fila7, width, height);
+        neDisTextField.setEnabled(false);
+        neDisTextField.setEditable(false);
+
+        add(enTextField);
+        add(disTextField);
+        add(neTextField);
+        add(neDisTextField);
+        add(phTextField);
+
+
+        // centrar i mostrar finestre
         setLocationRelativeTo(null);
         setVisible(true);
     }
