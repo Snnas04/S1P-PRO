@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Abres/Abres.iml" filepath="$PROJECT_DIR$/Abres/Abres.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ActPOO/ActPOO.iml" filepath="$PROJECT_DIR$/ActPOO/ActPOO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArrayBidimencional/ArrayBidimencional.iml" filepath="$PROJECT_DIR$/ArrayBidimencional/ArrayBidimencional.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Contar_Caracters/Contar_Caracters.iml" filepath="$PROJECT_DIR$/Contar_Caracters/Contar_Caracters.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Cotxe/Cotxe.iml" filepath="$PROJECT_DIR$/Cotxe/Cotxe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dinamiques/Dinamiques.iml" filepath="$PROJECT_DIR$/Dinamiques/Dinamiques.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Errores/Errores.iml" filepath="$PROJECT_DIR$/Errores/Errores.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Euler/Euler.iml" filepath="$PROJECT_DIR$/Euler/Euler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Examen/Examen.iml" filepath="$PROJECT_DIR$/Examen/Examen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExprecionsRegulars/ExprecionsRegulars.iml" filepath="$PROJECT_DIR$/ExprecionsRegulars/ExprecionsRegulars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InterficieGrafica/InterficieGrafica.iml" filepath="$PROJECT_DIR$/InterficieGrafica/InterficieGrafica.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LogIn/LogIn.iml" filepath="$PROJECT_DIR$/LogIn/LogIn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mapping/Mapping.iml" filepath="$PROJECT_DIR$/Mapping/Mapping.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Menu/Menu.iml" filepath="$PROJECT_DIR$/Menu/Menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ordenacio/Ordenacio.iml" filepath="$PROJECT_DIR$/Ordenacio/Ordenacio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/POO/POO.iml" filepath="$PROJECT_DIR$/POO/POO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PPM/PPM.iml" filepath="$PROJECT_DIR$/PPM/PPM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PRO.iml" filepath="$PROJECT_DIR$/PRO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Palindromo/Palindromo.iml" filepath="$PROJECT_DIR$/Palindromo/Palindromo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pitagoras/Pitagoras.iml" filepath="$PROJECT_DIR$/Pitagoras/Pitagoras.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PracticaFibo/PracticaFibo.iml" filepath="$PROJECT_DIR$/PracticaFibo/PracticaFibo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reinas/Reinas.iml" filepath="$PROJECT_DIR$/Reinas/Reinas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spiroflex/Spiroflex.iml" filepath="$PROJECT_DIR$/Spiroflex/Spiroflex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TendaVideojocs/TendaVideojocs.iml" filepath="$PROJECT_DIR$/TendaVideojocs/TendaVideojocs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ToDoList/ToDoList.iml" filepath="$PROJECT_DIR$/ToDoList/ToDoList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vehicles/Vehicles.iml" filepath="$PROJECT_DIR$/Vehicles/Vehicles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flatLaf/flatLaf.iml" filepath="$PROJECT_DIR$/flatLaf/flatLaf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/leet/leet.iml" filepath="$PROJECT_DIR$/leet/leet.iml" />
+    </modules>
+  </component>
+</project>

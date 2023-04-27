@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="PRO">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ToDoList.zip!/" />
+      <root url="jar://$PROJECT_DIR$/flatLaf.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

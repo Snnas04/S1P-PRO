@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Insertar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Dinamiques/src/actInsert/Insertar.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -86,14 +86,7 @@ public class Frame extends JFrame {
     }
 
     private void createAndShowGUI() {
-        try {
-            UIManager.setLookAndFeel(new FlatMacDarkLaf());
-            FlatMacDarkLaf.updateUI();
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-
+/home/snnas/Desktop/Classe/PRO/LogIn
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setPreferredSize(new Dimension(900, 600));

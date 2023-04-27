@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Arimo">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/InterficieGrafica/fonts/Arimo.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
