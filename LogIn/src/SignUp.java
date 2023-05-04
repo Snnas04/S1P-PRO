@@ -1,5 +1,5 @@
-import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,17 +14,9 @@ public class SignUp extends JFrame implements ActionListener {
     private JComboBox<String> genderComboBox, countriesComboBox, provinceComboBox;
     private JScrollPane countriesScrollPane, provincesScrollPane;
     private JButton createAccountButton, loginButton;
-//    private DatePi calendar;
+    private JDateChooser dateChooser;
 
     public SignUp() {
-        try {
-            UIManager.setLookAndFeel(new FlatMacDarkLaf());
-            FlatMacDarkLaf.updateUI();
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-
         this.setTitle("Login App");
         this.setSize(450, 700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -118,10 +110,11 @@ public class SignUp extends JFrame implements ActionListener {
         this.add(brithDateLabel);
 
 //BIRTHDATE JCALENDAR
-//        calendar = new JCalendar();
-//        calendar.setBounds(200, 300, 150, 30);
-//
-//        add(calendar);
+        dateChooser = new JDateChooser();
+        dateChooser.setForeground(Color.WHITE);
+        dateChooser.setBounds(200, 300, 190, 30);
+
+        add(dateChooser);
 
 //LABEL EMAIL
         emailLabel = new JLabel("Email*");
@@ -159,7 +152,7 @@ public class SignUp extends JFrame implements ActionListener {
         this.add(genderLabel);
 
 //GENDER JCOMBOBOX
-        String genders[] = {"","Male","Female"};
+        String genders[] = {"","Male","Female", "Other"};
         genderComboBox = new JComboBox(genders);
         genderComboBox.setFont(new Font("Arial", Font.PLAIN, 16));
         genderComboBox.setBounds(200, 420, 190, 30);
@@ -211,14 +204,15 @@ public class SignUp extends JFrame implements ActionListener {
         provincesScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         provinceComboBox.setFont(new Font("Arial", Font.PLAIN, 16));
         provinceComboBox.setBounds(200, 500, 190, 30);
+        provinceComboBox.setEnabled(false);
         
         add(provinceComboBox);
-
 
 //LABEL ZIPCODE
         zipCodeLabel = new JLabel("Zip Code*");
         zipCodeLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         zipCodeLabel.setBounds(30, 540, 150, 30);
+
         this.add(zipCodeLabel);
 
         zipCodeLabel.setVisible(true);
@@ -227,8 +221,20 @@ public class SignUp extends JFrame implements ActionListener {
         zipCodeText = new JTextField();
         zipCodeText.setFont(new Font("Arial", Font.PLAIN, 16));
         zipCodeText.setBounds(200, 540, 190, 30);
+        zipCodeText.setEnabled(false);
 
         this.add(zipCodeText);
+
+        countriesComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedCountry = (String) countriesComboBox.getSelectedItem();
+                if (selectedCountry.equals("Spain")) {
+                    provinceComboBox.setEnabled(true);
+                    zipCodeText.setEnabled(true);
+                }
+            }
+        });
 
 //BUTTONS
         createAccountButton = new JButton("Create Account");

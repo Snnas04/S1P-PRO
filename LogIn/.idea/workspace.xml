@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1007c-9f3b-4bb9-a5ce-0895fbef112d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Loading.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Program.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Validar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/flatlaf_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/flatlaf_3_1_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LogIn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LogIn.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Finestra.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Loading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Loading.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LogIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LogIn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,9 +86,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="option" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="option" />
+      <module name="LogIn" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.option" />
         <item itemvalue="Application.Loading" />
         <item itemvalue="Application.LoginWindow" />
       </list>
@@ -111,6 +118,7 @@
       <workItem from="1683041068435" duration="2842000" />
       <workItem from="1683043924684" duration="3967000" />
       <workItem from="1683131531573" duration="5000" />
+      <workItem from="1683205707407" duration="1888000" />
     </task>
     <servers />
   </component>

@@ -1,24 +1,13 @@
-import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Program extends JFrame {
+public class Window extends JFrame {
     JButton logOutButton;
     Icon logOutIcon;
 
-
-    public Program() {
-        try {
-            UIManager.setLookAndFeel(new FlatMacDarkLaf());
-            FlatMacDarkLaf.updateUI();
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-
-        setTitle("Main Program");
+    public Window() {
+        setTitle("Main Window");
         setSize(1000, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -33,8 +22,16 @@ public class Program extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                dispose();
-                new LogIn();
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Are you sure you want to log out?",
+                        "Log Out",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                    new LogIn();
+                }
             }
         });
 

@@ -1,5 +1,3 @@
-import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
@@ -12,14 +10,6 @@ public class Loading extends JFrame {
     private Random random;
 
     public Loading() {
-        try {
-            UIManager.setLookAndFeel(new FlatMacDarkLaf());
-            FlatMacDarkLaf.updateUI();
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-
         // Configuración de la ventana
         setTitle("Loading");
         this.setSize(500, 300);

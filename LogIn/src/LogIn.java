@@ -1,9 +1,6 @@
-import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 
 public class LogIn extends JFrame implements ActionListener {
     private JLabel titleLabel, userLabel, passLabel;
@@ -12,14 +9,6 @@ public class LogIn extends JFrame implements ActionListener {
     private JButton loginButton, resetButton, singupButton;
 
     public LogIn() {
-        try {
-            UIManager.setLookAndFeel(new FlatMacDarkLaf());
-            FlatMacDarkLaf.updateUI();
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-
         this.setTitle("Log In");
         this.setSize(500, 300);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -80,7 +69,7 @@ public class LogIn extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 dispose();
-                new Program();
+                new Window();
             }
         });
 
@@ -104,7 +93,7 @@ public class LogIn extends JFrame implements ActionListener {
             if ((user.equals("marc") && pass.equals("1234")) || (user.equals("admin") && pass.equals("admin"))) {
                 JOptionPane.showMessageDialog(this, "Login successful");
                 dispose();
-                new Finestra();
+                new Window();
             } else if (user.equals("") && pass.equals("")) {
                 JOptionPane.showMessageDialog(this, "Please enter a username and password");
             } else if (user.equals("") && !pass.equals("")) {
