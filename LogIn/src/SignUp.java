@@ -4,6 +4,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.concurrent.RecursiveTask;
 
 /*In general, when you want to set a border on a standard Swing component other than JPanel or JLabel,
   we recommend that you put the component in a JPanel and set the border on the JPanel.*/
@@ -17,26 +18,26 @@ public class SignUp extends JFrame implements ActionListener {
     private JDateChooser dateChooser;
 
     public SignUp() {
-        this.setTitle("Login App");
-        this.setSize(450, 700);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.setLayout(null);
-        this.setLocationRelativeTo(null);
+        setTitle("Login App");
+        setSize(450, 700);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+        setLayout(null);
+        setLocationRelativeTo(null);
 
 //LABEL TITLE
         titleLabel = new JLabel("Sign Up");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         titleLabel.setBounds(150, 30, 200, 30);
 
-        this.add(titleLabel);
+        add(titleLabel);
 
 //LABEL USERNAME
         userLabel = new JLabel("Username*");
         userLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         userLabel.setBounds(30, 100, 100, 30);
 
-        this.add(userLabel);
+        add(userLabel);
 
 //USERNAME TEXTFIELD
         userText = new JTextField();
@@ -44,70 +45,70 @@ public class SignUp extends JFrame implements ActionListener {
         userText.setFont(new Font("Arial", Font.PLAIN, 16));
         userText.setBounds(200, 100, 190, 30);
 
-        this.add(userText);
+        add(userText);
 
 //LABEL PASSWORD
         passLabel = new JLabel("Password*");
         passLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         passLabel.setBounds(30, 140, 100, 30);
 
-        this.add(passLabel);
+        add(passLabel);
 
 //PASSWORD TEXTFIELD
         passText = new JPasswordField();
         passText.setFont(new Font("Arial", Font.PLAIN, 16));
         passText.setBounds(200, 140, 190, 30);
 
-        this.add(passText);
+        add(passText);
 
 //LABEL REPEATPASSWORD
         repeatPassLabel = new JLabel("Confirm Password*");
         repeatPassLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         repeatPassLabel.setBounds(30, 180, 150, 30);
 
-        this.add(repeatPassLabel);
+        add(repeatPassLabel);
 
 //REPEATPASSWORD TEXTFIELD
         repeatPassText = new JPasswordField();
         repeatPassText.setFont(new Font("Arial", Font.PLAIN, 16));
         repeatPassText.setBounds(200, 180, 190, 30);
 
-        this.add(repeatPassText);
+        add(repeatPassText);
 
 //LABEL NAME
         nameLabel = new JLabel("First Name*");
         nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         nameLabel.setBounds(30, 220, 100, 30);
 
-        this.add(nameLabel);
+        add(nameLabel);
 
 //NAME TEXTFIELD
         nameText = new JTextField();
         nameText.setFont(new Font("Arial", Font.PLAIN, 16));
         nameText.setBounds(200, 220, 190, 30);
 
-        this.add(nameText);
+        add(nameText);
 
 //LABEL SURNAME
         surnameLabel = new JLabel("Last Name*");
         surnameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         surnameLabel.setBounds(30, 260, 100, 30);
 
-        this.add(surnameLabel);
+        add(surnameLabel);
 
 //SURNAME TEXTFIELD
         surnameText = new JTextField();
         surnameText.setFont(new Font("Arial", Font.PLAIN, 16));
         surnameText.setBounds(200, 260, 190, 30);
 
-        this.add(surnameText);
+        add(surnameText);
 
 //LABEL BIRTHDATE
         brithDateLabel = new JLabel("Birth Date*");
         brithDateLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         brithDateLabel.setBounds(30, 300, 150, 30);
 
-        this.add(brithDateLabel);
+        add(brithDateLabel);
 
 //BIRTHDATE JCALENDAR
         dateChooser = new JDateChooser();
@@ -121,35 +122,35 @@ public class SignUp extends JFrame implements ActionListener {
         emailLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         emailLabel.setBounds(30, 340, 150, 30);
 
-        this.add(emailLabel);
+        add(emailLabel);
 
 //EMAIL TEXTFIELD
         emailText = new JTextField();
         emailText.setFont(new Font("Arial", Font.PLAIN, 16));
         emailText.setBounds(200, 340, 190, 30);
 
-        this.add(emailText);
+        add(emailText);
 
 //LABEL PHONENUMBER
         phoneLabel = new JLabel("Phone Number*");
         phoneLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         phoneLabel.setBounds(30, 380, 150, 30);
 
-        this.add(phoneLabel);
+        add(phoneLabel);
 
 //PHONENUMBER TEXTFIELD
         phoneText = new JTextField();
         phoneText.setFont(new Font("Arial", Font.PLAIN, 16));
         phoneText.setBounds(200, 380, 190, 30);
 
-        this.add(phoneText);
+        add(phoneText);
 
 //LABEL GENDER
         genderLabel = new JLabel("Gender*");
         genderLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         genderLabel.setBounds(30, 420, 150, 30);
 
-        this.add(genderLabel);
+        add(genderLabel);
 
 //GENDER JCOMBOBOX
         String genders[] = {"","Male","Female", "Other"};
@@ -157,14 +158,14 @@ public class SignUp extends JFrame implements ActionListener {
         genderComboBox.setFont(new Font("Arial", Font.PLAIN, 16));
         genderComboBox.setBounds(200, 420, 190, 30);
 
-        this.add(genderComboBox);
+        add(genderComboBox);
 
 //LABEL COUNTRY
         countryLabel = new JLabel("Country*");
         countryLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         countryLabel.setBounds(30, 460, 150, 30);
 
-        this.add(countryLabel);
+        add(countryLabel);
 
 //CONTRY COMBOBOX
         String countries[] = {"","Albania","Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus", "Belgium","Bosnia and Herzegovina",
@@ -181,15 +182,15 @@ public class SignUp extends JFrame implements ActionListener {
         countriesComboBox.setFont(new Font("Arial", Font.PLAIN, 16));
         countriesComboBox.setBounds(200, 460, 190, 30);
 
-        this.add(countriesComboBox);
+        add(countriesComboBox);
 
 //LABEL PROVINCE
         provinceLabel = new JLabel("Province*");
         provinceLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         provinceLabel.setBounds(30, 500, 150, 30);
-        this.add(provinceLabel);
+        provinceLabel.setVisible(false);
 
-        provinceLabel.setVisible(true);
+        add(provinceLabel);
 
 //PROVINCE COMBOBOX
         String province[] = {"","Álava","Albacete","Alicante","Almería","Asturias","Ávila","Badajoz","Barcelona","Burgos",
@@ -204,7 +205,7 @@ public class SignUp extends JFrame implements ActionListener {
         provincesScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         provinceComboBox.setFont(new Font("Arial", Font.PLAIN, 16));
         provinceComboBox.setBounds(200, 500, 190, 30);
-        provinceComboBox.setEnabled(false);
+        provinceComboBox.setVisible(false);
         
         add(provinceComboBox);
 
@@ -212,26 +213,28 @@ public class SignUp extends JFrame implements ActionListener {
         zipCodeLabel = new JLabel("Zip Code*");
         zipCodeLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         zipCodeLabel.setBounds(30, 540, 150, 30);
+        zipCodeLabel.setVisible(false);
 
-        this.add(zipCodeLabel);
-
-        zipCodeLabel.setVisible(true);
+        add(zipCodeLabel);
 
 //ZIPCODE TEXTFIELD
         zipCodeText = new JTextField();
         zipCodeText.setFont(new Font("Arial", Font.PLAIN, 16));
         zipCodeText.setBounds(200, 540, 190, 30);
-        zipCodeText.setEnabled(false);
+        zipCodeText.setVisible(false);
 
-        this.add(zipCodeText);
+        add(zipCodeText);
 
         countriesComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedCountry = (String) countriesComboBox.getSelectedItem();
                 if (selectedCountry.equals("Spain")) {
-                    provinceComboBox.setEnabled(true);
-                    zipCodeText.setEnabled(true);
+                    provinceLabel.setVisible(true);
+                    provinceComboBox.setVisible(true);
+
+                    zipCodeLabel.setVisible(true);
+                    zipCodeText.setVisible(true);
                 }
             }
         });
@@ -240,9 +243,57 @@ public class SignUp extends JFrame implements ActionListener {
         createAccountButton = new JButton("Create Account");
         createAccountButton.setFont(new Font("Arial", Font.PLAIN, 16));
         createAccountButton.setBounds(100, 600, 150, 30);
-        createAccountButton.addActionListener(this);
+        createAccountButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String error = "";
 
-        this.add(createAccountButton);
+                if (!Validar.validarUsername(userText.getText())) {
+                    error += "Incorrect Username\n";
+                }
+
+                if (!Validar.validarPass(passText.getText())) {
+                    error += "Incorrect Password\n";
+                }
+
+                if (!repeatPassText.getText().equals(passText.getText())) {
+                    error += "Password don't match\n";
+                }
+
+                if (!Validar.validarName(nameText.getText())) {
+                    error += "Incorrect Name\n";
+                }
+
+                if (!Validar.validarSurname(surnameText.getText())) {
+                    error += "Incorrect Surname\n";
+                }
+
+                if (!Validar.validarEmail(emailText.getText())) {
+                    error += "Incorrect Email\n";
+                }
+
+                if (!Validar.validarPhone(phoneText.getText())) {
+                    error += "Incorrect phone number\n";
+                }
+
+                String selectedCountry = (String) countriesComboBox.getSelectedItem();
+                if (selectedCountry.equals("Spain")) {
+                    if (!Validar.validarZipcode(zipCodeText.getText())) {
+                        error += "Incorrect zipcode\n";
+                    }
+                }
+
+                if (!error.equals("")) {
+                    JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    dispose();
+                    new Window();
+                }
+            }
+        });
+
+
+
+        add(createAccountButton);
 
         loginButton = new JButton("LogIn");
         loginButton.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -257,9 +308,10 @@ public class SignUp extends JFrame implements ActionListener {
         });
         loginButton.setBounds(250, 600, 90, 30);
 
-        this.add(loginButton);
 
-        this.setVisible(true);
+        add(loginButton);
+
+        setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {

@@ -9,12 +9,12 @@ public class LogIn extends JFrame implements ActionListener {
     private JButton loginButton, resetButton, singupButton;
 
     public LogIn() {
-        this.setTitle("Log In");
-        this.setSize(500, 300);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.setLayout(null);
-        this.setLocationRelativeTo(null);
+        setTitle("Log In");
+        setSize(500, 300);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+        setLayout(null);
+        setLocationRelativeTo(null);
 
 // LABEL
         titleLabel = new JLabel("Login Form");
@@ -25,8 +25,8 @@ public class LogIn extends JFrame implements ActionListener {
         userLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         userLabel.setBounds(100, 100, 100, 30);
 
-        this.add(titleLabel);
-        this.add(userLabel);
+        add(titleLabel);
+        add(userLabel);
 
 // TEXTFIELD
         userText = new JTextField();
@@ -37,15 +37,15 @@ public class LogIn extends JFrame implements ActionListener {
         passText.setFont(new Font("Arial", Font.PLAIN, 16));
         passText.setBounds(200, 140, 190, 30);
 
-        this.add(passText);
-        this.add(userText);
+        add(passText);
+        add(userText);
 
 // PASSWORD
         passLabel = new JLabel("Password");
         passLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         passLabel.setBounds(100, 140, 100, 30);
 
-        this.add(passLabel);
+        add(passLabel);
 
 //BUTTONS
         singupButton = new JButton("Singup");
@@ -78,11 +78,11 @@ public class LogIn extends JFrame implements ActionListener {
         resetButton.setBounds(300, 200, 90, 30);
         resetButton.addActionListener(this);
 
-        this.add(singupButton);
-        this.add(loginButton);
-        this.add(resetButton);
+        add(singupButton);
+        add(loginButton);
+        add(resetButton);
 
-        this.setVisible(true);
+        setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
