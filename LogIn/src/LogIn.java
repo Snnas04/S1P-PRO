@@ -75,7 +75,14 @@ public class LogIn extends JFrame implements ActionListener {
         loginButton = new JButton("Login");
         loginButton.setFont(new Font("Arial", Font.PLAIN, 16));
         loginButton.setBounds(200, 200, 90, 30);
-        loginButton.addActionListener(this);
+        loginButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                dispose();
+                new Program();
+            }
+        });
 
         resetButton = new JButton("Reset");
         resetButton.setFont(new Font("Arial", Font.PLAIN, 16));

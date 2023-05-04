@@ -1,4 +1,5 @@
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import com.toedter.calendar.JCalendar;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ public class SignUp extends JFrame implements ActionListener {
     private JComboBox<String> genderComboBox, countriesComboBox, provinceComboBox;
     private JScrollPane countriesScrollPane, provincesScrollPane;
     private JButton createAccountButton, loginButton;
-
+//    private DatePi calendar;
 
     public SignUp() {
         try {
@@ -117,7 +118,10 @@ public class SignUp extends JFrame implements ActionListener {
         this.add(brithDateLabel);
 
 //BIRTHDATE JCALENDAR
-
+//        calendar = new JCalendar();
+//        calendar.setBounds(200, 300, 150, 30);
+//
+//        add(calendar);
 
 //LABEL EMAIL
         emailLabel = new JLabel("Email*");
