@@ -64,11 +64,14 @@ public class LogIn extends JFrame implements ActionListener {
         loginButton = new JButton("Login");
         loginButton.setFont(new Font("Arial", Font.PLAIN, 16));
         loginButton.setBounds(200, 200, 90, 30);
+
+        userText.addActionListener(textAction);
+        passText.addActionListener(textAction);
+
         loginButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                actionPerformed(new ActionEvent(loginButton, ActionEvent.ACTION_PERFORMED, null));
+                validateLogin();
             }
         });
 
@@ -84,15 +87,31 @@ public class LogIn extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    private ActionListener loginAction = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            validateLogin();
+        }
+    };
+
+    private ActionListener textAction = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            loginAction.actionPerformed(e);
+        }
+    };
+
+    public void validateLogin() {
+        actionPerformed(new ActionEvent(loginButton, ActionEvent.ACTION_PERFORMED, null));
+    }
+
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {
             String user = userText.getText();
             String pass = String.valueOf(passText.getPassword());
 
             if ((user.equals("admin") && pass.equals("admin"))) {
-                JOptionPane.showMessageDialog(this, "Login successful");
                 dispose();
                 new Window();
+                JOptionPane.showMessageDialog(this, "Login successful");
             } else if (user.equals("") && pass.equals("")) {
                 JOptionPane.showMessageDialog(this, "Please enter a username and password");
             } else if (user.equals("") && !pass.equals("")) {

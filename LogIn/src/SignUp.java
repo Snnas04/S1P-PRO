@@ -245,68 +245,23 @@ public class SignUp extends JFrame implements ActionListener {
         createAccountButton = new JButton("Create Account");
         createAccountButton.setFont(new Font("Arial", Font.PLAIN, 16));
         createAccountButton.setBounds(100, 600, 150, 30);
-        createAccountButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String error = "";
 
-                if (!Validar.validarUsername(userText.getText())) {
-                    error += "Incorrect Username\n";
-                }
+        userText.addActionListener(textAction);
+        passText.addActionListener(textAction);
+        repeatPassText.addActionListener(textAction);
+        nameText.addActionListener(textAction);
+        surnameText.addActionListener(textAction);
+        emailText.addActionListener(textAction);
+        phoneText.addActionListener(textAction);
+        zipCodeText.addActionListener(textAction);
 
-                if (!Validar.validarPass(passText.getText())) {
-                    error += "Incorrect Password\n";
-                }
-
-                if (!repeatPassText.getText().equals(passText.getText())) {
-                    error += "Password don't match\n";
-                }
-
-                if (!Validar.validarName(nameText.getText())) {
-                    error += "Incorrect Name\n";
-                }
-
-                if (!Validar.validarSurname(surnameText.getText())) {
-                    error += "Incorrect Surname\n";
-                }
-
-                if (!Validar.validarEmail(emailText.getText())) {
-                    error += "Incorrect Email\n";
-                }
-
-                if (!Validar.validarPhone(phoneText.getText())) {
-                    error += "Incorrect phone number\n";
-                }
-
-                if (genderComboBox.getSelectedIndex() <= 0) {
-                    error += "Select a gender option\n";
-                }
-
-                if (countriesComboBox.getSelectedIndex() <= 0) {
-                    error += "Select a country\n";
-                }
-
-                String selectedCountry = (String) countriesComboBox.getSelectedItem();
-                if (selectedCountry.equals("Spain")) {
-                    if (provinceComboBox.getSelectedIndex() <= 0) {
-                        error += "Select a province\n";
-                    }
-
-                    if (!Validar.validarZipcode(zipCodeText.getText())) {
-                        error += "Incorrect zipcode\n";
-                    }
-                }
-
-                if (!error.equals("")) {
-                    JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    dispose();
-                    new Window();
-                }
+        createAccountButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                validateAcount();
             }
         });
-
-
-
+        
         add(createAccountButton);
 
         loginButton = new JButton("LogIn");
@@ -328,10 +283,78 @@ public class SignUp extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    private ActionListener createAcounteAction = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            validateAcount();
+        }
+    };
+
+    private ActionListener textAction = new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            createAcounteAction.actionPerformed(e);
+        }
+    };
+
+    public void validateAcount() {
+        actionPerformed(new ActionEvent(createAccountButton, ActionEvent.ACTION_PERFORMED, null));
+    }
+
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == createAccountButton) {
-            String user = userText.getText();
-            String pass = String.valueOf(passText.getPassword());
+        String error = "";
+
+        if (!Validar.validarUsername(userText.getText())) {
+            error += "Incorrect Username\n";
+        }
+
+        if (!Validar.validarPass(passText.getText())) {
+            error += "Incorrect Password\n";
+        }
+
+        if (!repeatPassText.getText().equals(passText.getText())) {
+            error += "Password don't match\n";
+        }
+
+        if (!Validar.validarName(nameText.getText())) {
+            error += "Incorrect Name\n";
+        }
+
+        if (!Validar.validarSurname(surnameText.getText())) {
+            error += "Incorrect Surname\n";
+        }
+
+        if (!Validar.validarEmail(emailText.getText())) {
+            error += "Incorrect Email\n";
+        }
+
+        if (!Validar.validarPhone(phoneText.getText())) {
+            error += "Incorrect phone number\n";
+        }
+
+        if (genderComboBox.getSelectedIndex() <= 0) {
+            error += "Select a gender option\n";
+        }
+
+        if (countriesComboBox.getSelectedIndex() <= 0) {
+            error += "Select a country\n";
+        }
+
+        String selectedCountry = (String) countriesComboBox.getSelectedItem();
+        if (selectedCountry.equals("Spain")) {
+            if (provinceComboBox.getSelectedIndex() <= 0) {
+                error += "Select a province\n";
+            }
+
+            if (!Validar.validarZipcode(zipCodeText.getText())) {
+                error += "Incorrect zipcode\n";
+            }
+        }
+
+        if (!error.equals("")) {
+            JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            new Window();
+            JOptionPane.showMessageDialog(this, "Acount created, Welcome!");
         }
     }
 }
