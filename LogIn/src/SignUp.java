@@ -4,6 +4,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.security.MessageDigest;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.RecursiveTask;
@@ -281,6 +282,13 @@ public class SignUp extends JFrame implements ActionListener {
         add(loginButton);
 
         setVisible(true);
+    }
+
+    private String hashPassword(char[] password) throws Exception {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(String.valueOf(password).getBytes("UTF-8"));
+        byte[] digest = md.digest();
+        return String.format("%064x", new java.math.BigInteger(1, digest));
     }
 
     private ActionListener createAcounteAction = new ActionListener() {

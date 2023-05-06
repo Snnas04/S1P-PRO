@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1007c-9f3b-4bb9-a5ce-0895fbef112d" name="Changes" comment="" />
+    <list default="true" id="bce1007c-9f3b-4bb9-a5ce-0895fbef112d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GuessGamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuessGamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LogIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LogIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SignUp.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +26,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/BackgroundPanel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/BCrypt.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/GuessGamePanel.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Loading.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/LogIn.java" root0="SKIP_INSPECTION" />
@@ -126,7 +131,7 @@
       <workItem from="1683205707407" duration="11427000" />
       <workItem from="1683361370039" duration="4864000" />
       <workItem from="1683366385847" duration="2568000" />
-      <workItem from="1683368963445" duration="6798000" />
+      <workItem from="1683368963445" duration="8712000" />
     </task>
     <servers />
   </component>

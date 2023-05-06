@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class LogIn extends JFrame implements ActionListener {
     private JLabel titleLabel, userLabel, passLabel;
@@ -103,23 +106,55 @@ public class LogIn extends JFrame implements ActionListener {
         actionPerformed(new ActionEvent(loginButton, ActionEvent.ACTION_PERFORMED, null));
     }
 
+//    public void actionPerformed(ActionEvent e) {
+//        if (e.getSource() == loginButton) {
+//            String user = userText.getText();
+//            String pass = String.valueOf(passText.getPassword());
+//
+//            if ((user.equals("admin") && pass.equals("admin"))) {
+//                dispose();
+//                new Window();
+//                JOptionPane.showMessageDialog(this, "Login successful");
+//            } else if (user.equals("") && pass.equals("")) {
+//                JOptionPane.showMessageDialog(this, "Please enter a username and password");
+//            } else if (user.equals("") && !pass.equals("")) {
+//                JOptionPane.showMessageDialog(this, "Please enter a username");
+//            } else if (!user.equals("") && pass.equals("")) {
+//                JOptionPane.showMessageDialog(this, "Please enter a password");
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Invalid username or password");
+//            }
+//        } else if (e.getSource() == resetButton) {
+//            userText.setText("");
+//            passText.setText("");
+//        }
+//    }
+
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {
             String user = userText.getText();
             String pass = String.valueOf(passText.getPassword());
-
             if ((user.equals("admin") && pass.equals("admin"))) {
                 dispose();
                 new Window();
                 JOptionPane.showMessageDialog(this, "Login successful");
-            } else if (user.equals("") && pass.equals("")) {
-                JOptionPane.showMessageDialog(this, "Please enter a username and password");
-            } else if (user.equals("") && !pass.equals("")) {
-                JOptionPane.showMessageDialog(this, "Please enter a username");
-            } else if (!user.equals("") && pass.equals("")) {
-                JOptionPane.showMessageDialog(this, "Please enter a password");
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid username or password");
+            }
+            else {
+                try {
+                    Scanner scanner = new Scanner(new File("usuaris.txt"));
+                    while (scanner.hasNextLine()) {
+                        String line = scanner.nextLine();
+                        String[] parts = line.split(","); // separador es una coma
+                        if (parts.length == 2 && parts[0].equals(user) && BCrypt.checkpw(pass, parts[1])) {
+                            dispose();
+                            new Window();
+                            JOptionPane.showMessageDialog(this, "Login successful");
+                        }
+                    }
+                    JOptionPane.showMessageDialog(this, "Invalid username or password");
+                } catch (FileNotFoundException ex) {
+                    JOptionPane.showMessageDialog(this, "Credentials file not found");
+                }
             }
         } else if (e.getSource() == resetButton) {
             userText.setText("");
