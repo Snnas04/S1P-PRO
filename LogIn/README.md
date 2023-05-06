@@ -25,3 +25,11 @@ La classe [Validar](./src/Validar.java) compte un mètode boolean per cada camp 
 
 ## Minijoc
 A la finestra principal del programa hi ha un [minijoc](./src/GuessGamePanel.java), aquest genera un número aleatori entre 0 i 100, el jugador ha d'introduir un número al TestField, i es retornarà un string dient si el número és més gran o més petit del que hem inserit, una vegada s'hagi trobat el número es mostrarà un recompte amb quants d'intents s'han necessitat per trobar el número.
+
+## Llibreries
+Totes les lliberies que s'han emprat es troben situades dins la caprpeta lib.
+
+## Imatges
+Totes les imatges que s'han emprat es troben situades dins la carpeta img.
+
+Les imatges amb extenció jpg s'han emprat com a fons de pantalla, i les imatges amb extenció png d'icones.
