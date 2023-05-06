@@ -68,8 +68,7 @@ public class LogIn extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                dispose();
-                new Window();
+                actionPerformed(new ActionEvent(loginButton, ActionEvent.ACTION_PERFORMED, null));
             }
         });
 
@@ -90,7 +89,7 @@ public class LogIn extends JFrame implements ActionListener {
             String user = userText.getText();
             String pass = String.valueOf(passText.getPassword());
 
-            if ((user.equals("marc") && pass.equals("1234")) || (user.equals("admin") && pass.equals("admin"))) {
+            if ((user.equals("admin") && pass.equals("admin"))) {
                 JOptionPane.showMessageDialog(this, "Login successful");
                 dispose();
                 new Window();

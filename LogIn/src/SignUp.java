@@ -4,6 +4,8 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.RecursiveTask;
 
 /*In general, when you want to set a border on a standard Swing component other than JPanel or JLabel,
@@ -104,7 +106,7 @@ public class SignUp extends JFrame implements ActionListener {
         add(surnameText);
 
 //LABEL BIRTHDATE
-        brithDateLabel = new JLabel("Birth Date*");
+        brithDateLabel = new JLabel("Birth Date");
         brithDateLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         brithDateLabel.setBounds(30, 300, 150, 30);
 
@@ -275,8 +277,20 @@ public class SignUp extends JFrame implements ActionListener {
                     error += "Incorrect phone number\n";
                 }
 
+                if (genderComboBox.getSelectedIndex() <= 0) {
+                    error += "Select a gender option\n";
+                }
+
+                if (countriesComboBox.getSelectedIndex() <= 0) {
+                    error += "Select a country\n";
+                }
+
                 String selectedCountry = (String) countriesComboBox.getSelectedItem();
                 if (selectedCountry.equals("Spain")) {
+                    if (provinceComboBox.getSelectedIndex() <= 0) {
+                        error += "Select a province\n";
+                    }
+
                     if (!Validar.validarZipcode(zipCodeText.getText())) {
                         error += "Incorrect zipcode\n";
                     }
