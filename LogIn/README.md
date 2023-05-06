@@ -4,8 +4,12 @@ Per poder iniciar el programa s'ha d'executar l'arxiu [Main](./src/Main.java). A
 ## LogIn
 La classe [LogIn](./src/LogIn.java) és molt senzill, conte un botó de SignUp, per crear un compte, un botó de login, el qual funciona si pressionam la tecla entera o si clicam damunt com qualsevol botó, i un de "reset" que buida els camps a omplir.
 
+Les credencials per defecte són:
+- Usuari: admin
+- Contrasenya: admin
+
 ## SignUp
-El [SignUp](./src/SignUp.java) compte mols més camps, ja que serveix per crear comptes, tots els camps són obligatoris, excepte "birthdate". Si seleccionam el país "Espanya" s'afegeixen dos camps.
+El [SignUp](./src/SignUp.java) compte mols més camps, ja que serveix per crear comptes, tots els camps són obligatoris, excepte "birthdate". Si seleccionam el país "Espanya" s'afegeixen dos camps, i si despres d'haver seleccionat "Espany" seleccionam un altre pais els dos camps que haviem seleccionat desapareixen.
 
 Els camps que compte la classe SignUp es validen mitjançant una altra classe anomenada Validar.La classe SignUp compte amb dos botons, un de login, aquest una vegada el clicam et retorna a l'apartat de LogIn. I un segon botó, Crear Compte. 
 

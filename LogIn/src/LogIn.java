@@ -106,30 +106,6 @@ public class LogIn extends JFrame implements ActionListener {
         actionPerformed(new ActionEvent(loginButton, ActionEvent.ACTION_PERFORMED, null));
     }
 
-//    public void actionPerformed(ActionEvent e) {
-//        if (e.getSource() == loginButton) {
-//            String user = userText.getText();
-//            String pass = String.valueOf(passText.getPassword());
-//
-//            if ((user.equals("admin") && pass.equals("admin"))) {
-//                dispose();
-//                new Window();
-//                JOptionPane.showMessageDialog(this, "Login successful");
-//            } else if (user.equals("") && pass.equals("")) {
-//                JOptionPane.showMessageDialog(this, "Please enter a username and password");
-//            } else if (user.equals("") && !pass.equals("")) {
-//                JOptionPane.showMessageDialog(this, "Please enter a username");
-//            } else if (!user.equals("") && pass.equals("")) {
-//                JOptionPane.showMessageDialog(this, "Please enter a password");
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Invalid username or password");
-//            }
-//        } else if (e.getSource() == resetButton) {
-//            userText.setText("");
-//            passText.setText("");
-//        }
-//    }
-
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {
             String user = userText.getText();

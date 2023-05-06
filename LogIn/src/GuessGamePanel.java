@@ -72,6 +72,7 @@ public class GuessGamePanel extends JPanel {
 
     public void validateGuess() {
         actionPerformed(new ActionEvent(guessButton, ActionEvent.ACTION_PERFORMED, null));
+        guessTextField.setText("");
     }
 
     public void resetGame() {

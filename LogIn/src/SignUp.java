@@ -12,7 +12,7 @@ import java.util.concurrent.RecursiveTask;
 /*In general, when you want to set a border on a standard Swing component other than JPanel or JLabel,
   we recommend that you put the component in a JPanel and set the border on the JPanel.*/
 public class SignUp extends JFrame implements ActionListener {
-    private JLabel titleLabel, userLabel, nameLabel, surnameLabel, passLabel, repeatPassLabel, brithDateLabel, emailLabel, phoneLabel, genderLabel, countryLabel, provinceLabel, zipCodeLabel;
+    private JLabel titleLabel, userLabel, nameLabel, surnameLabel, passLabel, passRequiresLabel, repeatPassLabel, brithDateLabel, emailLabel, phoneLabel, genderLabel, countryLabel, provinceLabel, zipCodeLabel;
     private JTextField userText, nameText, surnameText, emailText, phoneText, zipCodeText;
     private JPasswordField passText, repeatPassText;
     private JComboBox<String> genderComboBox, countriesComboBox, provinceComboBox;
@@ -22,7 +22,7 @@ public class SignUp extends JFrame implements ActionListener {
 
     public SignUp() {
         setTitle("Login App");
-        setSize(450, 700);
+        setSize(600, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(null);
@@ -63,6 +63,14 @@ public class SignUp extends JFrame implements ActionListener {
         passText.setBounds(200, 140, 190, 30);
 
         add(passText);
+
+//PASSWORD REQUIRES
+        String requires = "<html>The password at least must contain:<br> · One Capital letter<br> · One lower letter<br> · One number<br> · One special character<br> · 8 characters minimum</html>";
+        passRequiresLabel = new JLabel(requires);
+        passRequiresLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        passRequiresLabel.setBounds(400, 140, 190, 120);
+        passRequiresLabel.setForeground(new Color(105,105,105));
+        add(passRequiresLabel);
 
 //LABEL REPEATPASSWORD
         repeatPassLabel = new JLabel("Confirm Password*");
@@ -238,6 +246,12 @@ public class SignUp extends JFrame implements ActionListener {
 
                     zipCodeLabel.setVisible(true);
                     zipCodeText.setVisible(true);
+                } else if (!selectedCountry.equals("Spain")) {
+                    provinceLabel.setVisible(false);
+                    provinceComboBox.setVisible(false);
+
+                    zipCodeLabel.setVisible(false);
+                    zipCodeText.setVisible(false);
                 }
             }
         });
