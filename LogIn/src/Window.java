@@ -126,31 +126,11 @@ public class Window extends JFrame {
         Image img2 = imgBGWindows.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
         Image img3 = imgBGApple.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
         Image img4 = imgBGNum.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
-        
-        // Agrega la imagen de fondo al contenedor principal
-        setContentPane(new JPanel() {
-            @Override
-            public void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Image img = null;
-                switch (tabbedPane.getSelectedIndex()) {
-                    case 0:
-                        img = imgBGArch.getImage();
-                        break;
-                    case 1:
-                        img = imgBGWindows.getImage();
-                        break;
-                    case 2:
-                        img = imgBGApple.getImage();
-                        break;
-                    case 3:
-                        img = imgBGNum.getImage();
-                        break;
-                }
-                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-            }
-        });
 
+        JLabel bgLabelP1 = new JLabel(new ImageIcon(img1));
+        JLabel bgLabelP2 = new JLabel(new ImageIcon(img2));
+        JLabel bgLabelP3 = new JLabel(new ImageIcon(img3));
+        JLabel bgLabelP4 = new JLabel(new ImageIcon(img4));
 
         tabbedPane = new JTabbedPane();
 
@@ -168,6 +148,7 @@ public class Window extends JFrame {
         panel4.add(new GuessGamePanel());
         panel4.add(bgLabelP4);
         tabbedPane.add("Adivina el número", panel4);
+
 
         add(tabbedPane);
 

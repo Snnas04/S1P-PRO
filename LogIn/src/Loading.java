@@ -59,14 +59,8 @@ public class Loading extends JFrame {
                 e.printStackTrace();
             }
 
-            // Cerrar la ventana de carga
             dispose();
             new LogIn();
         }
-    }
-
-    public static void main(String[] args) {
-        // Crear y mostrar la ventana
-        Loading loadingWindow = new Loading();
     }
 }

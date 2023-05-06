@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bce1007c-9f3b-4bb9-a5ce-0895fbef112d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/BackgroundPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GuessGamePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LogIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LogIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BackgroundPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Loading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Loading.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +34,9 @@
     <setting file="file://$PROJECT_DIR$/src/SignUp.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Validar.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Window.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2P0pbd7RPMsfnfvUUq63F81MBHe" />
   <component name="ProjectLevelVcsManager">
@@ -65,7 +67,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.BackgroundPanel">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="BackgroundPanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="BackgroundPanel" />
       <module name="LogIn" />
@@ -103,8 +105,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BackgroundPanel" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.BackgroundPanel" />
         <item itemvalue="Application.TEST" />
         <item itemvalue="Application.option" />
         <item itemvalue="Application.Loading" />
@@ -130,7 +132,7 @@
       <workItem from="1683205707407" duration="11427000" />
       <workItem from="1683361370039" duration="4864000" />
       <workItem from="1683366385847" duration="2568000" />
-      <workItem from="1683368963445" duration="3719000" />
+      <workItem from="1683368963445" duration="6462000" />
     </task>
     <servers />
   </component>
