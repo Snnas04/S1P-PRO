@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1007c-9f3b-4bb9-a5ce-0895fbef112d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="bce1007c-9f3b-4bb9-a5ce-0895fbef112d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +57,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "editor.preferences.gutterIcons",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -128,11 +126,15 @@
       <workItem from="1683205707407" duration="11427000" />
       <workItem from="1683361370039" duration="4864000" />
       <workItem from="1683366385847" duration="2568000" />
-      <workItem from="1683368963445" duration="10777000" />
+      <workItem from="1683368963445" duration="10967000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
