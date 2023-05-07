@@ -20,7 +20,7 @@ public class SignUp extends JFrame implements ActionListener {
     private JPasswordField passText, repeatPassText;
     private JComboBox<String> genderComboBox, countriesComboBox, provinceComboBox;
     private JScrollPane countriesScrollPane, provincesScrollPane;
-    private JButton createAccountButton, loginButton;
+    private JButton createAccountButton, loginButton, showHideButton;
     private JDateChooser dateChooser;
 
     public SignUp() {
@@ -71,7 +71,7 @@ public class SignUp extends JFrame implements ActionListener {
         String requires = "<html>The password at least must contain:<br> · One Capital letter<br> · One lower letter<br> · One number<br> · One special character<br> · 8 characters minimum</html>";
         passRequiresLabel = new JLabel(requires);
         passRequiresLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-        passRequiresLabel.setBounds(400, 140, 190, 120);
+        passRequiresLabel.setBounds(400, 180, 190, 120);
         passRequiresLabel.setForeground(new Color(105,105,105));
         add(passRequiresLabel);
 
@@ -88,6 +88,32 @@ public class SignUp extends JFrame implements ActionListener {
         repeatPassText.setBounds(200, 180, 190, 30);
 
         add(repeatPassText);
+
+        ImageIcon openIcon = new ImageIcon("./img/eye_open.png");
+        ImageIcon closeIcon = new ImageIcon("./img/eye_close.png");
+
+        showHideButton = new JButton(openIcon); // mostrar
+        showHideButton.setBounds(390, 140, 40, 30);
+        showHideButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (showHideButton.getIcon().equals(closeIcon)) {
+                    passText.setEchoChar('·');
+                    repeatPassText.setEchoChar('·');
+                    passText.setFont(new Font("Arial", Font.BOLD, 22));
+                    repeatPassText.setFont(new Font("Arial", Font.BOLD, 22));
+                    showHideButton.setIcon(openIcon); // mostrar
+                } else {
+                    passText.setEchoChar('\u0000');
+                    repeatPassText.setEchoChar('\u0000');
+                    passText.setFont(new Font("Arial", Font.PLAIN, 16));
+                    repeatPassText.setFont(new Font("Arial", Font.PLAIN, 16));
+                    showHideButton.setIcon(closeIcon); // oclutar
+                }
+            }
+        });
+
+        add(showHideButton);
 
 //LABEL NAME
         nameLabel = new JLabel("First Name*");
@@ -318,8 +344,8 @@ public class SignUp extends JFrame implements ActionListener {
 
             // Crear un archivo y escribir el username y el password cifrado en él
             File archivo = new File("credenciales.txt");
-            BufferedWriter writer = new BufferedWriter(new FileWriter(archivo));
-            writer.write(username + ":" + passwordCifrado);
+            FileWriter writer = new FileWriter(archivo, true); // El segundo parámetro indica que se debe abrir en modo "append"
+            writer.write(username + ":" + passwordCifrado + "\n"); // Añadir un salto de línea para separar las credenciales
             writer.close();
 
         } catch (Exception e) {
@@ -403,7 +429,7 @@ public class SignUp extends JFrame implements ActionListener {
             guardarCredenciales(username, password);
             dispose();
             new Window();
-            JOptionPane.showMessageDialog(this, "Acount created, Welcome!");
+            JOptionPane.showMessageDialog(this, "Acount created, Welcome " + username + "!");
         }
     }
 }

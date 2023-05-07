@@ -9,7 +9,7 @@ public class LogIn extends JFrame implements ActionListener {
     private JLabel titleLabel, userLabel, passLabel;
     private JTextField userText;
     private JPasswordField passText;
-    private JButton loginButton, resetButton, singupButton;
+    private JButton loginButton, resetButton, singupButton, showHideButton;
 
     public LogIn() {
         setTitle("Log In");
@@ -40,8 +40,29 @@ public class LogIn extends JFrame implements ActionListener {
         passText.setFont(new Font("Arial", Font.PLAIN, 16));
         passText.setBounds(200, 140, 190, 30);
 
+        ImageIcon openIcon = new ImageIcon("./img/eye_open.png");
+        ImageIcon closeIcon = new ImageIcon("./img/eye_close.png");
+
+        showHideButton = new JButton(openIcon); // mostrar
+        showHideButton.setBounds(390, 140, 40, 30);
+        showHideButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (showHideButton.getIcon().equals(closeIcon)) {
+                    passText.setEchoChar('·');
+                    passText.setFont(new Font("Arial", Font.BOLD, 22));
+                    showHideButton.setIcon(openIcon); // mostrar
+                } else {
+                    passText.setEchoChar('\u0000');
+                    passText.setFont(new Font("Arial", Font.PLAIN, 16));
+                    showHideButton.setIcon(closeIcon); // oclutar
+                }
+            }
+        });
+
         add(passText);
         add(userText);
+        add(showHideButton);
 
 // PASSWORD
         passLabel = new JLabel("Password");
@@ -113,7 +134,7 @@ public class LogIn extends JFrame implements ActionListener {
             if ((user.equals("admin") && pass.equals("admin"))) {
                 dispose();
                 new Window();
-                JOptionPane.showMessageDialog(this, "Login successful");
+                JOptionPane.showMessageDialog(this, "Welcome " + user.toUpperCase() + "! I hope you enjoy!");
             }
             else {
                 char[] passwordChars = pass.toCharArray();
@@ -129,6 +150,9 @@ public class LogIn extends JFrame implements ActionListener {
                             dispose();
                             new Window();
                             JOptionPane.showMessageDialog(this, "Welcome " + user + "!");
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(this, "Incorrect credentials");
                         }
                     }
                 } catch (Exception ex) {

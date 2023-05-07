@@ -8,12 +8,16 @@ Les credencials per defecte són:
 - Usuari: admin
 - Contrasenya: admin
 
+El camp per emplenar compta amb un boto a la dreta que permete mostrar i amagar la contrasenya.
+
 ## SignUp
 El [SignUp](./src/SignUp.java) compte mols més camps, ja que serveix per crear comptes, tots els camps són obligatoris, excepte "birthdate". Si seleccionam el país "Espanya" s'afegeixen dos camps, i si despres d'haver seleccionat "Espany" seleccionam un altre pais els dos camps que haviem seleccionat desapareixen.
 
 Els camps que compte la classe SignUp es validen mitjançant una altra classe anomenada Validar.La classe SignUp compte amb dos botons, un de login, aquest una vegada el clicam et retorna a l'apartat de LogIn. I un segon botó, Crear Compte. 
 
 Aquest crea el compte i accedeix a la finestra principal. Aquest darrer botó es pot emprar clicant a damunt o pressionant la tecla enter.
+
+A més els camps contrasenya i repetir contrasenya compten amb un boto que mostra i amaga la contrasenya de forma simultanea en els dos camps.
 
 ## Window
 La [finestra principal](./src/Window.java) compte amb una barra de menú, la qual té dos apartats, la primera no té cap funció, en canvi, la segona cada una de les opcions et redirigeix a una pàgina web relacionada amb el tema. 
@@ -33,3 +37,8 @@ Totes les lliberies que s'han emprat es troben situades dins la caprpeta lib.
 Totes les imatges que s'han emprat es troben situades dins la carpeta img.
 
 Les imatges amb extenció jpg s'han emprat com a fons de pantalla, i les imatges amb extenció png d'icones.
+
+## Maneig de dades
+Quan crea el compta a l'aparatat [SignUp](./src/SignUp.java) emagatzema les dades de l'usuari, el nom d'usuari i la contrasenya, ja que no necessitam emprar cap altre tipus de dada. Les dades dels usuaris es troben emagetzemades a un arxiu [credentials.txt](./credenciales.txt).
+
+El [LogIn](./src/LogIn.java) accedeix a l'arxiu [credentials.txt](./credenciales.txt) per compobar que l'usuari existeix i la contrasenya es valida.

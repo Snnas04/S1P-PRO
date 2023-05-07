@@ -141,7 +141,7 @@ public class Window extends JFrame {
 
         tabbedPane.add("Arch", panel1);
         panel1.add(bgLabelP1);
-        tabbedPane.add("Windows", panel2);
+        tabbedPane.add("Windows     ", panel2); // pos un espai despres de Windows perque sino, no se perque, no surt sence, surt "Windo..."
         panel2.add(bgLabelP2);
         tabbedPane.add("Apple", panel3);
         panel3.add(bgLabelP3);
