@@ -4,6 +4,9 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.security.MessageDigest;
 import java.util.Calendar;
 import java.util.Date;
@@ -298,12 +301,32 @@ public class SignUp extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    private String hashPassword(char[] password) throws Exception {
+    public static String hashPassword(char[] password) throws Exception {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(String.valueOf(password).getBytes("UTF-8"));
         byte[] digest = md.digest();
         return String.format("%064x", new java.math.BigInteger(1, digest));
     }
+
+    public void guardarCredenciales(String username, char[] password) {
+        try {
+            // Convertir el password en un arreglo de caracteres
+            char[] passwordChars = password;
+
+            // Cifrar el password
+            String passwordCifrado = hashPassword(passwordChars);
+
+            // Crear un archivo y escribir el username y el password cifrado en él
+            File archivo = new File("credenciales.txt");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(archivo));
+            writer.write(username + ":" + passwordCifrado);
+            writer.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private ActionListener createAcounteAction = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
@@ -374,6 +397,10 @@ public class SignUp extends JFrame implements ActionListener {
         if (!error.equals("")) {
             JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
         } else {
+            String username = userText.getText();
+            char[] password = passText.getPassword();
+
+            guardarCredenciales(username, password);
             dispose();
             new Window();
             JOptionPane.showMessageDialog(this, "Acount created, Welcome!");

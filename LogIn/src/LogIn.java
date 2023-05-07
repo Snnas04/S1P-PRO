@@ -116,20 +116,23 @@ public class LogIn extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Login successful");
             }
             else {
+                char[] passwordChars = pass.toCharArray();
+
                 try {
-                    Scanner scanner = new Scanner(new File("usuaris.txt"));
+                    Scanner scanner = new Scanner(new File("credenciales.txt"));
                     while (scanner.hasNextLine()) {
                         String line = scanner.nextLine();
-                        String[] parts = line.split(","); // separador es una coma
-                        if (parts.length == 2 && parts[0].equals(user) && BCrypt.checkpw(pass, parts[1])) {
+                        String[] parts = line.split(":"); // separador es un colon
+
+                        if (parts.length == 2 && parts[0].equals(user) && parts[1].equals(SignUp.hashPassword(passwordChars))) {
+                            // Iniciar sesión
                             dispose();
                             new Window();
-                            JOptionPane.showMessageDialog(this, "Login successful");
+                            JOptionPane.showMessageDialog(this, "Welcome " + user + "!");
                         }
                     }
-                    JOptionPane.showMessageDialog(this, "Invalid username or password");
-                } catch (FileNotFoundException ex) {
-                    JOptionPane.showMessageDialog(this, "Credentials file not found");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Error al verificar las credenciales");
                 }
             }
         } else if (e.getSource() == resetButton) {
