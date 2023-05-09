@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce1007c-9f3b-4bb9-a5ce-0895fbef112d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Figures/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Figures/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Figures/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Figures/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Figures/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Figures/Figures.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Figures/src/DrawingPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Figures/src/Frame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Figures/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="bce1007c-9f3b-4bb9-a5ce-0895fbef112d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,6 +133,7 @@
       <workItem from="1683560722781" duration="12000" />
       <workItem from="1683563882258" duration="89000" />
       <workItem from="1683563982474" duration="72000" />
+      <workItem from="1683648842256" duration="7000" />
     </task>
     <servers />
   </component>

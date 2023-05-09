@@ -1,10 +1,11 @@
 import javax.swing.*;
 
 public class Frame extends JFrame {
-    SierpinskiPanel dp = new SierpinskiPanel(1000, 950);
-
-    public Frame(String title) {
+    public Frame(String title, int level, Drawing drawing) {
         super(title);
+
+        DrawingPanel dp = new DrawingPanel(900, 750, 5, drawing);
+
         setContentPane(dp);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
