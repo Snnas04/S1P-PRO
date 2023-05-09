@@ -35,7 +35,7 @@ public class DrawingPanel extends JPanel {
         Point2D.Double bottomLeft = new Point2D.Double(10, height - 10);
 
         setForeground(new Color(255, 196, 0));
-        sierpinski(top, bottomRight, bottomLeft, 6);
+        sierpinski(top, bottomRight, bottomLeft, 7);
     }
 
     private void sierpinski(Point2D.Double topSierpinski, Point2D.Double bottomRightSierpinski, Point2D.Double bottomLeftSierpinski, int level) {
