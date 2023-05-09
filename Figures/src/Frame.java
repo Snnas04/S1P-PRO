@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class Frame extends JFrame {
-    DrawingPanel dp = new DrawingPanel(1000, 950);
+    SierpinskiPanel dp = new SierpinskiPanel(1000, 950);
 
     public Frame(String title) {
         super(title);

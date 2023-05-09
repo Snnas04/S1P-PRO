@@ -4,13 +4,12 @@ import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
-public class DrawingPanel extends JPanel {
+public class SierpinskiPanel extends JPanel {
     int width, height;
     Graphics2D graphics2D;
 
-    public DrawingPanel(int width, int height) {
+    public SierpinskiPanel(int width, int height) {
         this.width = width;
         this.height = height;
 
