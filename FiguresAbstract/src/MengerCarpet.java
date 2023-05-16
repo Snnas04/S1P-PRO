@@ -1,7 +1,7 @@
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
-public class SierpinskiCarpetPanel implements Drawing {
+public class MengerCarpet implements Drawing {
 
     @Override
     public void draw(int width, int height, int level, Graphics2D graphics2D) {

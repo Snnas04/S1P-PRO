@@ -1,9 +1,8 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 
-public class SierpinskiPanel implements Drawing {
+public class Sierpinski implements Drawing {
     Graphics2D graphics2D;
 
     private void sierpinski(Point2D.Double top, Point2D.Double bottomRight, Point2D.Double bottomLeft, int level, Graphics2D graphics2D) {
