@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 
-public class Diamant extends Drawing {
+public class CantorDust extends Drawing {
     @Override
     public void draw(int width, int height, int level, Graphics2D graphics2D) {
         Point2D.Double top = new Point2D.Double(width >> 1, 10);
