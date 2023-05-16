@@ -31,10 +31,6 @@ public class DrawingPanel extends JPanel {
 
         setBackground(new Color(202, 15, 100, 255));
 
-        Point2D.Double top = new Point2D.Double(width >> 1, 10);
-        Point2D.Double bottomRight = new Point2D.Double(width - 10, height - 10);
-        Point2D.Double bottomLeft = new Point2D.Double(10, height - 10);
-
         setForeground(new Color(255, 196, 0));
         drawing.draw(width, height, level, graphics2D);
     }
