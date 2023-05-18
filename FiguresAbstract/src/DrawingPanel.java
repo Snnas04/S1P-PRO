@@ -6,11 +6,17 @@ import java.util.Map;
 public class DrawingPanel extends JPanel {
     int width, height, level;
     Graphics2D graphics2D;
+    Drawing drawing;
 
-    public DrawingPanel(int width, int height, int level) {
+    public DrawingPanel(int width, int height, int level, Drawing drawing) {
         this.width = width;
         this.height = height;
         this.level = level;
+        this.drawing = drawing;
+
+        drawing.setWidth(width);
+        drawing.setHeight(height);
+        drawing.setLevel(level);
 
         setPreferredSize(new Dimension(width, height));
     }
@@ -27,7 +33,8 @@ public class DrawingPanel extends JPanel {
         graphics2D.setRenderingHints(hints);
 
         setBackground(new Color(202, 15, 100, 255));
-
         setForeground(new Color(255, 196, 0));
+
+        drawing.drawShape(graphics2D);
     }
 }

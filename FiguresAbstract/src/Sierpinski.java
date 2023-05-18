@@ -1,4 +1,5 @@
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.Shape;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 
@@ -8,7 +9,11 @@ public class Sierpinski extends Drawing {
     }
 
     @Override
-    public void draw(int width, int height, int level, Graphics2D graphics2D) {
+    public void drawShape(Graphics2D graphics2D) {
+        int width = getWidth();
+        int height = getHeight();
+        int level = getLevel();
+
         Point2D.Double top = new Point2D.Double(width >> 1, 10);
         Point2D.Double bottomRight = new Point2D.Double(width - 10, height - 10);
         Point2D.Double bottomLeft = new Point2D.Double(10, height - 10);
@@ -18,12 +23,8 @@ public class Sierpinski extends Drawing {
 
     private void drawSierpinski(Point2D.Double top, Point2D.Double bottomRight, Point2D.Double bottomLeft, int level, Graphics2D graphics2D) {
         if (level == 0) {
-            Path2D.Double path = new Path2D.Double();
-            path.moveTo(top.x, top.y);
-            path.lineTo(bottomRight.x, bottomRight.y);
-            path.lineTo(bottomLeft.x, bottomLeft.y);
-            path.closePath();
-            graphics2D.fill(path);
+            Shape shape = createTriangle(top, bottomRight, bottomLeft);
+            graphics2D.fill(shape);
             return;
         }
 
@@ -34,5 +35,14 @@ public class Sierpinski extends Drawing {
         drawSierpinski(top, rightThird, leftThird, level - 1, graphics2D);
         drawSierpinski(leftThird, bottomThird, bottomLeft, level - 1, graphics2D);
         drawSierpinski(rightThird, bottomRight, bottomThird, level - 1, graphics2D);
+    }
+
+    private Shape createTriangle(Point2D.Double top, Point2D.Double bottomRight, Point2D.Double bottomLeft) {
+        Path2D.Double path = new Path2D.Double();
+        path.moveTo(top.x, top.y);
+        path.lineTo(bottomRight.x, bottomRight.y);
+        path.lineTo(bottomLeft.x, bottomLeft.y);
+        path.closePath();
+        return path;
     }
 }
