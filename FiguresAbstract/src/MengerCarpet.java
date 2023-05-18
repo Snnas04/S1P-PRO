@@ -1,7 +1,11 @@
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
-public class MengerCarpet extends Drawing {
+public class MengerCarpet extends DrawingPanel {
+    public MengerCarpet() {
+        super(900, 750, 6);
+    }
+
     @Override
     public void draw(int width, int height, int level, Graphics2D graphics2D) {
         drawMengerCarpet(graphics2D, 0, 0, width, height, level);

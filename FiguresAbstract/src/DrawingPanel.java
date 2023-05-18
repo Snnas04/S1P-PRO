@@ -3,16 +3,14 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DrawingPanel extends JPanel {
-    private Drawing drawing;
+public abstract class DrawingPanel extends JPanel {
     int width, height, level;
     Graphics2D graphics2D;
 
-    public DrawingPanel(int width, int height, int level, Drawing drawing) {
+    public DrawingPanel(int width, int height, int level) {
         this.width = width;
         this.height = height;
         this.level = level;
-        this.drawing = drawing;
 
         setPreferredSize(new Dimension(width, height));
     }
@@ -31,6 +29,8 @@ public class DrawingPanel extends JPanel {
         setBackground(new Color(202, 15, 100, 255));
 
         setForeground(new Color(255, 196, 0));
-        drawing.draw(width, height, level, graphics2D);
+        draw(width, height, level, graphics2D);
     }
+
+    public abstract void draw(int width, int height, int level, Graphics2D graphics2D);
 }
