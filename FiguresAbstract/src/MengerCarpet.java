@@ -1,9 +1,9 @@
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
-public class MengerCarpet extends DrawingPanel {
+public class MengerCarpet extends Drawing {
     public MengerCarpet() {
-        super(900, 750, 6);
+        super();
     }
 
     @Override

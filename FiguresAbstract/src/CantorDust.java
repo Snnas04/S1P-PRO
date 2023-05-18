@@ -2,9 +2,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 
-public class CantorDust extends DrawingPanel {
+public class CantorDust extends Drawing {
     public CantorDust() {
-        super(900, 750, 6);
+        super();
     }
 
     @Override

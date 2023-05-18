@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class Frame extends JFrame {
-    public Frame(String title, int level, DrawingPanel drawingPanel) {
+    public Frame(String title,int height, int width, int level, DrawingPanel drawingPanel) {
         super(title);
 
         setContentPane(drawingPanel);
