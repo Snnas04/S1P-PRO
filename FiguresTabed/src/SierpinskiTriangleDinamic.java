@@ -2,25 +2,18 @@ import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class SierpinskiTriangle extends DrawingPanel {
+public class SierpinskiTriangleDinamic extends DrawingPanel {
     final int level;
 
-    public SierpinskiTriangle(int level) {
+    public SierpinskiTriangleDinamic(int level) {
         super("Sierpinski triangle");
         this.level = level;
     }
 
     public void draw() {
-        double minim = Math.min(width, height);
-
-        double sideLength = minim * 0.866;
-
-        double offsetX = (width - sideLength) / 2.0;
-        double offsetY = (height - sideLength) / 2.0;
-
-        Point2D.Double x = new Point2D.Double(offsetX + sideLength / 2, offsetY);
-        Point2D.Double y = new Point2D.Double(offsetX + sideLength, offsetY + sideLength);
-        Point2D.Double z = new Point2D.Double(offsetX, offsetY + sideLength);
+        Point2D.Double x = new Point2D.Double(width >> 1, padding);
+        Point2D.Double y = new Point2D.Double(width - padding, height - padding);
+        Point2D.Double z = new Point2D.Double(padding, height - padding);
 
         sierpinski(x, y, z, level);
     }

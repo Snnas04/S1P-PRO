@@ -25,10 +25,12 @@ public class DrawingTabbed extends JFrame
 
         drawings.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 17));
 
-        drawings.addTab("Hilbert", new HilbertCurve(7));
-        drawings.addTab("Menger", new MengerCarpet(5));
-        drawings.addTab("Polynski", new Polynski(6, 24));
-        drawings.addTab("Sierpinski", new SierpinskiTriangle(8));
+        drawings.addTab("Hilbert", new HilbertCurve(6));
+        drawings.addTab("Menger", new MengerCarpet(4));
+        drawings.addTab("Menger Dinamic", new MengerCarpetDinamic(4));
+        drawings.addTab("Polynski", new Polynski(6, 7));
+        drawings.addTab("Sierpinski", new SierpinskiTriangle(7));
+        drawings.addTab("Sierpinski Dinamic", new SierpinskiTriangleDinamic(7));
 
         drawings.setBorder(BorderFactory.createEmptyBorder (0, 0, 0, 0));
 

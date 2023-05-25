@@ -1,24 +1,20 @@
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class MengerCarpet extends DrawingPanel
+public class MengerCarpetDinamic extends DrawingPanel
 {
     final int level;
 
-    public MengerCarpet(int level)
+    public MengerCarpetDinamic(int level)
     {
         super("Menger carpet");
         this.level = level;
     }
 
-    public void draw() {
-        double minim = Math.min(width, height);
-
-        double offsetX = (width - minim) / 2.0;
-        double offsetY = (height - minim) / 2.0;
-
-        Point2D.Double x = new Point2D.Double(padding + offsetX, padding + offsetY);
-        Point2D.Double y = new Point2D.Double(minim - padding + offsetX, minim - padding + offsetY);
+    public void draw()
+    {
+        Point2D.Double x = new Point2D.Double(padding, padding);
+        Point2D.Double y = new Point2D.Double(width - padding, height - padding);
 
         menger(x, y, level);
     }
