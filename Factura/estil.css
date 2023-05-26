@@ -1,0 +1,19 @@
+.company-info {
+    background-color: #2dacee;
+    width: 200mm;
+    padding: 10mm;
+}
+
+.company-info h2 {
+    text-align: center;
+}
+
+.invoice-table tr {
+    border: 1mm solid #000;
+}
+
+.invoice-table td {
+    border-bottom: 0.3mm solid #000;
+    text-align: center;
+    min-width: 15mm;
+}
