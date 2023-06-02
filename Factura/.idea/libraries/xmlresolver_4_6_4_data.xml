@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="xmlresolver-4.6.4-data">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/xmlresolver-4.6.4-data.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
