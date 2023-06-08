@@ -27,7 +27,7 @@ public class DrawingTabbed extends JFrame {
 
         level = 4;
         currentFigure = new HilbertCurve(level); // Crear una figura de Hilbert
-        getContentPane().add(currentFigure); // Afegir la figura al panell principal
+        getContentPane().add(currentFigure); // Agregar la figura al panel principal
 
         setResizable(true);
         setLocationRelativeTo(null);
@@ -41,24 +41,27 @@ public class DrawingTabbed extends JFrame {
         JMenuItem polynskiItem = new JMenuItem("Polynski");
         JMenuItem sierpinskiItem = new JMenuItem("Sierpinski");
         JMenuItem sierpinskiDynamicItem = new JMenuItem("Sierpinski Dynamic");
+        JMenuItem polinskiDynamicItem = new JMenuItem("Polinski Dynamic");
 
-        // Afegir listeners d'acció als elements del menu popup
+        // Agregar listeners de acción a los elementos del menú popup
         hilbertItem.addActionListener(e -> changeFigure(new HilbertCurve(level)));
         mengerItem.addActionListener(e -> changeFigure(new MengerCarpet(level)));
         mengerDynamicItem.addActionListener(e -> changeFigure(new MengerCarpetDinamic(level)));
         polynskiItem.addActionListener(e -> changeFigure(new Polynski(level, 7)));
         sierpinskiItem.addActionListener(e -> changeFigure(new SierpinskiTriangle(level)));
         sierpinskiDynamicItem.addActionListener(e -> changeFigure(new SierpinskiTriangleDinamic(level)));
+        polinskiDynamicItem.addActionListener(e -> changeFigure(new PolynskiDinamic(level, 7)));
 
-        // Afegir elements al menu popup
+        // Agregar elementos al menú popup
         popupMenu.add(hilbertItem);
         popupMenu.add(mengerItem);
         popupMenu.add(mengerDynamicItem);
         popupMenu.add(polynskiItem);
         popupMenu.add(sierpinskiItem);
         popupMenu.add(sierpinskiDynamicItem);
+        popupMenu.add(polinskiDynamicItem);
 
-        // Listerner del ratoli per mostar el Popup menu
+        // Listener del ratón para mostrar el menú emergente
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -68,8 +71,8 @@ public class DrawingTabbed extends JFrame {
             }
         });
 
-        // Listener del teclat per canviar de figures amb les flitxes right i left
-        // i per canviar el nivell amb les fletex up i down
+        // Listener del teclado para cambiar de figuras con las flechas right y left
+        // y para cambiar el nivel con las flechas up y down
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -90,16 +93,16 @@ public class DrawingTabbed extends JFrame {
         requestFocus();
     }
 
-    // Canvi de figura
+    // Cambio de figura
     private void changeFigure(JComponent newFigure) {
         getContentPane().remove(currentFigure); // Eliminar la figura actual
-        currentFigure = newFigure; // Establir la nueva figura
-        getContentPane().add(currentFigure, BorderLayout.CENTER); // Agregar la nova figura
+        currentFigure = newFigure; // Establecer la nueva figura
+        getContentPane().add(currentFigure, BorderLayout.CENTER); // Agregar la nueva figura
         revalidate();
         repaint();
     }
 
-    // Canviar a la seguent figura
+    // Cambiar a la siguiente figura
     private void changeToNextFigure() {
         if (currentFigure instanceof HilbertCurve) {
             changeFigure(new MengerCarpet(level));
@@ -112,14 +115,16 @@ public class DrawingTabbed extends JFrame {
         } else if (currentFigure instanceof SierpinskiTriangle) {
             changeFigure(new SierpinskiTriangleDinamic(level));
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
+            changeFigure(new PolynskiDinamic(level, 7));
+        } else if (currentFigure instanceof PolynskiDinamic) {
             changeFigure(new HilbertCurve(level));
         }
     }
 
-    // Canviar a la figura anterior
+    // Cambiar a la figura anterior
     private void changeToPreviousFigure() {
         if (currentFigure instanceof HilbertCurve) {
-            changeFigure(new SierpinskiTriangleDinamic(level));
+            changeFigure(new PolynskiDinamic(level, 7));
         } else if (currentFigure instanceof MengerCarpet) {
             changeFigure(new HilbertCurve(level));
         } else if (currentFigure instanceof MengerCarpetDinamic) {
@@ -130,10 +135,12 @@ public class DrawingTabbed extends JFrame {
             changeFigure(new Polynski(level, 7));
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
             changeFigure(new SierpinskiTriangle(level));
+        } else if (currentFigure instanceof PolynskiDinamic) {
+            changeFigure(new SierpinskiTriangleDinamic(level));
         }
     }
 
-    // Augmentar el nivell de la figura
+    // Aumentar el nivel de la figura
     private void increaseLevel() {
         if (level > 6) {
             level = 1;
@@ -143,7 +150,7 @@ public class DrawingTabbed extends JFrame {
         changeFigure(createCurrentFigure());
     }
 
-    // Disminuir el nivell de la figura
+    // Disminuir el nivel de la figura
     private void decreaseLevel() {
         if (level > 1) {
             level--;
@@ -167,6 +174,8 @@ public class DrawingTabbed extends JFrame {
             return new SierpinskiTriangle(level);
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
             return new SierpinskiTriangleDinamic(level);
+        } else if (currentFigure instanceof PolynskiDinamic) {
+            return new PolynskiDinamic(level, 7);
         }
         return null;
     }
