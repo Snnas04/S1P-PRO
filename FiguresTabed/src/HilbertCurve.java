@@ -1,17 +1,21 @@
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
 public class HilbertCurve extends DrawingPanel
 {
     final int level;
-    final double step;
+    final double stepW;
+    final double stepH;
 
     public HilbertCurve(int level)
     {
         super("Hilbert curve");
         this.level = level;
-        this.step = (width - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
+        this.stepW = (width - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
+        this.stepH = (height - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
     }
 
     public void draw()
@@ -56,8 +60,8 @@ public class HilbertCurve extends DrawingPanel
 
         public void forward(Graphics2D gfx)
         {
-            double x = position.x + step * Math.cos(angle);
-            double y = position.y + step * Math.sin(angle);
+            double x = position.x + stepW * Math.cos(angle);
+            double y = position.y + stepH * Math.sin(angle);
 
             gfx.setColor(coloring(padding, width - padding, x));
 

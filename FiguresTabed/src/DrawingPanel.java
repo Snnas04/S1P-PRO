@@ -1,11 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public abstract class DrawingPanel extends JPanel
 {
     final double padding = 10.0;
-    final int width = 1200;
-    final int height = 900;
+    int width = 1200;
+    int height = 900;
 
     String title;
     Graphics2D gfx;
@@ -15,6 +17,15 @@ public abstract class DrawingPanel extends JPanel
         this.title = title;
 
         setPreferredSize(new Dimension(width, height));
+
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                width = getWidth();
+                height = getHeight();
+                repaint();
+            }
+        });
     }
 
     protected void paintComponent(Graphics g)
@@ -27,7 +38,7 @@ public abstract class DrawingPanel extends JPanel
 
         gfx.setStroke(new BasicStroke(3.0f));
 
-        setBackground(new Color(0x161B27));
+        setBackground(new Color(0x1E3772));
         draw();
     }
 
