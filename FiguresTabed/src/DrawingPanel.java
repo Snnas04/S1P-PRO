@@ -28,7 +28,6 @@ public abstract class DrawingPanel extends JPanel
         gfx.setStroke(new BasicStroke(3.0f));
 
         setBackground(new Color(0x161B27));
-        setForeground(new Color(0xFFB700));
         draw();
     }
 

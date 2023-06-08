@@ -137,22 +137,20 @@ public class DrawingTabbed extends JFrame {
     private void increaseLevel() {
         if (level > 6) {
             level = 1;
-            changeFigure(createCurrentFigure());
         } else {
             level++;
-            changeFigure(createCurrentFigure());
         }
+        changeFigure(createCurrentFigure());
     }
 
     // Disminuir el nivell de la figura
     private void decreaseLevel() {
         if (level > 1) {
             level--;
-            changeFigure(createCurrentFigure());
         } else {
             level = 7;
-            changeFigure(createCurrentFigure());
         }
+        changeFigure(createCurrentFigure());
     }
 
     // Crear la figura actual
