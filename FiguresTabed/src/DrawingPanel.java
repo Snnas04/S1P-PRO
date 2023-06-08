@@ -4,8 +4,8 @@ import java.awt.*;
 public abstract class DrawingPanel extends JPanel
 {
     final double padding = 10.0;
-    final int width = 1905;
-    final int height = 1030;
+    final int width = 1200;
+    final int height = 900;
 
     String title;
     Graphics2D gfx;

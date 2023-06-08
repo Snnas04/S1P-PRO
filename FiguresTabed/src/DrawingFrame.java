@@ -8,7 +8,7 @@ public class DrawingFrame extends JFrame
         setContentPane(drawingPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
-        setResizable(false);
+        setResizable(true);
         setLocationRelativeTo(null);
         setVisible(true);
     }

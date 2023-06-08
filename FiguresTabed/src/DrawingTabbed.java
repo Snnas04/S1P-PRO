@@ -29,7 +29,7 @@ public class DrawingTabbed extends JFrame {
         currentFigure = new HilbertCurve(level); // Crear una figura de Hilbert
         getContentPane().add(currentFigure); // Afegir la figura al panell principal
 
-        setResizable(false);
+        setResizable(true);
         setLocationRelativeTo(null);
         setVisible(true);
 
