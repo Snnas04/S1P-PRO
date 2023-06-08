@@ -26,16 +26,14 @@ public class DrawingTabbed extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         level = 4;
-        currentFigure = new HilbertCurve(level);
-        getContentPane().add(currentFigure);
-
-        getContentPane().setBackground(new Color(0x191919));
+        currentFigure = new HilbertCurve(level); // Crear una figura de Hilbert
+        getContentPane().add(currentFigure); // Afegir la figura al panell principal
 
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // Crear el menú contextual
+        // Crear menú popup
         popupMenu = new JPopupMenu();
         JMenuItem hilbertItem = new JMenuItem("Hilbert");
         JMenuItem mengerItem = new JMenuItem("Menger");
@@ -44,7 +42,7 @@ public class DrawingTabbed extends JFrame {
         JMenuItem sierpinskiItem = new JMenuItem("Sierpinski");
         JMenuItem sierpinskiDynamicItem = new JMenuItem("Sierpinski Dynamic");
 
-        // Agregar los listeners de acción a los elementos del menú contextual
+        // Afegir listeners d'acció als elements del menu popup
         hilbertItem.addActionListener(e -> changeFigure(new HilbertCurve(level)));
         mengerItem.addActionListener(e -> changeFigure(new MengerCarpet(level)));
         mengerDynamicItem.addActionListener(e -> changeFigure(new MengerCarpetDinamic(level)));
@@ -52,7 +50,7 @@ public class DrawingTabbed extends JFrame {
         sierpinskiItem.addActionListener(e -> changeFigure(new SierpinskiTriangle(level)));
         sierpinskiDynamicItem.addActionListener(e -> changeFigure(new SierpinskiTriangleDinamic(level)));
 
-        // Agregar los elementos al menú contextual
+        // Afegir elements al menu popup
         popupMenu.add(hilbertItem);
         popupMenu.add(mengerItem);
         popupMenu.add(mengerDynamicItem);
@@ -60,7 +58,7 @@ public class DrawingTabbed extends JFrame {
         popupMenu.add(sierpinskiItem);
         popupMenu.add(sierpinskiDynamicItem);
 
-        // Agregar el listener de clic derecho para mostrar el menú contextual
+        // Listerner del ratoli per mostar el Popup menu
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -70,8 +68,8 @@ public class DrawingTabbed extends JFrame {
             }
         });
 
-        // Agregar el listener de teclado para cambiar de figura con las flechas derecha e izquierda
-        // y aumentar o disminuir el nivel con las flechas arriba y abajo
+        // Listener del teclat per canviar de figures amb les flitxes right i left
+        // i per canviar el nivell amb les fletex up i down
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -92,14 +90,16 @@ public class DrawingTabbed extends JFrame {
         requestFocus();
     }
 
+    // Canvi de figura
     private void changeFigure(JComponent newFigure) {
-        getContentPane().remove(currentFigure);
-        currentFigure = newFigure;
-        getContentPane().add(currentFigure, BorderLayout.CENTER);
+        getContentPane().remove(currentFigure); // Eliminar la figura actual
+        currentFigure = newFigure; // Establir la nueva figura
+        getContentPane().add(currentFigure, BorderLayout.CENTER); // Agregar la nova figura
         revalidate();
         repaint();
     }
 
+    // Canviar a la seguent figura
     private void changeToNextFigure() {
         if (currentFigure instanceof HilbertCurve) {
             changeFigure(new MengerCarpet(level));
@@ -116,6 +116,7 @@ public class DrawingTabbed extends JFrame {
         }
     }
 
+    // Canviar a la figura anterior
     private void changeToPreviousFigure() {
         if (currentFigure instanceof HilbertCurve) {
             changeFigure(new SierpinskiTriangleDinamic(level));
@@ -132,28 +133,29 @@ public class DrawingTabbed extends JFrame {
         }
     }
 
+    // Augmentar el nivell de la figura
     private void increaseLevel() {
         if (level > 6) {
             level = 1;
             changeFigure(createCurrentFigure());
-        }
-        else {
+        } else {
             level++;
             changeFigure(createCurrentFigure());
         }
     }
 
+    // Disminuir el nivell de la figura
     private void decreaseLevel() {
         if (level > 1) {
             level--;
             changeFigure(createCurrentFigure());
-        }
-        else {
+        } else {
             level = 7;
             changeFigure(createCurrentFigure());
         }
     }
 
+    // Crear la figura actual
     private JComponent createCurrentFigure() {
         if (currentFigure instanceof HilbertCurve) {
             return new HilbertCurve(level);
