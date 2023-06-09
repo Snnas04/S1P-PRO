@@ -14,21 +14,27 @@ public class PolynskiDinamic extends DrawingPanel
         this.sides = sides;
     }
 
-    public void draw()
-    {
+    public void draw() {
         double alfa = Math.PI / 2.0;
         double beta = 2.0 * Math.PI / sides;
 
-        xCenter = width / 2.0;
-        yCenter = height / 2.0;
+        xCenter = getWidth() / 2D;
+        yCenter = getHeight() / 2D;
 
-        radio = Math.min(xCenter - padding, yCenter - padding);
+        var radioY = yCenter - padding;
+        var radioX = xCenter - padding;
+        radio = Math.max(radioX, radioY);
 
-        for (int i = 0; i < sides; i++)
-        {
+        for (int i = 0; i < sides; i++) {
             Point2D.Double x = new Point2D.Double(xCenter, yCenter);
-            Point2D.Double y = new Point2D.Double(xCenter + radio * Math.cos(alfa), yCenter + radio * Math.sin(alfa));
-            Point2D.Double z = new Point2D.Double(xCenter + radio * Math.cos(alfa + beta), yCenter + radio * Math.sin(alfa + beta));
+
+            Point2D.Double y = new Point2D.Double(
+                    xCenter + radioX * Math.cos(alfa),
+                    yCenter + radioY * Math.sin(alfa));
+
+            Point2D.Double z = new Point2D.Double(
+                    xCenter + radioX * Math.cos(alfa + beta),
+                    yCenter + radioY * Math.sin(alfa + beta));
 
             sierpinski(x, y, z, level);
 

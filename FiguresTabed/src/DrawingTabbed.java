@@ -38,27 +38,27 @@ public class DrawingTabbed extends JFrame {
         JMenuItem hilbertItem = new JMenuItem("Hilbert");
         JMenuItem mengerItem = new JMenuItem("Menger");
         JMenuItem mengerDynamicItem = new JMenuItem("Menger Dynamic");
-        JMenuItem polynskiItem = new JMenuItem("Polynski");
         JMenuItem sierpinskiItem = new JMenuItem("Sierpinski");
         JMenuItem sierpinskiDynamicItem = new JMenuItem("Sierpinski Dynamic");
         JMenuItem polinskiDynamicItem = new JMenuItem("Polinski Dynamic");
+        JMenuItem polynskiItem = new JMenuItem("Polynski");
 
         // Agregar listeners de acción a los elementos del menú popup
         hilbertItem.addActionListener(e -> changeFigure(new HilbertCurve(level)));
         mengerItem.addActionListener(e -> changeFigure(new MengerCarpet(level)));
         mengerDynamicItem.addActionListener(e -> changeFigure(new MengerCarpetDinamic(level)));
-        polynskiItem.addActionListener(e -> changeFigure(new Polynski(level, 7)));
         sierpinskiItem.addActionListener(e -> changeFigure(new SierpinskiTriangle(level)));
         sierpinskiDynamicItem.addActionListener(e -> changeFigure(new SierpinskiTriangleDinamic(level)));
+        polynskiItem.addActionListener(e -> changeFigure(new Polynski(level, 7)));
         polinskiDynamicItem.addActionListener(e -> changeFigure(new PolynskiDinamic(level, 7)));
 
-        // Agregar elementos al menú popup
+        // Agregar elementos al menú popup en el orden deseado
         popupMenu.add(hilbertItem);
         popupMenu.add(mengerItem);
         popupMenu.add(mengerDynamicItem);
-        popupMenu.add(polynskiItem);
         popupMenu.add(sierpinskiItem);
         popupMenu.add(sierpinskiDynamicItem);
+        popupMenu.add(polynskiItem);
         popupMenu.add(polinskiDynamicItem);
 
         // Listener del ratón para mostrar el menú emergente
@@ -109,12 +109,12 @@ public class DrawingTabbed extends JFrame {
         } else if (currentFigure instanceof MengerCarpet) {
             changeFigure(new MengerCarpetDinamic(level));
         } else if (currentFigure instanceof MengerCarpetDinamic) {
-            changeFigure(new Polynski(level, 7));
-        } else if (currentFigure instanceof Polynski) {
             changeFigure(new SierpinskiTriangle(level));
         } else if (currentFigure instanceof SierpinskiTriangle) {
             changeFigure(new SierpinskiTriangleDinamic(level));
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
+            changeFigure(new Polynski(level, 7));
+        } else if (currentFigure instanceof Polynski) {
             changeFigure(new PolynskiDinamic(level, 7));
         } else if (currentFigure instanceof PolynskiDinamic) {
             changeFigure(new HilbertCurve(level));
@@ -129,14 +129,14 @@ public class DrawingTabbed extends JFrame {
             changeFigure(new HilbertCurve(level));
         } else if (currentFigure instanceof MengerCarpetDinamic) {
             changeFigure(new MengerCarpet(level));
-        } else if (currentFigure instanceof Polynski) {
-            changeFigure(new MengerCarpetDinamic(level));
         } else if (currentFigure instanceof SierpinskiTriangle) {
-            changeFigure(new Polynski(level, 7));
+            changeFigure(new MengerCarpetDinamic(level));
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
             changeFigure(new SierpinskiTriangle(level));
-        } else if (currentFigure instanceof PolynskiDinamic) {
+        } else if (currentFigure instanceof Polynski) {
             changeFigure(new SierpinskiTriangleDinamic(level));
+        } else if (currentFigure instanceof PolynskiDinamic) {
+            changeFigure(new Polynski(level, 7));
         }
     }
 
@@ -168,12 +168,12 @@ public class DrawingTabbed extends JFrame {
             return new MengerCarpet(level);
         } else if (currentFigure instanceof MengerCarpetDinamic) {
             return new MengerCarpetDinamic(level);
-        } else if (currentFigure instanceof Polynski) {
-            return new Polynski(level, 7);
         } else if (currentFigure instanceof SierpinskiTriangle) {
             return new SierpinskiTriangle(level);
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
             return new SierpinskiTriangleDinamic(level);
+        } else if (currentFigure instanceof Polynski) {
+            return new Polynski(level, 7);
         } else if (currentFigure instanceof PolynskiDinamic) {
             return new PolynskiDinamic(level, 7);
         }
