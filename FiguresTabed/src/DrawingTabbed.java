@@ -36,6 +36,7 @@ public class DrawingTabbed extends JFrame {
         // Crear menú popup
         popupMenu = new JPopupMenu();
         JMenuItem hilbertItem = new JMenuItem("Hilbert");
+        JMenuItem hilbertDynamicItem = new JMenuItem("Hilbert Dynamic");
         JMenuItem mengerItem = new JMenuItem("Menger");
         JMenuItem mengerDynamicItem = new JMenuItem("Menger Dynamic");
         JMenuItem sierpinskiItem = new JMenuItem("Sierpinski");
@@ -45,6 +46,7 @@ public class DrawingTabbed extends JFrame {
 
         // Agregar listeners de acción a los elementos del menú popup
         hilbertItem.addActionListener(e -> changeFigure(new HilbertCurve(level)));
+        hilbertDynamicItem.addActionListener(e -> changeFigure(new HilbertCurveDinamic(level)));
         mengerItem.addActionListener(e -> changeFigure(new MengerCarpet(level)));
         mengerDynamicItem.addActionListener(e -> changeFigure(new MengerCarpetDinamic(level)));
         sierpinskiItem.addActionListener(e -> changeFigure(new SierpinskiTriangle(level)));
@@ -54,6 +56,7 @@ public class DrawingTabbed extends JFrame {
 
         // Agregar elementos al menú popup en el orden deseado
         popupMenu.add(hilbertItem);
+        popupMenu.add(hilbertDynamicItem);
         popupMenu.add(mengerItem);
         popupMenu.add(mengerDynamicItem);
         popupMenu.add(sierpinskiItem);
@@ -105,6 +108,8 @@ public class DrawingTabbed extends JFrame {
     // Cambiar a la siguiente figura
     private void changeToNextFigure() {
         if (currentFigure instanceof HilbertCurve) {
+            changeFigure(new HilbertCurveDinamic(level));
+        } else if (currentFigure instanceof HilbertCurveDinamic) {
             changeFigure(new MengerCarpet(level));
         } else if (currentFigure instanceof MengerCarpet) {
             changeFigure(new MengerCarpetDinamic(level));
@@ -125,8 +130,10 @@ public class DrawingTabbed extends JFrame {
     private void changeToPreviousFigure() {
         if (currentFigure instanceof HilbertCurve) {
             changeFigure(new PolynskiDinamic(level, 7));
-        } else if (currentFigure instanceof MengerCarpet) {
+        } else if (currentFigure instanceof HilbertCurveDinamic) {
             changeFigure(new HilbertCurve(level));
+        } else if (currentFigure instanceof MengerCarpet) {
+            changeFigure(new HilbertCurveDinamic(level));
         } else if (currentFigure instanceof MengerCarpetDinamic) {
             changeFigure(new MengerCarpet(level));
         } else if (currentFigure instanceof SierpinskiTriangle) {
@@ -164,6 +171,8 @@ public class DrawingTabbed extends JFrame {
     private JComponent createCurrentFigure() {
         if (currentFigure instanceof HilbertCurve) {
             return new HilbertCurve(level);
+        } else if (currentFigure instanceof HilbertCurveDinamic) {
+            return new HilbertCurveDinamic(level);
         } else if (currentFigure instanceof MengerCarpet) {
             return new MengerCarpet(level);
         } else if (currentFigure instanceof MengerCarpetDinamic) {
