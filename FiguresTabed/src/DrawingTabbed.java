@@ -7,14 +7,14 @@ import java.util.ArrayList;
 
 public class DrawingTabbed extends JFrame {
     CardLayout actual, cardLayoutNormal, cardLayoutDinamic;
-    JPanel cardsPanel1, cardsPanel2;
-    JPopupMenu popupMenu1, popupMenu2;
+    JPanel cardsPanelNormal, cardsPanelDinamic;
+    JPopupMenu popupMenuNormal, popupMenuDinamic;
     ArrayList<DrawingPanel> figurasNormales = new ArrayList<>();
     ArrayList<DrawingPanel> figurasDinamic = new ArrayList<>();
     int indiceFigura = 0;
 
     public DrawingTabbed() {
-        super("Figures: Hilbert curve (normal)");
+        super("Figures");
 
         try {
             UIManager.setLookAndFeel(new FlatDarkLaf());
@@ -27,8 +27,8 @@ public class DrawingTabbed extends JFrame {
         //CREAM ELS DOS PANELLS PRINCIPALS I ELS DOS CARDLAYOUT
         cardLayoutNormal = new CardLayout();
         cardLayoutDinamic = new CardLayout();
-        cardsPanel1 = new JPanel(cardLayoutNormal);
-        cardsPanel2 = new JPanel(cardLayoutDinamic);
+        cardsPanelNormal = new JPanel(cardLayoutNormal);
+        cardsPanelDinamic = new JPanel(cardLayoutDinamic);
 
         //INDICAM EL CARDLAYOUT ACTUAL
         actual = cardLayoutNormal;
@@ -53,23 +53,23 @@ public class DrawingTabbed extends JFrame {
         figurasNormales.add(sierpinskiPanel);
         figurasDinamic.add(sierpinskiDinamicPanel);
 
-        //PER CADA FIGURA DINS L'ARRAY 'figuresNormals' l'afegim a 'cardsPanel1'
+        //PER CADA FIGURA DINS L'ARRAY 'figuresNormals' l'afegim a 'cardsPanelNormal'
         for (int i = 0; i < figurasNormales.size(); i++) {
             DrawingPanel figura = figurasNormales.get(i);
-            cardsPanel1.add(figura, String.valueOf(i));
+            cardsPanelNormal.add(figura, String.valueOf(i));
         }
 
-        //PER CADA FIGURA DINS L'ARRAY 'figurasDinamic' l'afegim a 'cardsPanel2'
+        //PER CADA FIGURA DINS L'ARRAY 'figurasDinamic' l'afegim a 'cardsPanelDinamic'
         for (int i = 0; i < figurasDinamic.size(); i++) {
             DrawingPanel figura = figurasDinamic.get(i);
-            cardsPanel2.add(figura, String.valueOf(i));
+            cardsPanelDinamic.add(figura, String.valueOf(i));
         }
 
         //CREAM ELS DOS POPUPMENU
-        popupMenu1 = new JPopupMenu();
-        popupMenu2 = new JPopupMenu();
+        popupMenuNormal = new JPopupMenu();
+        popupMenuDinamic = new JPopupMenu();
 
-        //PER CADA FIGURA DINS L'ARRAY 'figuresNormals' l'afegim a 'popupMenu1' I UN ACTION_LISTENER PER QUAN SIGUI SELECCIONAT
+        //PER CADA FIGURA DINS L'ARRAY 'figuresNormals' l'afegim a 'popupMenuNormal' I UN ACTION_LISTENER PER QUAN SIGUI SELECCIONAT
         for (int i = 0; i < figurasNormales.size(); i++) {
             DrawingPanel figura = figurasNormales.get(i);
             JMenuItem item = new JMenuItem(figura.getTitle());
@@ -77,15 +77,15 @@ public class DrawingTabbed extends JFrame {
             item.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    actual.show(cardsPanel1, String.valueOf(finalI));
+                    actual.show(cardsPanelNormal, String.valueOf(finalI));
                     indiceFigura = finalI;
                     setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
                 }
             });
-            popupMenu1.add(item);
+            popupMenuNormal.add(item);
         }
 
-        //PER CADA FIGURA DINS L'ARRAY 'figurasDinamic' l'afegim a 'popupMenu2' I UN ACTION_LISTENER PER QUAN SIGUI SELECCIONAT
+        //PER CADA FIGURA DINS L'ARRAY 'figurasDinamic' l'afegim a 'popupMenuDinamic' I UN ACTION_LISTENER PER QUAN SIGUI SELECCIONAT
         for (int i = 0; i < figurasDinamic.size(); i++) {
             DrawingPanel figura = figurasDinamic.get(i);
             JMenuItem item = new JMenuItem(figura.getTitle());
@@ -93,28 +93,28 @@ public class DrawingTabbed extends JFrame {
             item.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    actual.show(cardsPanel2, String.valueOf(finalI));
+                    actual.show(cardsPanelDinamic, String.valueOf(finalI));
                     indiceFigura = finalI;
                     setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
                 }
             });
-            popupMenu2.add(item);
+            popupMenuDinamic.add(item);
         }
 
-        //MOUSE_LISTENER PER SI FEIM CLIC DRET A 'cardsPanel1'
-        cardsPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        //MOUSE_LISTENER PER SI FEIM CLIC DRET A 'cardsPanelNormal'
+        cardsPanelNormal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 if (SwingUtilities.isRightMouseButton(evt)) {
-                    popupMenu1.show(cardsPanel1, evt.getX(), evt.getY());
+                    popupMenuNormal.show(cardsPanelNormal, evt.getX(), evt.getY());
                 }
             }
         });
 
-        //MOUSE_LISTENER PER SI FEIM CLIC DRET A 'cardsPanel2'
-        cardsPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        //MOUSE_LISTENER PER SI FEIM CLIC DRET A 'cardsPanelDinamic'
+        cardsPanelDinamic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 if (SwingUtilities.isRightMouseButton(evt)) {
-                    popupMenu2.show(cardsPanel2, evt.getX(), evt.getY());
+                    popupMenuDinamic.show(cardsPanelDinamic, evt.getX(), evt.getY());
                 }
             }
         });
@@ -123,7 +123,7 @@ public class DrawingTabbed extends JFrame {
         requestFocus();
 
         //PER DEFECTE
-        getContentPane().add(cardsPanel1);
+        getContentPane().add(cardsPanelNormal);
         getContentPane().setBackground(new Color(0x191919));
 
         pack();
@@ -163,21 +163,19 @@ public class DrawingTabbed extends JFrame {
     private void subirNivel() {
         if (actual == cardLayoutNormal) {
             figurasNormales.get(indiceFigura).subirNivel();
-            repaint();
         } else {
             figurasDinamic.get(indiceFigura).subirNivel();
-            repaint();
         }
+        repaint();
     }
 
     private void bajarNivel() {
         if (actual == cardLayoutNormal) {
             figurasNormales.get(indiceFigura).bajarNivel();
-            repaint();
         } else {
             figurasDinamic.get(indiceFigura).bajarNivel();
-            repaint();
         }
+        repaint();
     }
 
 
@@ -185,26 +183,22 @@ public class DrawingTabbed extends JFrame {
     // PER cambiarFiguraAnterior SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
     private void cambiarFiguraAnterior() {
         if (actual == cardLayoutNormal) {
-            cardLayoutNormal.previous(cardsPanel1);
+            cardLayoutNormal.previous(cardsPanelNormal);
             indiceFigura = (indiceFigura - 1 + figurasNormales.size()) % figurasNormales.size();
-            setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
         } else {
-            cardLayoutDinamic.previous(cardsPanel2);
+            cardLayoutDinamic.previous(cardsPanelDinamic);
             indiceFigura = (indiceFigura - 1 + figurasDinamic.size()) % figurasDinamic.size();
-            setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
         }
     }
 
     // PER cambiarFiguraSiguiente SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
     private void cambiarFiguraSiguiente() {
         if (actual == cardLayoutNormal) {
-            cardLayoutNormal.next(cardsPanel1);
+            cardLayoutNormal.next(cardsPanelNormal);
             indiceFigura = (indiceFigura + 1) % figurasNormales.size();
-            setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
         } else {
-            cardLayoutDinamic.next(cardsPanel2);
+            cardLayoutDinamic.next(cardsPanelDinamic);
             indiceFigura = (indiceFigura + 1) % figurasDinamic.size();
-            setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
         }
     }
 
@@ -213,20 +207,18 @@ public class DrawingTabbed extends JFrame {
     private void cambiarModo() {
         if (actual == cardLayoutNormal) {
             actual = cardLayoutDinamic;
-            getContentPane().remove(cardsPanel1);
-            getContentPane().add(cardsPanel2);
-            setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
+            getContentPane().remove(cardsPanelNormal);
+            getContentPane().add(cardsPanelDinamic);
         } else {
             actual = cardLayoutNormal;
-            getContentPane().remove(cardsPanel2);
-            getContentPane().add(cardsPanel1);
-            setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
+            getContentPane().remove(cardsPanelDinamic);
+            getContentPane().add(cardsPanelNormal);
         }
 
         if (actual == cardLayoutNormal) {
-            cardLayoutNormal.show(cardsPanel1, String.valueOf(indiceFigura));
+            cardLayoutNormal.show(cardsPanelNormal, String.valueOf(indiceFigura));
         } else {
-            cardLayoutDinamic.show(cardsPanel2, String.valueOf(indiceFigura));
+            cardLayoutDinamic.show(cardsPanelDinamic, String.valueOf(indiceFigura));
         }
 
         pack();
