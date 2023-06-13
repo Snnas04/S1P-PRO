@@ -11,7 +11,15 @@ import java.awt.event.MouseEvent;
 public class DrawingTabbed extends JFrame {
     private JComponent currentFigure;
     private JPopupMenu popupMenu;
-    private int level;
+    private int levelHilbert;
+    private int levelHilbertDinamic;
+    private int levelMenger;
+    private int levelMengerDinamic;
+    private int levelSierpinski;
+    private int levelSierpinskiDinamic;
+    private int levelPolynski;
+    private int levelPolynskiDinamic;
+    private int maxLevel;
 
     public DrawingTabbed() {
         super("Figures");
@@ -25,8 +33,15 @@ public class DrawingTabbed extends JFrame {
         setLayout(new GridLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        level = 4;
-        currentFigure = new HilbertCurve(level); // Crear una figura de Hilbert
+        levelHilbert = 4;
+        levelHilbertDinamic = 4;
+        levelMenger = 4;
+        levelMengerDinamic = 4;
+        levelSierpinski = 4;
+        levelSierpinskiDinamic = 4;
+        levelPolynski = 4;
+        levelPolynskiDinamic = 4;
+        currentFigure = new HilbertCurve(levelHilbert); // Crear una figura de Hilbert
         getContentPane().add(currentFigure); // Agregar la figura al panel principal
 
         setResizable(true);
@@ -45,14 +60,14 @@ public class DrawingTabbed extends JFrame {
         JMenuItem polynskiItem = new JMenuItem("Polynski");
 
         // Agregar listeners de acción a los elementos del menú popup
-        hilbertItem.addActionListener(e -> changeFigure(new HilbertCurve(level)));
-        hilbertDynamicItem.addActionListener(e -> changeFigure(new HilbertCurveDinamic(level)));
-        mengerItem.addActionListener(e -> changeFigure(new MengerCarpet(level)));
-        mengerDynamicItem.addActionListener(e -> changeFigure(new MengerCarpetDinamic(level)));
-        sierpinskiItem.addActionListener(e -> changeFigure(new SierpinskiTriangle(level)));
-        sierpinskiDynamicItem.addActionListener(e -> changeFigure(new SierpinskiTriangleDinamic(level)));
-        polynskiItem.addActionListener(e -> changeFigure(new Polynski(level, 7)));
-        polinskiDynamicItem.addActionListener(e -> changeFigure(new PolynskiDinamic(level, 7)));
+        hilbertItem.addActionListener(e -> changeFigure(new HilbertCurve(levelHilbert)));
+        hilbertDynamicItem.addActionListener(e -> changeFigure(new HilbertCurveDinamic(levelHilbertDinamic)));
+        mengerItem.addActionListener(e -> changeFigure(new MengerCarpet(levelMenger)));
+        mengerDynamicItem.addActionListener(e -> changeFigure(new MengerCarpetDinamic(levelMengerDinamic)));
+        sierpinskiItem.addActionListener(e -> changeFigure(new SierpinskiTriangle(levelSierpinski)));
+        sierpinskiDynamicItem.addActionListener(e -> changeFigure(new SierpinskiTriangleDinamic(levelSierpinskiDinamic)));
+        polynskiItem.addActionListener(e -> changeFigure(new Polynski(levelPolynski, 7)));
+        polinskiDynamicItem.addActionListener(e -> changeFigure(new PolynskiDinamic(levelPolynskiDinamic, 7)));
 
         // Agregar elementos al menú popup en el orden deseado
         popupMenu.add(hilbertItem);
@@ -88,6 +103,8 @@ public class DrawingTabbed extends JFrame {
                     increaseLevel();
                 } else if (keyCode == KeyEvent.VK_DOWN) {
                     decreaseLevel();
+                } else if (keyCode == KeyEvent.VK_ESCAPE) {
+                    dispose();
                 }
             }
         });
@@ -108,83 +125,183 @@ public class DrawingTabbed extends JFrame {
     // Cambiar a la siguiente figura
     private void changeToNextFigure() {
         if (currentFigure instanceof HilbertCurve) {
-            changeFigure(new HilbertCurveDinamic(level));
+            changeFigure(new HilbertCurveDinamic(levelHilbertDinamic));
         } else if (currentFigure instanceof HilbertCurveDinamic) {
-            changeFigure(new MengerCarpet(level));
+            changeFigure(new MengerCarpet(levelMenger));
         } else if (currentFigure instanceof MengerCarpet) {
-            changeFigure(new MengerCarpetDinamic(level));
+            changeFigure(new MengerCarpetDinamic(levelMengerDinamic));
         } else if (currentFigure instanceof MengerCarpetDinamic) {
-            changeFigure(new SierpinskiTriangle(level));
+            changeFigure(new SierpinskiTriangle(levelSierpinski));
         } else if (currentFigure instanceof SierpinskiTriangle) {
-            changeFigure(new SierpinskiTriangleDinamic(level));
+            changeFigure(new SierpinskiTriangleDinamic(levelSierpinskiDinamic));
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
-            changeFigure(new Polynski(level, 7));
+            changeFigure(new Polynski(levelPolynski, 7));
         } else if (currentFigure instanceof Polynski) {
-            changeFigure(new PolynskiDinamic(level, 7));
+            changeFigure(new PolynskiDinamic(levelPolynskiDinamic, 7));
         } else if (currentFigure instanceof PolynskiDinamic) {
-            changeFigure(new HilbertCurve(level));
+            changeFigure(new HilbertCurve(levelHilbert));
         }
     }
 
     // Cambiar a la figura anterior
     private void changeToPreviousFigure() {
         if (currentFigure instanceof HilbertCurve) {
-            changeFigure(new PolynskiDinamic(level, 7));
+            changeFigure(new PolynskiDinamic(levelPolynskiDinamic, 7));
         } else if (currentFigure instanceof HilbertCurveDinamic) {
-            changeFigure(new HilbertCurve(level));
+            changeFigure(new HilbertCurve(levelHilbert));
         } else if (currentFigure instanceof MengerCarpet) {
-            changeFigure(new HilbertCurveDinamic(level));
+            changeFigure(new HilbertCurveDinamic(levelHilbertDinamic));
         } else if (currentFigure instanceof MengerCarpetDinamic) {
-            changeFigure(new MengerCarpet(level));
+            changeFigure(new MengerCarpet(levelMenger));
         } else if (currentFigure instanceof SierpinskiTriangle) {
-            changeFigure(new MengerCarpetDinamic(level));
+            changeFigure(new MengerCarpetDinamic(levelMengerDinamic));
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
-            changeFigure(new SierpinskiTriangle(level));
+            changeFigure(new SierpinskiTriangle(levelSierpinski));
         } else if (currentFigure instanceof Polynski) {
-            changeFigure(new SierpinskiTriangleDinamic(level));
+            changeFigure(new SierpinskiTriangleDinamic(levelSierpinskiDinamic));
         } else if (currentFigure instanceof PolynskiDinamic) {
-            changeFigure(new Polynski(level, 7));
+            changeFigure(new Polynski(levelPolynski, 7));
         }
     }
 
     // Aumentar el nivel de la figura
     private void increaseLevel() {
-        if (level > 6) {
-            level = 1;
-        } else {
-            level++;
+        maxLevel = 7;
+
+        if (currentFigure instanceof HilbertCurve) {
+            if (levelHilbert > maxLevel - 1) {
+                levelHilbert = 1;
+            } else {
+                levelHilbert++;
+            }
+        } else if (currentFigure instanceof HilbertCurveDinamic) {
+            if (levelHilbertDinamic > maxLevel - 1) {
+                levelHilbertDinamic = 1;
+            } else {
+                levelHilbertDinamic++;
+            }
+        } else if (currentFigure instanceof MengerCarpet) {
+            if (levelMenger > maxLevel - 4) {
+                levelMenger = 1;
+            } else {
+                levelMenger++;
+            }
+        } else if (currentFigure instanceof MengerCarpetDinamic) {
+            if (levelMengerDinamic > maxLevel - 4) {
+                levelMengerDinamic = 1;
+            } else {
+                levelMengerDinamic++;
+            }
+        } else if (currentFigure instanceof SierpinskiTriangle) {
+            if (levelSierpinski > maxLevel) {
+                levelSierpinski = 1;
+            } else {
+                levelSierpinski++;
+            }
+        } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
+            if (levelSierpinskiDinamic > maxLevel) {
+                levelSierpinskiDinamic = 1;
+            } else {
+                levelSierpinskiDinamic++;
+            }
+        } else if (currentFigure instanceof SierpinskiTriangle) {
+            if (levelSierpinski > maxLevel) {
+                levelSierpinski = 1;
+            } else {
+                levelSierpinski++;
+            }
+        } else if (currentFigure instanceof Polynski) {
+            if (levelPolynski > maxLevel - 1) {
+                levelPolynski = 1;
+            } else {
+                levelPolynski++;
+            }
+        } else if (currentFigure instanceof PolynskiDinamic) {
+            if (levelPolynskiDinamic > maxLevel - 1) {
+                levelPolynskiDinamic = 1;
+            } else {
+                levelPolynskiDinamic++;
+            }
         }
+
         changeFigure(createCurrentFigure());
     }
 
-    // Disminuir el nivel de la figura
     private void decreaseLevel() {
-        if (level > 1) {
-            level--;
-        } else {
-            level = 7;
+        maxLevel = 8;
+
+        if (currentFigure instanceof HilbertCurve) {
+            if (levelHilbert > 1) {
+                levelHilbert--;
+            } else {
+                levelHilbert = maxLevel - 1;
+            }
+        } else if (currentFigure instanceof HilbertCurveDinamic) {
+            if (levelHilbertDinamic > 1) {
+                levelHilbertDinamic--;
+            } else {
+                levelHilbertDinamic = maxLevel - 1;
+            }
+        } else if (currentFigure instanceof MengerCarpet) {
+            if (levelMenger > 1) {
+                levelMenger--;
+            } else {
+                levelMenger = maxLevel - 4;
+            }
+        } else if (currentFigure instanceof MengerCarpetDinamic) {
+            if (levelMengerDinamic > 1) {
+                levelMengerDinamic--;
+            } else {
+                levelMengerDinamic = maxLevel - 4;
+            }
+        } else if (currentFigure instanceof SierpinskiTriangle) {
+            if (levelSierpinski > 1) {
+                levelSierpinski--;
+            } else {
+                levelSierpinski = maxLevel;
+            }
+        } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
+            if (levelSierpinskiDinamic > 1) {
+                levelSierpinskiDinamic--;
+            } else {
+                levelSierpinskiDinamic = maxLevel;
+            }
+        } else if (currentFigure instanceof Polynski) {
+            if (levelPolynski > 1) {
+                levelPolynski--;
+            } else {
+                levelPolynski = maxLevel - 1;
+            }
+        } else if (currentFigure instanceof PolynskiDinamic) {
+            if (levelPolynskiDinamic > 1) {
+                levelPolynskiDinamic--;
+            } else {
+                levelPolynskiDinamic = maxLevel - 1;
+            }
         }
+
         changeFigure(createCurrentFigure());
     }
+
 
     // Crear la figura actual
     private JComponent createCurrentFigure() {
         if (currentFigure instanceof HilbertCurve) {
-            return new HilbertCurve(level);
+            return new HilbertCurve(levelHilbert);
         } else if (currentFigure instanceof HilbertCurveDinamic) {
-            return new HilbertCurveDinamic(level);
+            return new HilbertCurveDinamic(levelHilbertDinamic);
         } else if (currentFigure instanceof MengerCarpet) {
-            return new MengerCarpet(level);
+            return new MengerCarpet(levelMenger);
         } else if (currentFigure instanceof MengerCarpetDinamic) {
-            return new MengerCarpetDinamic(level);
+            return new MengerCarpetDinamic(levelMengerDinamic);
         } else if (currentFigure instanceof SierpinskiTriangle) {
-            return new SierpinskiTriangle(level);
+            return new SierpinskiTriangle(levelSierpinski);
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
-            return new SierpinskiTriangleDinamic(level);
+            return new SierpinskiTriangleDinamic(levelSierpinskiDinamic);
         } else if (currentFigure instanceof Polynski) {
-            return new Polynski(level, 7);
+            return new Polynski(levelPolynski, 7);
         } else if (currentFigure instanceof PolynskiDinamic) {
-            return new PolynskiDinamic(level, 7);
+            return new PolynskiDinamic(levelPolynskiDinamic, 7);
         }
         return null;
     }

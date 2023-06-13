@@ -7,19 +7,20 @@ import java.awt.geom.Point2D;
 public class HilbertCurve extends DrawingPanel
 {
     final int level;
-    final double stepW;
-    final double stepH;
+    double stepW;
+    double stepH;
 
     public HilbertCurve(int level)
     {
         super("Hilbert curve");
         this.level = level;
-        this.stepW = (width - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
-        this.stepH = (height - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
     }
 
     public void draw()
     {
+        stepW = (Math.min(width, height) - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
+        stepH = (Math.min(width, height) - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
+
         MiniTurtle miniTurtle = new MiniTurtle();
 
         drawHilbert(level, 1, miniTurtle);
