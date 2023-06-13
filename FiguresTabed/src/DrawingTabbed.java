@@ -24,16 +24,16 @@ public class DrawingTabbed extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        //CREAM ELS DOS PANELLS PRINCIPALS I ELS DOS CARDLAYOUT
+        // Creamos los dos paneles principales y los dos cardLayout
         cardLayoutNormal = new CardLayout();
         cardLayoutDinamic = new CardLayout();
         cardsPanelNormal = new JPanel(cardLayoutNormal);
         cardsPanelDinamic = new JPanel(cardLayoutDinamic);
 
-        //INDICAM EL CARDLAYOUT ACTUAL
+        // Indicamos el cardLayout actual
         actual = cardLayoutNormal;
 
-        //INICIALITZAM LES FIGURES
+        // Inicializamos las figuras
         DrawingPanel hilbertPanel = new HilbertCurve(4);
         DrawingPanel hilbertDinamicPanel = new HilbertCurveDinamic(4);
         DrawingPanel mengerPanel = new MengerCarpet(3);
@@ -43,7 +43,7 @@ public class DrawingTabbed extends JFrame {
         DrawingPanel sierpinskiPanel = new SierpinskiTriangle(4);
         DrawingPanel sierpinskiDinamicPanel = new SierpinskiTriangleDinamic(4);
 
-        //AFEGIM LES FIGURES A L'ARRAY CORRESPONENT
+        // Añadimos las figuras a los arrays correspondientes
         figurasNormales.add(hilbertPanel);
         figurasDinamic.add(hilbertDinamicPanel);
         figurasNormales.add(mengerPanel);
@@ -53,23 +53,24 @@ public class DrawingTabbed extends JFrame {
         figurasNormales.add(sierpinskiPanel);
         figurasDinamic.add(sierpinskiDinamicPanel);
 
-        //PER CADA FIGURA DINS L'ARRAY 'figuresNormals' l'afegim a 'cardsPanelNormal'
+        // Por cada figura en el array 'figurasNormales', la agregamos a 'cardsPanelNormal'
         for (int i = 0; i < figurasNormales.size(); i++) {
             DrawingPanel figura = figurasNormales.get(i);
             cardsPanelNormal.add(figura, String.valueOf(i));
         }
 
-        //PER CADA FIGURA DINS L'ARRAY 'figurasDinamic' l'afegim a 'cardsPanelDinamic'
+        // Por cada figura en el array 'figurasDinamic', la agregamos a 'cardsPanelDinamic'
         for (int i = 0; i < figurasDinamic.size(); i++) {
             DrawingPanel figura = figurasDinamic.get(i);
             cardsPanelDinamic.add(figura, String.valueOf(i));
         }
 
-        //CREAM ELS DOS POPUPMENU
+        // Creamos los dos menús emergentes
         popupMenuNormal = new JPopupMenu();
         popupMenuDinamic = new JPopupMenu();
 
-        //PER CADA FIGURA DINS L'ARRAY 'figuresNormals' l'afegim a 'popupMenuNormal' I UN ACTION_LISTENER PER QUAN SIGUI SELECCIONAT
+        // Por cada figura en el array 'figurasNormales', la agregamos a 'popupMenuNormal'
+        // y un ActionListener para cuando sea seleccionada
         for (int i = 0; i < figurasNormales.size(); i++) {
             DrawingPanel figura = figurasNormales.get(i);
             JMenuItem item = new JMenuItem(figura.getTitle());
@@ -85,7 +86,8 @@ public class DrawingTabbed extends JFrame {
             popupMenuNormal.add(item);
         }
 
-        //PER CADA FIGURA DINS L'ARRAY 'figurasDinamic' l'afegim a 'popupMenuDinamic' I UN ACTION_LISTENER PER QUAN SIGUI SELECCIONAT
+        // Por cada figura en el array 'figurasDinamic', la agregamos a 'popupMenuDinamic'
+        // y un ActionListener para cuando sea seleccionada
         for (int i = 0; i < figurasDinamic.size(); i++) {
             DrawingPanel figura = figurasDinamic.get(i);
             JMenuItem item = new JMenuItem(figura.getTitle());
@@ -101,7 +103,7 @@ public class DrawingTabbed extends JFrame {
             popupMenuDinamic.add(item);
         }
 
-        //MOUSE_LISTENER PER SI FEIM CLIC DRET A 'cardsPanelNormal'
+        // MouseListener para mostrar el menú emergente popupMenuNormal al hacer clic derecho en 'cardsPanelNormal'
         cardsPanelNormal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 if (SwingUtilities.isRightMouseButton(evt)) {
@@ -110,7 +112,7 @@ public class DrawingTabbed extends JFrame {
             }
         });
 
-        //MOUSE_LISTENER PER SI FEIM CLIC DRET A 'cardsPanelDinamic'
+        // MouseListener para mostrar el menú emergente popupMenuDinamic al hacer clic derecho en 'cardsPanelDinamic'
         cardsPanelDinamic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 if (SwingUtilities.isRightMouseButton(evt)) {
@@ -122,7 +124,7 @@ public class DrawingTabbed extends JFrame {
         setFocusable(true);
         requestFocus();
 
-        //PER DEFECTE
+        // Por defecto, se muestra el panel de las figuras normales en el contentPane
         getContentPane().add(cardsPanelNormal);
         getContentPane().setBackground(new Color(0x191919));
 
@@ -130,6 +132,7 @@ public class DrawingTabbed extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+        // Agregamos un KeyListener para capturar los eventos de teclado
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -161,6 +164,7 @@ public class DrawingTabbed extends JFrame {
     }
 
     private void subirNivel() {
+        // Comprobamos el cardLayout actual y llamamos al método subirNivel correspondiente en la figura actual
         if (actual == cardLayoutNormal) {
             figurasNormales.get(indiceFigura).subirNivel();
         } else {
@@ -170,6 +174,7 @@ public class DrawingTabbed extends JFrame {
     }
 
     private void bajarNivel() {
+        // Comprobamos el cardLayout actual y llamamos al método bajarNivel correspondiente en la figura actual
         if (actual == cardLayoutNormal) {
             figurasNormales.get(indiceFigura).bajarNivel();
         } else {
@@ -178,9 +183,7 @@ public class DrawingTabbed extends JFrame {
         repaint();
     }
 
-
-
-    // PER cambiarFiguraAnterior SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
+    // Método para cambiar a la figura anterior según estemos en el cardLayoutNormal o cardLayoutDinamic
     private void cambiarFiguraAnterior() {
         if (actual == cardLayoutNormal) {
             cardLayoutNormal.previous(cardsPanelNormal);
@@ -191,7 +194,7 @@ public class DrawingTabbed extends JFrame {
         }
     }
 
-    // PER cambiarFiguraSiguiente SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
+    // Método para cambiar a la figura siguiente según estemos en el cardLayoutNormal o cardLayoutDinamic
     private void cambiarFiguraSiguiente() {
         if (actual == cardLayoutNormal) {
             cardLayoutNormal.next(cardsPanelNormal);
@@ -202,8 +205,8 @@ public class DrawingTabbed extends JFrame {
         }
     }
 
-    // PER CANVIAR EL MODE (de cardLayoutNormal a cardLayoutDinamic o viceversa)
-    // I SEGUIR DINS EL MATEIX INDEX DINS DELS DOS ARRAYS PER CAMBIAR AMB LA MATEIXA FIGURA
+    // Método para cambiar entre cardLayoutNormal y cardLayoutDinamic
+    // y mantener el mismo índice en ambos arrays para cambiar a la misma figura
     private void cambiarModo() {
         if (actual == cardLayoutNormal) {
             actual = cardLayoutDinamic;
@@ -215,6 +218,7 @@ public class DrawingTabbed extends JFrame {
             getContentPane().add(cardsPanelNormal);
         }
 
+        // Mostramos la figura actual en el nuevo cardLayout actual
         if (actual == cardLayoutNormal) {
             cardLayoutNormal.show(cardsPanelNormal, String.valueOf(indiceFigura));
         } else {

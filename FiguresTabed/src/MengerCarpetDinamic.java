@@ -13,7 +13,7 @@ public class MengerCarpetDinamic extends DrawingPanel
 
     public void draw()
     {
-        if (level == 4) {
+        if (level > 4) {
             level = 4;
         }
 
