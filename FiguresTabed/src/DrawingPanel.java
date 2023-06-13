@@ -59,6 +59,6 @@ public abstract class DrawingPanel extends JPanel
         g /= 256f;
         b /= 256f;
 
-        return new Color(r, g, b);
+        return new Color((float) r, (float) g, (float) b);
     }
 }
