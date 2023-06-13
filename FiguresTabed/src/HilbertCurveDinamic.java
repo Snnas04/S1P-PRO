@@ -6,7 +6,7 @@ import java.awt.geom.Point2D;
 
 public class HilbertCurveDinamic extends DrawingPanel
 {
-    final int level;
+//    final int level;
     double stepW;
     double stepH;
 
@@ -66,7 +66,7 @@ public class HilbertCurveDinamic extends DrawingPanel
             double x = position.x + stepW * Math.cos(angle);
             double y = position.y + stepH * Math.sin(angle);
 
-            gfx.setColor(coloring(padding, width - padding, x));
+            gfx.setColor(coloring((int)padding, (int)(getWidth() - padding), x));
 
             Point2D.Double destiny = new Point2D.Double(x, y);
 

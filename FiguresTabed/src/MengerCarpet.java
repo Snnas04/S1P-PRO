@@ -3,7 +3,7 @@ import java.awt.geom.Rectangle2D;
 
 public class MengerCarpet extends DrawingPanel
 {
-    final int level;
+//    final int level;
 
     public MengerCarpet(int level)
     {

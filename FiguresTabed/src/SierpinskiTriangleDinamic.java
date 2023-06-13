@@ -3,7 +3,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 public class SierpinskiTriangleDinamic extends DrawingPanel {
-    final int level;
+//    final int level;
 
     public SierpinskiTriangleDinamic(int level) {
         super("Sierpinski triangle");

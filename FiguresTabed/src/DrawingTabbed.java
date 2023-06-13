@@ -2,30 +2,19 @@ import com.formdev.flatlaf.FlatDarkLaf;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 
-public class DrawingTabbed extends JFrame {
-    private JComponent currentFigure;
-    private JPopupMenu popupMenu;
-    private int levelHilbert;
-    private int levelHilbertDinamic;
-    private int levelMenger;
-    private int levelMengerDinamic;
-    private int levelSierpinski;
-    private int levelSierpinskiDinamic;
-    private int levelPolynski;
-    private int levelPolynskiDinamic;
-    private int maxLevel;
-    private ArrayList<DrawingPanel> figurasNormales;
-    private ArrayList<DrawingPanel> figurasDinamicas;
+public class DrawingTabbed extends JFrame implements KeyListener {
+    CardLayout actual, cardLayoutNormal, cardLayoutResponsive;
+    JPanel cardsPanel1, cardsPanel2;
+    JPopupMenu popupMenu1, popupMenu2;
+    ArrayList<DrawingPanel> figurasNormales = new ArrayList<>();
+    ArrayList<DrawingPanel> figurasDinamic = new ArrayList<>();
+    int indiceFigura = 0;
 
     public DrawingTabbed() {
-        super("Figures");
+        super("Figures: Hilbert curve (normal)");
 
         try {
             UIManager.setLookAndFeel(new FlatDarkLaf());
@@ -35,283 +24,199 @@ public class DrawingTabbed extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        levelHilbert = 4;
-        levelHilbertDinamic = 4;
-        levelMenger = 4;
-        levelMengerDinamic = 4;
-        levelSierpinski = 4;
-        levelSierpinskiDinamic = 4;
-        levelPolynski = 4;
-        levelPolynskiDinamic = 4;
+        //CREAM ELS DOS PANELLS PRINCIPALS I ELS DOS CARDLAYOUT
+        cardLayoutNormal = new CardLayout();
+        cardLayoutResponsive = new CardLayout();
+        cardsPanel1 = new JPanel(cardLayoutNormal);
+        cardsPanel2 = new JPanel(cardLayoutResponsive);
 
-        figurasNormales = new ArrayList<>();
-        figurasDinamicas = new ArrayList<>();
+        //INDICAM EL CARDLAYOUT ACTUAL
+        actual = cardLayoutNormal;
 
+        //INICIALITZAM LES FIGURES
+        DrawingPanel hilbertPanel = new HilbertCurve(4);
+        DrawingPanel hilbertResponsivePanel = new HilbertCurveDinamic(4);
+        DrawingPanel mengerPanel = new MengerCarpet(4);
+        DrawingPanel mengerResponsivePanel = new MengerCarpetDinamic(4);
+        DrawingPanel polynskiPanel = new Polynski(4, 7);
+        DrawingPanel polynskiResponsivePanel = new PolynskiDinamic(4, 7);
+        DrawingPanel sierpinskiPanel = new SierpinskiTriangle(4);
+        DrawingPanel sierpinskiResponsivePanel = new SierpinskiTriangleDinamic(4);
 
-        currentFigure = new HilbertCurve(levelHilbert); // Crear una figura de Hilbert
-        getContentPane().add(currentFigure); // Agregar la figura al panel principal
+        //AFEGIM LES FIGURES A L'ARRAY CORRESPONENT
+        figurasNormales.add(hilbertPanel);
+        figurasDinamic.add(hilbertResponsivePanel);
+        figurasNormales.add(mengerPanel);
+        figurasDinamic.add(mengerResponsivePanel);
+        figurasNormales.add(polynskiPanel);
+        figurasDinamic.add(polynskiResponsivePanel);
+        figurasNormales.add(sierpinskiPanel);
+        figurasDinamic.add(sierpinskiResponsivePanel);
 
-        pack();
+        //PER CADA FIGURA DINS L'ARRAY 'figuresNormals' l'afegim a 'cardsPanel1'
+        for (int i = 0; i < figurasNormales.size(); i++) {
+            DrawingPanel figura = figurasNormales.get(i);
+            cardsPanel1.add(figura, String.valueOf(i));
+        }
 
-        setResizable(true);
-        setLocationRelativeTo(null);
-        setVisible(true);
+        //PER CADA FIGURA DINS L'ARRAY 'figurasDinamic' l'afegim a 'cardsPanel2'
+        for (int i = 0; i < figurasDinamic.size(); i++) {
+            DrawingPanel figura = figurasDinamic.get(i);
+            cardsPanel2.add(figura, String.valueOf(i));
+        }
 
-        // Crear menú popup
-        popupMenu = new JPopupMenu();
-        JMenuItem hilbertItem = new JMenuItem("Hilbert");
-        JMenuItem hilbertDynamicItem = new JMenuItem("Hilbert Dynamic");
-        JMenuItem mengerItem = new JMenuItem("Menger");
-        JMenuItem mengerDynamicItem = new JMenuItem("Menger Dynamic");
-        JMenuItem sierpinskiItem = new JMenuItem("Sierpinski");
-        JMenuItem sierpinskiDynamicItem = new JMenuItem("Sierpinski Dynamic");
-        JMenuItem polinskiDynamicItem = new JMenuItem("Polinski Dynamic");
-        JMenuItem polynskiItem = new JMenuItem("Polynski");
+        //CREAM ELS DOS POPUPMENU
+        popupMenu1 = new JPopupMenu();
+        popupMenu2 = new JPopupMenu();
 
-        // Agregar listeners de acción a los elementos del menú popup
-        hilbertItem.addActionListener(e -> changeFigure(new HilbertCurve(levelHilbert)));
-        hilbertDynamicItem.addActionListener(e -> changeFigure(new HilbertCurveDinamic(levelHilbertDinamic)));
-        mengerItem.addActionListener(e -> changeFigure(new MengerCarpet(levelMenger)));
-        mengerDynamicItem.addActionListener(e -> changeFigure(new MengerCarpetDinamic(levelMengerDinamic)));
-        sierpinskiItem.addActionListener(e -> changeFigure(new SierpinskiTriangle(levelSierpinski)));
-        sierpinskiDynamicItem.addActionListener(e -> changeFigure(new SierpinskiTriangleDinamic(levelSierpinskiDinamic)));
-        polynskiItem.addActionListener(e -> changeFigure(new Polynski(levelPolynski, 7)));
-        polinskiDynamicItem.addActionListener(e -> changeFigure(new PolynskiDinamic(levelPolynskiDinamic, 7)));
+        //PER CADA FIGURA DINS L'ARRAY 'figuresNormals' l'afegim a 'popupMenu1' I UN ACTION_LISTENER PER QUAN SIGUI SELECCIONAT
+        for (int i = 0; i < figurasNormales.size(); i++) {
+            DrawingPanel figura = figurasNormales.get(i);
+            JMenuItem item = new JMenuItem(figura.getTitle());
+            int finalI = i;
+            item.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    actual.show(cardsPanel1, String.valueOf(finalI));
+                    indiceFigura = finalI;
+                    setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
+                }
+            });
+            popupMenu1.add(item);
+        }
 
-        // Agregar elementos al menú popup en el orden deseado
-        popupMenu.add(hilbertItem);
-        popupMenu.add(hilbertDynamicItem);
-        popupMenu.add(mengerItem);
-        popupMenu.add(mengerDynamicItem);
-        popupMenu.add(sierpinskiItem);
-        popupMenu.add(sierpinskiDynamicItem);
-        popupMenu.add(polynskiItem);
-        popupMenu.add(polinskiDynamicItem);
+        //PER CADA FIGURA DINS L'ARRAY 'figurasDinamic' l'afegim a 'popupMenu2' I UN ACTION_LISTENER PER QUAN SIGUI SELECCIONAT
+        for (int i = 0; i < figurasDinamic.size(); i++) {
+            DrawingPanel figura = figurasDinamic.get(i);
+            JMenuItem item = new JMenuItem(figura.getTitle());
+            int finalI = i;
+            item.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    actual.show(cardsPanel2, String.valueOf(finalI));
+                    indiceFigura = finalI;
+                    setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
+                }
+            });
+            popupMenu2.add(item);
+        }
 
-        // Listener del ratón para mostrar el menú emergente
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getButton() == MouseEvent.BUTTON3) {
-                    popupMenu.show(DrawingTabbed.this, e.getX(), e.getY());
+        //MOUSE_LISTENER PER SI FEIM CLIC DRET A 'cardsPanel1'
+        cardsPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                if (SwingUtilities.isRightMouseButton(evt)) {
+                    popupMenu1.show(cardsPanel1, evt.getX(), evt.getY());
                 }
             }
         });
 
-        // Listener del teclado para cambiar de figuras con las flechas right y left
-        // y para cambiar el nivel con las flechas up y down
-        addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int keyCode = e.getKeyCode();
-                if (keyCode == KeyEvent.VK_RIGHT) {
-                    changeToNextFigure();
-                } else if (keyCode == KeyEvent.VK_LEFT) {
-                    changeToPreviousFigure();
-                } else if (keyCode == KeyEvent.VK_UP) {
-                    increaseLevel();
-                } else if (keyCode == KeyEvent.VK_DOWN) {
-                    decreaseLevel();
-                } else if (keyCode == KeyEvent.VK_ESCAPE) {
-                    dispose();
+        //MOUSE_LISTENER PER SI FEIM CLIC DRET A 'cardsPanel2'
+        cardsPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                if (SwingUtilities.isRightMouseButton(evt)) {
+                    popupMenu2.show(cardsPanel2, evt.getX(), evt.getY());
                 }
             }
         });
 
+        addKeyListener(this);
         setFocusable(true);
         requestFocus();
+
+        //PER DEFECTE
+        getContentPane().add(cardsPanel1);
+        getContentPane().setBackground(new Color(0x191919));
+
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
-    // Cambio de figura
-    private void changeFigure(JComponent newFigure) {
-        getContentPane().remove(currentFigure); // Eliminar la figura actual
-        currentFigure = newFigure; // Establecer la nueva figura
-        getContentPane().add(currentFigure, BorderLayout.CENTER); // Agregar la nueva figura
-        revalidate();
-        repaint();
-    }
+    @Override
+    public void keyTyped(KeyEvent e) {}
 
-    // Cambiar a la siguiente figura
-    private void changeToNextFigure() {
-        if (currentFigure instanceof HilbertCurve) {
-            changeFigure(new HilbertCurveDinamic(levelHilbertDinamic));
-        } else if (currentFigure instanceof HilbertCurveDinamic) {
-            changeFigure(new MengerCarpet(levelMenger));
-        } else if (currentFigure instanceof MengerCarpet) {
-            changeFigure(new MengerCarpetDinamic(levelMengerDinamic));
-        } else if (currentFigure instanceof MengerCarpetDinamic) {
-            changeFigure(new SierpinskiTriangle(levelSierpinski));
-        } else if (currentFigure instanceof SierpinskiTriangle) {
-            changeFigure(new SierpinskiTriangleDinamic(levelSierpinskiDinamic));
-        } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
-            changeFigure(new Polynski(levelPolynski, 7));
-        } else if (currentFigure instanceof Polynski) {
-            changeFigure(new PolynskiDinamic(levelPolynskiDinamic, 7));
-        } else if (currentFigure instanceof PolynskiDinamic) {
-            changeFigure(new HilbertCurve(levelHilbert));
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        String keyName = KeyEvent.getKeyText(keyCode);
+        System.out.println(keyName);
+        switch (keyCode) {
+            case KeyEvent.VK_LEFT -> cambiarFiguraAnterior();
+            case KeyEvent.VK_RIGHT -> cambiarFiguraSiguiente();
+            case KeyEvent.VK_ESCAPE -> System.exit(-1);
+            case KeyEvent.VK_SPACE -> cambiarModo();
+            case KeyEvent.VK_UP -> pujarNivell(); //PER PUJAR EL NIVELL SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
+            case KeyEvent.VK_DOWN -> baixarNivell(); //PER BAIXAR EL NIVELL SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
         }
     }
 
-    // Cambiar a la figura anterior
-    private void changeToPreviousFigure() {
-        if (currentFigure instanceof HilbertCurve) {
-            changeFigure(new PolynskiDinamic(levelPolynskiDinamic, 7));
-        } else if (currentFigure instanceof HilbertCurveDinamic) {
-            changeFigure(new HilbertCurve(levelHilbert));
-        } else if (currentFigure instanceof MengerCarpet) {
-            changeFigure(new HilbertCurveDinamic(levelHilbertDinamic));
-        } else if (currentFigure instanceof MengerCarpetDinamic) {
-            changeFigure(new MengerCarpet(levelMenger));
-        } else if (currentFigure instanceof SierpinskiTriangle) {
-            changeFigure(new MengerCarpetDinamic(levelMengerDinamic));
-        } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
-            changeFigure(new SierpinskiTriangle(levelSierpinski));
-        } else if (currentFigure instanceof Polynski) {
-            changeFigure(new SierpinskiTriangleDinamic(levelSierpinskiDinamic));
-        } else if (currentFigure instanceof PolynskiDinamic) {
-            changeFigure(new Polynski(levelPolynski, 7));
+    @Override
+    public void keyReleased(KeyEvent e) {}
+
+    private void pujarNivell() {
+        if (actual == cardLayoutNormal) {
+            figurasNormales.get(indiceFigura).subirNivel();
+        } else {
+            figurasDinamic.get(indiceFigura).subirNivel();
         }
     }
 
-    // Aumentar el nivel de la figura
-    private void increaseLevel() {
-        maxLevel = 7;
-
-        if (currentFigure instanceof HilbertCurve) {
-            if (levelHilbert > maxLevel - 1) {
-                levelHilbert = maxLevel;
-            } else {
-                levelHilbert++;
-            }
-        } else if (currentFigure instanceof HilbertCurveDinamic) {
-            if (levelHilbertDinamic > maxLevel - 1) {
-                levelHilbertDinamic = maxLevel;
-            } else {
-                levelHilbertDinamic++;
-            }
-        } else if (currentFigure instanceof MengerCarpet) {
-            if (levelMenger > maxLevel - 3) {
-                levelMenger = maxLevel - 2;
-            } else {
-                levelMenger++;
-            }
-        } else if (currentFigure instanceof MengerCarpetDinamic) {
-            if (levelMengerDinamic > maxLevel - 3) {
-                levelMengerDinamic = maxLevel - 2;
-            } else {
-                levelMengerDinamic++;
-            }
-        } else if (currentFigure instanceof SierpinskiTriangle) {
-            if (levelSierpinski > maxLevel) {
-                levelSierpinski = maxLevel;
-            } else {
-                levelSierpinski++;
-            }
-        } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
-            if (levelSierpinskiDinamic > maxLevel) {
-                levelSierpinskiDinamic = maxLevel;
-            } else {
-                levelSierpinskiDinamic++;
-            }
-        } else if (currentFigure instanceof SierpinskiTriangle) {
-            if (levelSierpinski > maxLevel) {
-                levelSierpinski = maxLevel;
-            } else {
-                levelSierpinski++;
-            }
-        } else if (currentFigure instanceof Polynski) {
-            if (levelPolynski > maxLevel - 1) {
-                levelPolynski = maxLevel;
-            } else {
-                levelPolynski++;
-            }
-        } else if (currentFigure instanceof PolynskiDinamic) {
-            if (levelPolynskiDinamic > maxLevel - 1) {
-                levelPolynskiDinamic = maxLevel;
-            } else {
-                levelPolynskiDinamic++;
-            }
+    private void baixarNivell() {
+        if (actual == cardLayoutNormal) {
+            figurasNormales.get(indiceFigura).bajarNivel();
+        } else {
+            figurasDinamic.get(indiceFigura).bajarNivel();
         }
-
-        changeFigure(createCurrentFigure());
     }
 
-    private void decreaseLevel() {
-        maxLevel = 8;
-
-        if (currentFigure instanceof HilbertCurve) {
-            if (levelHilbert > 1) {
-                levelHilbert--;
-            } else {
-                levelHilbert = 1;
-            }
-        } else if (currentFigure instanceof HilbertCurveDinamic) {
-            if (levelHilbertDinamic > 1) {
-                levelHilbertDinamic--;
-            } else {
-                levelHilbertDinamic = 1;
-            }
-        } else if (currentFigure instanceof MengerCarpet) {
-            if (levelMenger > 1) {
-                levelMenger--;
-            } else {
-                levelMenger = 1;
-            }
-        } else if (currentFigure instanceof MengerCarpetDinamic) {
-            if (levelMengerDinamic > 1) {
-                levelMengerDinamic--;
-            } else {
-                levelMengerDinamic = 1;
-            }
-        } else if (currentFigure instanceof SierpinskiTriangle) {
-            if (levelSierpinski > 1) {
-                levelSierpinski--;
-            } else {
-                levelSierpinski = 1;
-            }
-        } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
-            if (levelSierpinskiDinamic > 1) {
-                levelSierpinskiDinamic--;
-            } else {
-                levelSierpinskiDinamic = 1;
-            }
-        } else if (currentFigure instanceof Polynski) {
-            if (levelPolynski > 1) {
-                levelPolynski--;
-            } else {
-                levelPolynski = 1;
-            }
-        } else if (currentFigure instanceof PolynskiDinamic) {
-            if (levelPolynskiDinamic > 1) {
-                levelPolynskiDinamic--;
-            } else {
-                levelPolynskiDinamic = 1;
-            }
+    // PER cambiarFiguraAnterior SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
+    private void cambiarFiguraAnterior() {
+        if (actual == cardLayoutNormal) {
+            cardLayoutNormal.previous(cardsPanel1);
+            indiceFigura = (indiceFigura - 1 + figurasNormales.size()) % figurasNormales.size();
+            setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
+        } else {
+            cardLayoutResponsive.previous(cardsPanel2);
+            indiceFigura = (indiceFigura - 1 + figurasDinamic.size()) % figurasDinamic.size();
+            setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
         }
-
-        changeFigure(createCurrentFigure());
     }
 
-
-    // Crear la figura actual
-    private JComponent createCurrentFigure() {
-        if (currentFigure instanceof HilbertCurve) {
-            return new HilbertCurve(levelHilbert);
-        } else if (currentFigure instanceof HilbertCurveDinamic) {
-            return new HilbertCurveDinamic(levelHilbertDinamic);
-        } else if (currentFigure instanceof MengerCarpet) {
-            return new MengerCarpet(levelMenger);
-        } else if (currentFigure instanceof MengerCarpetDinamic) {
-            return new MengerCarpetDinamic(levelMengerDinamic);
-        } else if (currentFigure instanceof SierpinskiTriangle) {
-            return new SierpinskiTriangle(levelSierpinski);
-        } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
-            return new SierpinskiTriangleDinamic(levelSierpinskiDinamic);
-        } else if (currentFigure instanceof Polynski) {
-            return new Polynski(levelPolynski, 7);
-        } else if (currentFigure instanceof PolynskiDinamic) {
-            return new PolynskiDinamic(levelPolynskiDinamic, 7);
+    // PER cambiarFiguraSiguiente SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
+    private void cambiarFiguraSiguiente() {
+        if (actual == cardLayoutNormal) {
+            cardLayoutNormal.next(cardsPanel1);
+            indiceFigura = (indiceFigura + 1) % figurasNormales.size();
+            setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
+        } else {
+            cardLayoutResponsive.next(cardsPanel2);
+            indiceFigura = (indiceFigura + 1) % figurasDinamic.size();
+            setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
         }
-        return null;
+    }
+
+    // PER CANVIAR EL MODE (de cardLayoutNormal a cardLayoutResponsive o viceversa)
+    // I SEGUIR DINS EL MATEIX INDEX DINS DELS DOS ARRAYS PER CAMBIAR AMB LA MATEIXA FIGURA
+    private void cambiarModo() {
+        if (actual == cardLayoutNormal) {
+            actual = cardLayoutResponsive;
+            getContentPane().remove(cardsPanel1);
+            getContentPane().add(cardsPanel2);
+            setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
+        } else {
+            actual = cardLayoutNormal;
+            getContentPane().remove(cardsPanel2);
+            getContentPane().add(cardsPanel1);
+            setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
+        }
+
+        if (actual == cardLayoutNormal) {
+            cardLayoutNormal.show(cardsPanel1, String.valueOf(indiceFigura));
+        } else {
+            cardLayoutResponsive.show(cardsPanel2, String.valueOf(indiceFigura));
+        }
+
+        pack();
+        setLocationRelativeTo(null);
     }
 }

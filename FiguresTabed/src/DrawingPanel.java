@@ -8,6 +8,7 @@ public abstract class DrawingPanel extends JPanel
     final double padding = 10.0;
     int width = 1200;
     int height = 900;
+    int level;
 
     String title;
     Graphics2D gfx;
@@ -60,5 +61,17 @@ public abstract class DrawingPanel extends JPanel
         b /= 256f;
 
         return new Color((float) r, (float) g, (float) b);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void subirNivel() {
+        level++;
+    }
+
+    public void bajarNivel() {
+        level--;
     }
 }
