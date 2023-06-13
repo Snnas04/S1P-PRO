@@ -1,14 +1,12 @@
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
 public class HilbertCurve extends DrawingPanel
 {
     final int level;
-    double stepW;
-    double stepH;
+    double step;
+    Double stepX, stepY;
 
     public HilbertCurve(int level)
     {
@@ -16,12 +14,14 @@ public class HilbertCurve extends DrawingPanel
         this.level = level;
     }
 
-    public void draw()
-    {
-        stepW = (Math.min(width, height) - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
-        stepH = (Math.min(width, height) - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
+    public void draw() {
+        this.step = (width - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
 
-        MiniTurtle miniTurtle = new MiniTurtle();
+        stepX = (Math.min(width, height) - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
+        stepY = (Math.min(width, height) - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
+
+        double dimension = Math.min(width, height);
+        MiniTurtle miniTurtle = new MiniTurtle((width - dimension) / 2 + padding, (height - dimension) / 2 + padding);
 
         drawHilbert(level, 1, miniTurtle);
     }
@@ -49,9 +49,9 @@ public class HilbertCurve extends DrawingPanel
         private Point2D.Double position;
         private double angle;
 
-        public MiniTurtle()
+        public MiniTurtle(double width, double height)
         {
-            this.position = new Point2D.Double(padding, padding);
+            this.position = new Point2D.Double(width, height);
         }
 
         public void turn(int side)
@@ -61,8 +61,8 @@ public class HilbertCurve extends DrawingPanel
 
         public void forward(Graphics2D gfx)
         {
-            double x = position.x + stepW * Math.cos(angle);
-            double y = position.y + stepH * Math.sin(angle);
+            double x = position.x + stepX * Math.cos(angle);
+            double y = position.y + stepY * Math.sin(angle);
 
             gfx.setColor(coloring(padding, width - padding, x));
 
