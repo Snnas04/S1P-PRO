@@ -7,6 +7,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class DrawingTabbed extends JFrame {
     private JComponent currentFigure;
@@ -20,6 +21,8 @@ public class DrawingTabbed extends JFrame {
     private int levelPolynski;
     private int levelPolynskiDinamic;
     private int maxLevel;
+    private ArrayList<DrawingPanel> figurasNormales;
+    private ArrayList<DrawingPanel> figurasDinamicas;
 
     public DrawingTabbed() {
         super("Figures");
@@ -40,6 +43,11 @@ public class DrawingTabbed extends JFrame {
         levelSierpinskiDinamic = 4;
         levelPolynski = 4;
         levelPolynskiDinamic = 4;
+
+        figurasNormales = new ArrayList<>();
+        figurasDinamicas = new ArrayList<>();
+
+
         currentFigure = new HilbertCurve(levelHilbert); // Crear una figura de Hilbert
         getContentPane().add(currentFigure); // Agregar la figura al panel principal
 
@@ -171,55 +179,55 @@ public class DrawingTabbed extends JFrame {
 
         if (currentFigure instanceof HilbertCurve) {
             if (levelHilbert > maxLevel - 1) {
-                levelHilbert = 1;
+                levelHilbert = maxLevel;
             } else {
                 levelHilbert++;
             }
         } else if (currentFigure instanceof HilbertCurveDinamic) {
             if (levelHilbertDinamic > maxLevel - 1) {
-                levelHilbertDinamic = 1;
+                levelHilbertDinamic = maxLevel;
             } else {
                 levelHilbertDinamic++;
             }
         } else if (currentFigure instanceof MengerCarpet) {
             if (levelMenger > maxLevel - 3) {
-                levelMenger = 1;
+                levelMenger = maxLevel - 2;
             } else {
                 levelMenger++;
             }
         } else if (currentFigure instanceof MengerCarpetDinamic) {
             if (levelMengerDinamic > maxLevel - 3) {
-                levelMengerDinamic = 1;
+                levelMengerDinamic = maxLevel - 2;
             } else {
                 levelMengerDinamic++;
             }
         } else if (currentFigure instanceof SierpinskiTriangle) {
             if (levelSierpinski > maxLevel) {
-                levelSierpinski = 1;
+                levelSierpinski = maxLevel;
             } else {
                 levelSierpinski++;
             }
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
             if (levelSierpinskiDinamic > maxLevel) {
-                levelSierpinskiDinamic = 1;
+                levelSierpinskiDinamic = maxLevel;
             } else {
                 levelSierpinskiDinamic++;
             }
         } else if (currentFigure instanceof SierpinskiTriangle) {
             if (levelSierpinski > maxLevel) {
-                levelSierpinski = 1;
+                levelSierpinski = maxLevel;
             } else {
                 levelSierpinski++;
             }
         } else if (currentFigure instanceof Polynski) {
             if (levelPolynski > maxLevel - 1) {
-                levelPolynski = 1;
+                levelPolynski = maxLevel;
             } else {
                 levelPolynski++;
             }
         } else if (currentFigure instanceof PolynskiDinamic) {
             if (levelPolynskiDinamic > maxLevel - 1) {
-                levelPolynskiDinamic = 1;
+                levelPolynskiDinamic = maxLevel;
             } else {
                 levelPolynskiDinamic++;
             }
@@ -235,49 +243,49 @@ public class DrawingTabbed extends JFrame {
             if (levelHilbert > 1) {
                 levelHilbert--;
             } else {
-                levelHilbert = maxLevel - 1;
+                levelHilbert = 1;
             }
         } else if (currentFigure instanceof HilbertCurveDinamic) {
             if (levelHilbertDinamic > 1) {
                 levelHilbertDinamic--;
             } else {
-                levelHilbertDinamic = maxLevel - 1;
+                levelHilbertDinamic = 1;
             }
         } else if (currentFigure instanceof MengerCarpet) {
             if (levelMenger > 1) {
                 levelMenger--;
             } else {
-                levelMenger = maxLevel - 3;
+                levelMenger = 1;
             }
         } else if (currentFigure instanceof MengerCarpetDinamic) {
             if (levelMengerDinamic > 1) {
                 levelMengerDinamic--;
             } else {
-                levelMengerDinamic = maxLevel - 3;
+                levelMengerDinamic = 1;
             }
         } else if (currentFigure instanceof SierpinskiTriangle) {
             if (levelSierpinski > 1) {
                 levelSierpinski--;
             } else {
-                levelSierpinski = maxLevel;
+                levelSierpinski = 1;
             }
         } else if (currentFigure instanceof SierpinskiTriangleDinamic) {
             if (levelSierpinskiDinamic > 1) {
                 levelSierpinskiDinamic--;
             } else {
-                levelSierpinskiDinamic = maxLevel;
+                levelSierpinskiDinamic = 1;
             }
         } else if (currentFigure instanceof Polynski) {
             if (levelPolynski > 1) {
                 levelPolynski--;
             } else {
-                levelPolynski = maxLevel - 1;
+                levelPolynski = 1;
             }
         } else if (currentFigure instanceof PolynskiDinamic) {
             if (levelPolynskiDinamic > 1) {
                 levelPolynskiDinamic--;
             } else {
-                levelPolynskiDinamic = maxLevel - 1;
+                levelPolynskiDinamic = 1;
             }
         }
 
