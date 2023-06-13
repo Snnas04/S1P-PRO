@@ -30,7 +30,6 @@ public class DrawingTabbed extends JFrame {
             e.printStackTrace();
         }
 
-        setLayout(new GridLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         levelHilbert = 4;
@@ -43,6 +42,8 @@ public class DrawingTabbed extends JFrame {
         levelPolynskiDinamic = 4;
         currentFigure = new HilbertCurve(levelHilbert); // Crear una figura de Hilbert
         getContentPane().add(currentFigure); // Agregar la figura al panel principal
+
+        pack();
 
         setResizable(true);
         setLocationRelativeTo(null);
