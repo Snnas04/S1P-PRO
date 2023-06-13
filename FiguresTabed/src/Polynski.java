@@ -3,7 +3,7 @@ import java.awt.geom.Point2D;
 
 public class Polynski extends DrawingPanel
 {
-    final int level, sides;
+    int sides;
 
     double xCenter, yCenter, radio;
 

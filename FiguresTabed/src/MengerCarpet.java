@@ -3,8 +3,6 @@ import java.awt.geom.Rectangle2D;
 
 public class MengerCarpet extends DrawingPanel
 {
-//    final int level;
-
     public MengerCarpet(int level)
     {
         super("Menger carpet");
@@ -12,6 +10,10 @@ public class MengerCarpet extends DrawingPanel
     }
 
     public void draw() {
+        if (level == 4) {
+            level = 4;
+        }
+
         double minim = Math.min(width, height);
 
         double offsetX = (width - minim) / 2.0;

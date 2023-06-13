@@ -4,7 +4,6 @@ import java.awt.geom.Point2D;
 
 public class HilbertCurve extends DrawingPanel
 {
-//    final int level;
     double step;
     Double stepX, stepY;
 

@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class DrawingTabbed extends JFrame {
-    CardLayout actual, cardLayoutNormal, cardLayoutResponsive;
+    CardLayout actual, cardLayoutNormal, cardLayoutDinamic;
     JPanel cardsPanel1, cardsPanel2;
     JPopupMenu popupMenu1, popupMenu2;
     ArrayList<DrawingPanel> figurasNormales = new ArrayList<>();
@@ -26,32 +26,32 @@ public class DrawingTabbed extends JFrame {
 
         //CREAM ELS DOS PANELLS PRINCIPALS I ELS DOS CARDLAYOUT
         cardLayoutNormal = new CardLayout();
-        cardLayoutResponsive = new CardLayout();
+        cardLayoutDinamic = new CardLayout();
         cardsPanel1 = new JPanel(cardLayoutNormal);
-        cardsPanel2 = new JPanel(cardLayoutResponsive);
+        cardsPanel2 = new JPanel(cardLayoutDinamic);
 
         //INDICAM EL CARDLAYOUT ACTUAL
         actual = cardLayoutNormal;
 
         //INICIALITZAM LES FIGURES
         DrawingPanel hilbertPanel = new HilbertCurve(4);
-        DrawingPanel hilbertResponsivePanel = new HilbertCurveDinamic(4);
-        DrawingPanel mengerPanel = new MengerCarpet(4);
-        DrawingPanel mengerResponsivePanel = new MengerCarpetDinamic(4);
+        DrawingPanel hilbertDinamicPanel = new HilbertCurveDinamic(4);
+        DrawingPanel mengerPanel = new MengerCarpet(3);
+        DrawingPanel mengerDinamicPanel = new MengerCarpetDinamic(3);
         DrawingPanel polynskiPanel = new Polynski(4, 7);
-        DrawingPanel polynskiResponsivePanel = new PolynskiDinamic(4, 7);
+        DrawingPanel polynskiDinamicPanel = new PolynskiDinamic(4, 7);
         DrawingPanel sierpinskiPanel = new SierpinskiTriangle(4);
-        DrawingPanel sierpinskiResponsivePanel = new SierpinskiTriangleDinamic(4);
+        DrawingPanel sierpinskiDinamicPanel = new SierpinskiTriangleDinamic(4);
 
         //AFEGIM LES FIGURES A L'ARRAY CORRESPONENT
         figurasNormales.add(hilbertPanel);
-        figurasDinamic.add(hilbertResponsivePanel);
+        figurasDinamic.add(hilbertDinamicPanel);
         figurasNormales.add(mengerPanel);
-        figurasDinamic.add(mengerResponsivePanel);
+        figurasDinamic.add(mengerDinamicPanel);
         figurasNormales.add(polynskiPanel);
-        figurasDinamic.add(polynskiResponsivePanel);
+        figurasDinamic.add(polynskiDinamicPanel);
         figurasNormales.add(sierpinskiPanel);
-        figurasDinamic.add(sierpinskiResponsivePanel);
+        figurasDinamic.add(sierpinskiDinamicPanel);
 
         //PER CADA FIGURA DINS L'ARRAY 'figuresNormals' l'afegim a 'cardsPanel1'
         for (int i = 0; i < figurasNormales.size(); i++) {
@@ -181,6 +181,7 @@ public class DrawingTabbed extends JFrame {
     }
 
 
+
     // PER cambiarFiguraAnterior SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
     private void cambiarFiguraAnterior() {
         if (actual == cardLayoutNormal) {
@@ -188,7 +189,7 @@ public class DrawingTabbed extends JFrame {
             indiceFigura = (indiceFigura - 1 + figurasNormales.size()) % figurasNormales.size();
             setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
         } else {
-            cardLayoutResponsive.previous(cardsPanel2);
+            cardLayoutDinamic.previous(cardsPanel2);
             indiceFigura = (indiceFigura - 1 + figurasDinamic.size()) % figurasDinamic.size();
             setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
         }
@@ -201,17 +202,17 @@ public class DrawingTabbed extends JFrame {
             indiceFigura = (indiceFigura + 1) % figurasNormales.size();
             setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
         } else {
-            cardLayoutResponsive.next(cardsPanel2);
+            cardLayoutDinamic.next(cardsPanel2);
             indiceFigura = (indiceFigura + 1) % figurasDinamic.size();
             setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
         }
     }
 
-    // PER CANVIAR EL MODE (de cardLayoutNormal a cardLayoutResponsive o viceversa)
+    // PER CANVIAR EL MODE (de cardLayoutNormal a cardLayoutDinamic o viceversa)
     // I SEGUIR DINS EL MATEIX INDEX DINS DELS DOS ARRAYS PER CAMBIAR AMB LA MATEIXA FIGURA
     private void cambiarModo() {
         if (actual == cardLayoutNormal) {
-            actual = cardLayoutResponsive;
+            actual = cardLayoutDinamic;
             getContentPane().remove(cardsPanel1);
             getContentPane().add(cardsPanel2);
             setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
@@ -225,7 +226,7 @@ public class DrawingTabbed extends JFrame {
         if (actual == cardLayoutNormal) {
             cardLayoutNormal.show(cardsPanel1, String.valueOf(indiceFigura));
         } else {
-            cardLayoutResponsive.show(cardsPanel2, String.valueOf(indiceFigura));
+            cardLayoutDinamic.show(cardsPanel2, String.valueOf(indiceFigura));
         }
 
         pack();

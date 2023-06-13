@@ -6,7 +6,6 @@ import java.awt.geom.Point2D;
 
 public class HilbertCurveDinamic extends DrawingPanel
 {
-//    final int level;
     double stepW;
     double stepH;
 
@@ -14,8 +13,6 @@ public class HilbertCurveDinamic extends DrawingPanel
     {
         super("Hilbert curve");
         this.level = level;
-//        this.stepW = (width - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
-//        this.stepH = (height - 2.0 * padding) / (Math.pow(2.0, level) - 1.0);
     }
 
     public void draw()

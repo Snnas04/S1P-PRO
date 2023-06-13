@@ -68,10 +68,18 @@ public abstract class DrawingPanel extends JPanel
     }
 
     public void subirNivel() {
-        level++;
+        if (level == 6) {
+            level = 6;
+        } else {
+            level++;
+        }
     }
 
     public void bajarNivel() {
-        level--;
+        if (level == 1) {
+            level = 1;
+        } else {
+            level--;
+        }
     }
 }
