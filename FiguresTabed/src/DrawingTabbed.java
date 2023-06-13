@@ -130,6 +130,26 @@ public class DrawingTabbed extends JFrame implements KeyListener {
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
+
+//        addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyPressed(KeyEvent e) {
+//                int keyCode = e.getKeyCode();
+//                if (keyCode == KeyEvent.VK_RIGHT) {
+//                    cambiarFiguraSiguiente();
+//                } else if (keyCode == KeyEvent.VK_LEFT) {
+//                    cambiarFiguraAnterior();
+//                } else if (keyCode == KeyEvent.VK_UP) {
+//                    pujarNivell();
+//                } else if (keyCode == KeyEvent.VK_DOWN) {
+//                    baixarNivell();
+//                } else if (keyCode == KeyEvent.VK_ESCAPE) {
+//                    dispose();
+//                } else if (keyCode == KeyEvent.VK_ESCAPE) {
+//                    cambiarModo();
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -141,33 +161,51 @@ public class DrawingTabbed extends JFrame implements KeyListener {
         String keyName = KeyEvent.getKeyText(keyCode);
         System.out.println(keyName);
         switch (keyCode) {
-            case KeyEvent.VK_LEFT -> cambiarFiguraAnterior();
-            case KeyEvent.VK_RIGHT -> cambiarFiguraSiguiente();
-            case KeyEvent.VK_ESCAPE -> System.exit(-1);
-            case KeyEvent.VK_SPACE -> cambiarModo();
-            case KeyEvent.VK_UP -> pujarNivell(); //PER PUJAR EL NIVELL SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
-            case KeyEvent.VK_DOWN -> baixarNivell(); //PER BAIXAR EL NIVELL SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
+            case KeyEvent.VK_LEFT:
+                cambiarFiguraAnterior();
+                break;
+            case KeyEvent.VK_RIGHT:
+                cambiarFiguraSiguiente();
+                break;
+            case KeyEvent.VK_ESCAPE:
+                System.exit(-1);
+                break;
+            case KeyEvent.VK_SPACE:
+                cambiarModo();
+                break;
+            case KeyEvent.VK_UP:
+                subirNivel();
+                break;
+            case KeyEvent.VK_DOWN:
+                bajarNivel();
+                break;
         }
     }
+
 
     @Override
     public void keyReleased(KeyEvent e) {}
 
-    private void pujarNivell() {
+    private void subirNivel() {
         if (actual == cardLayoutNormal) {
             figurasNormales.get(indiceFigura).subirNivel();
+            repaint();
         } else {
             figurasDinamic.get(indiceFigura).subirNivel();
+            repaint();
         }
     }
 
-    private void baixarNivell() {
+    private void bajarNivel() {
         if (actual == cardLayoutNormal) {
             figurasNormales.get(indiceFigura).bajarNivel();
+            repaint();
         } else {
             figurasDinamic.get(indiceFigura).bajarNivel();
+            repaint();
         }
     }
+
 
     // PER cambiarFiguraAnterior SEGONS ESTEIM DINS LES FIGURES NORMALS O RESPONSIVE
     private void cambiarFiguraAnterior() {
