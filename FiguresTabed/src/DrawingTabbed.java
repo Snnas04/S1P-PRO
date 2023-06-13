@@ -181,13 +181,13 @@ public class DrawingTabbed extends JFrame {
                 levelHilbertDinamic++;
             }
         } else if (currentFigure instanceof MengerCarpet) {
-            if (levelMenger > maxLevel - 4) {
+            if (levelMenger > maxLevel - 3) {
                 levelMenger = 1;
             } else {
                 levelMenger++;
             }
         } else if (currentFigure instanceof MengerCarpetDinamic) {
-            if (levelMengerDinamic > maxLevel - 4) {
+            if (levelMengerDinamic > maxLevel - 3) {
                 levelMengerDinamic = 1;
             } else {
                 levelMengerDinamic++;
@@ -246,13 +246,13 @@ public class DrawingTabbed extends JFrame {
             if (levelMenger > 1) {
                 levelMenger--;
             } else {
-                levelMenger = maxLevel - 4;
+                levelMenger = maxLevel - 3;
             }
         } else if (currentFigure instanceof MengerCarpetDinamic) {
             if (levelMengerDinamic > 1) {
                 levelMengerDinamic--;
             } else {
-                levelMengerDinamic = maxLevel - 4;
+                levelMengerDinamic = maxLevel - 3;
             }
         } else if (currentFigure instanceof SierpinskiTriangle) {
             if (levelSierpinski > 1) {
