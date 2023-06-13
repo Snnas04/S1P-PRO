@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class DrawingTabbed extends JFrame implements KeyListener {
+public class DrawingTabbed extends JFrame {
     CardLayout actual, cardLayoutNormal, cardLayoutResponsive;
     JPanel cardsPanel1, cardsPanel2;
     JPopupMenu popupMenu1, popupMenu2;
@@ -119,7 +119,6 @@ public class DrawingTabbed extends JFrame implements KeyListener {
             }
         });
 
-        addKeyListener(this);
         setFocusable(true);
         requestFocus();
 
@@ -131,60 +130,35 @@ public class DrawingTabbed extends JFrame implements KeyListener {
         setLocationRelativeTo(null);
         setVisible(true);
 
-//        addKeyListener(new KeyAdapter() {
-//            @Override
-//            public void keyPressed(KeyEvent e) {
-//                int keyCode = e.getKeyCode();
-//                if (keyCode == KeyEvent.VK_RIGHT) {
-//                    cambiarFiguraSiguiente();
-//                } else if (keyCode == KeyEvent.VK_LEFT) {
-//                    cambiarFiguraAnterior();
-//                } else if (keyCode == KeyEvent.VK_UP) {
-//                    pujarNivell();
-//                } else if (keyCode == KeyEvent.VK_DOWN) {
-//                    baixarNivell();
-//                } else if (keyCode == KeyEvent.VK_ESCAPE) {
-//                    dispose();
-//                } else if (keyCode == KeyEvent.VK_ESCAPE) {
-//                    cambiarModo();
-//                }
-//            }
-//        });
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                String keyName = KeyEvent.getKeyText(keyCode);
+                System.out.println(keyName);
+                switch (keyCode) {
+                    case KeyEvent.VK_LEFT:
+                        cambiarFiguraAnterior();
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        cambiarFiguraSiguiente();
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        System.exit(-1);
+                        break;
+                    case KeyEvent.VK_SPACE:
+                        cambiarModo();
+                        break;
+                    case KeyEvent.VK_UP:
+                        subirNivel();
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        bajarNivel();
+                        break;
+                }
+            }
+        });
     }
-
-    @Override
-    public void keyTyped(KeyEvent e) {}
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        String keyName = KeyEvent.getKeyText(keyCode);
-        System.out.println(keyName);
-        switch (keyCode) {
-            case KeyEvent.VK_LEFT:
-                cambiarFiguraAnterior();
-                break;
-            case KeyEvent.VK_RIGHT:
-                cambiarFiguraSiguiente();
-                break;
-            case KeyEvent.VK_ESCAPE:
-                System.exit(-1);
-                break;
-            case KeyEvent.VK_SPACE:
-                cambiarModo();
-                break;
-            case KeyEvent.VK_UP:
-                subirNivel();
-                break;
-            case KeyEvent.VK_DOWN:
-                bajarNivel();
-                break;
-        }
-    }
-
-
-    @Override
-    public void keyReleased(KeyEvent e) {}
 
     private void subirNivel() {
         if (actual == cardLayoutNormal) {
