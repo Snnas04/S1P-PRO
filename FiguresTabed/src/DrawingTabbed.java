@@ -6,10 +6,10 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class DrawingTabbed extends JFrame {
-    CardLayout actual, cardLayoutNormal, cardLayoutDinamic;
-    JPanel cardsPanelNormal, cardsPanelDinamic;
-    JPopupMenu popupMenuNormal, popupMenuDinamic;
-    ArrayList<DrawingPanel> figurasNormales = new ArrayList<>();
+    CardLayout actual, cardLayoutStatic, cardLayoutDinamic;
+    JPanel cardsPanelStatic, cardsPanelDinamic;
+    JPopupMenu popupMenuStatic, popupMenuDinamic;
+    ArrayList<DrawingPanel> figurasStatices = new ArrayList<>();
     ArrayList<DrawingPanel> figurasDinamic = new ArrayList<>();
     int indiceFigura = 0;
 
@@ -25,13 +25,12 @@ public class DrawingTabbed extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         // Creamos los dos paneles principales y los dos cardLayout
-        cardLayoutNormal = new CardLayout();
+        cardLayoutStatic = new CardLayout();
         cardLayoutDinamic = new CardLayout();
-        cardsPanelNormal = new JPanel(cardLayoutNormal);
+        cardsPanelStatic = new JPanel(cardLayoutStatic);
         cardsPanelDinamic = new JPanel(cardLayoutDinamic);
 
-        // Indicamos el cardLayout actual
-        actual = cardLayoutNormal;
+        actual = cardLayoutStatic;
 
         // Inicializamos las figuras
         DrawingPanel hilbertPanel = new HilbertCurve(4);
@@ -44,19 +43,19 @@ public class DrawingTabbed extends JFrame {
         DrawingPanel sierpinskiDinamicPanel = new SierpinskiTriangleDinamic(4);
 
         // Añadimos las figuras a los arrays correspondientes
-        figurasNormales.add(hilbertPanel);
+        figurasStatices.add(hilbertPanel);
         figurasDinamic.add(hilbertDinamicPanel);
-        figurasNormales.add(mengerPanel);
+        figurasStatices.add(mengerPanel);
         figurasDinamic.add(mengerDinamicPanel);
-        figurasNormales.add(polynskiPanel);
+        figurasStatices.add(polynskiPanel);
         figurasDinamic.add(polynskiDinamicPanel);
-        figurasNormales.add(sierpinskiPanel);
+        figurasStatices.add(sierpinskiPanel);
         figurasDinamic.add(sierpinskiDinamicPanel);
 
-        // Por cada figura en el array 'figurasNormales', la agregamos a 'cardsPanelNormal'
-        for (int i = 0; i < figurasNormales.size(); i++) {
-            DrawingPanel figura = figurasNormales.get(i);
-            cardsPanelNormal.add(figura, String.valueOf(i));
+        // Por cada figura en el array 'figurasStatices', la agregamos a 'cardsPanelStatic'
+        for (int i = 0; i < figurasStatices.size(); i++) {
+            DrawingPanel figura = figurasStatices.get(i);
+            cardsPanelStatic.add(figura, String.valueOf(i));
         }
 
         // Por cada figura en el array 'figurasDinamic', la agregamos a 'cardsPanelDinamic'
@@ -65,25 +64,24 @@ public class DrawingTabbed extends JFrame {
             cardsPanelDinamic.add(figura, String.valueOf(i));
         }
 
-        // Creamos los dos menús emergentes
-        popupMenuNormal = new JPopupMenu();
+        // Creamos los dos menús popup
+        popupMenuStatic = new JPopupMenu();
         popupMenuDinamic = new JPopupMenu();
 
-        // Por cada figura en el array 'figurasNormales', la agregamos a 'popupMenuNormal'
+        // Por cada figura en el array 'figurasStatices', la agregamos a 'popupMenuStatic'
         // y un ActionListener para cuando sea seleccionada
-        for (int i = 0; i < figurasNormales.size(); i++) {
-            DrawingPanel figura = figurasNormales.get(i);
+        for (int i = 0; i < figurasStatices.size(); i++) {
+            DrawingPanel figura = figurasStatices.get(i);
             JMenuItem item = new JMenuItem(figura.getTitle());
             int finalI = i;
             item.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    actual.show(cardsPanelNormal, String.valueOf(finalI));
+                    actual.show(cardsPanelStatic, String.valueOf(finalI));
                     indiceFigura = finalI;
-                    setTitle("Figures: " + figurasNormales.get(indiceFigura).getTitle() + " (normal)");
                 }
             });
-            popupMenuNormal.add(item);
+            popupMenuStatic.add(item);
         }
 
         // Por cada figura en el array 'figurasDinamic', la agregamos a 'popupMenuDinamic'
@@ -103,11 +101,11 @@ public class DrawingTabbed extends JFrame {
             popupMenuDinamic.add(item);
         }
 
-        // MouseListener para mostrar el menú emergente popupMenuNormal al hacer clic derecho en 'cardsPanelNormal'
-        cardsPanelNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+        // MouseListener para mostrar el menú emergente popupMenuStatic al hacer clic derecho en 'cardsPanelStatic'
+        cardsPanelStatic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 if (SwingUtilities.isRightMouseButton(evt)) {
-                    popupMenuNormal.show(cardsPanelNormal, evt.getX(), evt.getY());
+                    popupMenuStatic.show(cardsPanelStatic, evt.getX(), evt.getY());
                 }
             }
         });
@@ -125,7 +123,7 @@ public class DrawingTabbed extends JFrame {
         requestFocus();
 
         // Por defecto, se muestra el panel de las figuras normales en el contentPane
-        getContentPane().add(cardsPanelNormal);
+        getContentPane().add(cardsPanelStatic);
         getContentPane().setBackground(new Color(0x191919));
 
         pack();
@@ -133,6 +131,7 @@ public class DrawingTabbed extends JFrame {
         setVisible(true);
 
         // Agregamos un KeyListener para capturar los eventos de teclado
+        // Siguiente i anterior figura, subir y bajar nivel, espacio para cambiar a figuras dinamicas o estaticas i 'esc' para salir del programa
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -165,8 +164,9 @@ public class DrawingTabbed extends JFrame {
 
     private void subirNivel() {
         // Comprobamos el cardLayout actual y llamamos al método subirNivel correspondiente en la figura actual
-        if (actual == cardLayoutNormal) {
-            figurasNormales.get(indiceFigura).subirNivel();
+        // El nivel de una figura es independiente a las demas
+        if (actual == cardLayoutStatic) {
+            figurasStatices.get(indiceFigura).subirNivel();
         } else {
             figurasDinamic.get(indiceFigura).subirNivel();
         }
@@ -175,52 +175,53 @@ public class DrawingTabbed extends JFrame {
 
     private void bajarNivel() {
         // Comprobamos el cardLayout actual y llamamos al método bajarNivel correspondiente en la figura actual
-        if (actual == cardLayoutNormal) {
-            figurasNormales.get(indiceFigura).bajarNivel();
+        // El nivel de una figura es independiente a las demas
+        if (actual == cardLayoutStatic) {
+            figurasStatices.get(indiceFigura).bajarNivel();
         } else {
             figurasDinamic.get(indiceFigura).bajarNivel();
         }
         repaint();
     }
 
-    // Método para cambiar a la figura anterior según estemos en el cardLayoutNormal o cardLayoutDinamic
+    // Método para cambiar a la figura anterior
     private void cambiarFiguraAnterior() {
-        if (actual == cardLayoutNormal) {
-            cardLayoutNormal.previous(cardsPanelNormal);
-            indiceFigura = (indiceFigura - 1 + figurasNormales.size()) % figurasNormales.size();
+        if (actual == cardLayoutStatic) {
+            cardLayoutStatic.previous(cardsPanelStatic);
+            indiceFigura = (indiceFigura - 1 + figurasStatices.size()) % figurasStatices.size();
         } else {
             cardLayoutDinamic.previous(cardsPanelDinamic);
             indiceFigura = (indiceFigura - 1 + figurasDinamic.size()) % figurasDinamic.size();
         }
     }
 
-    // Método para cambiar a la figura siguiente según estemos en el cardLayoutNormal o cardLayoutDinamic
+    // Método para cambiar a la figura siguiente
     private void cambiarFiguraSiguiente() {
-        if (actual == cardLayoutNormal) {
-            cardLayoutNormal.next(cardsPanelNormal);
-            indiceFigura = (indiceFigura + 1) % figurasNormales.size();
+        if (actual == cardLayoutStatic) {
+            cardLayoutStatic.next(cardsPanelStatic);
+            indiceFigura = (indiceFigura + 1) % figurasStatices.size();
         } else {
             cardLayoutDinamic.next(cardsPanelDinamic);
             indiceFigura = (indiceFigura + 1) % figurasDinamic.size();
         }
     }
 
-    // Método para cambiar entre cardLayoutNormal y cardLayoutDinamic
+    // Método para cambiar entre cardLayoutStatic y cardLayoutDinamic
     // y mantener el mismo índice en ambos arrays para cambiar a la misma figura
     private void cambiarModo() {
-        if (actual == cardLayoutNormal) {
+        if (actual == cardLayoutStatic) {
             actual = cardLayoutDinamic;
-            getContentPane().remove(cardsPanelNormal);
+            getContentPane().remove(cardsPanelStatic);
             getContentPane().add(cardsPanelDinamic);
         } else {
-            actual = cardLayoutNormal;
+            actual = cardLayoutStatic;
             getContentPane().remove(cardsPanelDinamic);
-            getContentPane().add(cardsPanelNormal);
+            getContentPane().add(cardsPanelStatic);
         }
 
         // Mostramos la figura actual en el nuevo cardLayout actual
-        if (actual == cardLayoutNormal) {
-            cardLayoutNormal.show(cardsPanelNormal, String.valueOf(indiceFigura));
+        if (actual == cardLayoutStatic) {
+            cardLayoutStatic.show(cardsPanelStatic, String.valueOf(indiceFigura));
         } else {
             cardLayoutDinamic.show(cardsPanelDinamic, String.valueOf(indiceFigura));
         }
