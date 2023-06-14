@@ -9,7 +9,7 @@ public class DrawingTabbed extends JFrame {
     CardLayout actual, cardLayoutStatic, cardLayoutDinamic;
     JPanel cardsPanelStatic, cardsPanelDinamic;
     JPopupMenu popupMenuStatic, popupMenuDinamic;
-    ArrayList<DrawingPanel> figurasStatices = new ArrayList<>();
+    ArrayList<DrawingPanel> figurasStatic = new ArrayList<>();
     ArrayList<DrawingPanel> figurasDinamic = new ArrayList<>();
     int indiceFigura = 0;
 
@@ -43,18 +43,18 @@ public class DrawingTabbed extends JFrame {
         DrawingPanel sierpinskiDinamicPanel = new SierpinskiTriangleDinamic(4);
 
         // Añadimos las figuras a los arrays correspondientes
-        figurasStatices.add(hilbertPanel);
+        figurasStatic.add(hilbertPanel);
         figurasDinamic.add(hilbertDinamicPanel);
-        figurasStatices.add(mengerPanel);
+        figurasStatic.add(mengerPanel);
         figurasDinamic.add(mengerDinamicPanel);
-        figurasStatices.add(polynskiPanel);
+        figurasStatic.add(polynskiPanel);
         figurasDinamic.add(polynskiDinamicPanel);
-        figurasStatices.add(sierpinskiPanel);
+        figurasStatic.add(sierpinskiPanel);
         figurasDinamic.add(sierpinskiDinamicPanel);
 
-        // Por cada figura en el array 'figurasStatices', la agregamos a 'cardsPanelStatic'
-        for (int i = 0; i < figurasStatices.size(); i++) {
-            DrawingPanel figura = figurasStatices.get(i);
+        // Por cada figura en el array 'figurasStatic', la agregamos a 'cardsPanelStatic'
+        for (int i = 0; i < figurasStatic.size(); i++) {
+            DrawingPanel figura = figurasStatic.get(i);
             cardsPanelStatic.add(figura, String.valueOf(i));
         }
 
@@ -68,10 +68,10 @@ public class DrawingTabbed extends JFrame {
         popupMenuStatic = new JPopupMenu();
         popupMenuDinamic = new JPopupMenu();
 
-        // Por cada figura en el array 'figurasStatices', la agregamos a 'popupMenuStatic'
+        // Por cada figura en el array 'figurasStatic', la agregamos a 'popupMenuStatic'
         // y un ActionListener para cuando sea seleccionada
-        for (int i = 0; i < figurasStatices.size(); i++) {
-            DrawingPanel figura = figurasStatices.get(i);
+        for (int i = 0; i < figurasStatic.size(); i++) {
+            DrawingPanel figura = figurasStatic.get(i);
             JMenuItem item = new JMenuItem(figura.getTitle());
             int finalI = i;
             item.addActionListener(new ActionListener() {
@@ -166,7 +166,7 @@ public class DrawingTabbed extends JFrame {
         // Comprobamos el cardLayout actual y llamamos al método subirNivel correspondiente en la figura actual
         // El nivel de una figura es independiente a las demas
         if (actual == cardLayoutStatic) {
-            figurasStatices.get(indiceFigura).subirNivel();
+            figurasStatic.get(indiceFigura).subirNivel();
         } else {
             figurasDinamic.get(indiceFigura).subirNivel();
         }
@@ -177,7 +177,7 @@ public class DrawingTabbed extends JFrame {
         // Comprobamos el cardLayout actual y llamamos al método bajarNivel correspondiente en la figura actual
         // El nivel de una figura es independiente a las demas
         if (actual == cardLayoutStatic) {
-            figurasStatices.get(indiceFigura).bajarNivel();
+            figurasStatic.get(indiceFigura).bajarNivel();
         } else {
             figurasDinamic.get(indiceFigura).bajarNivel();
         }
@@ -188,7 +188,7 @@ public class DrawingTabbed extends JFrame {
     private void cambiarFiguraAnterior() {
         if (actual == cardLayoutStatic) {
             cardLayoutStatic.previous(cardsPanelStatic);
-            indiceFigura = (indiceFigura - 1 + figurasStatices.size()) % figurasStatices.size();
+            indiceFigura = (indiceFigura - 1 + figurasStatic.size()) % figurasStatic.size();
         } else {
             cardLayoutDinamic.previous(cardsPanelDinamic);
             indiceFigura = (indiceFigura - 1 + figurasDinamic.size()) % figurasDinamic.size();
@@ -199,7 +199,7 @@ public class DrawingTabbed extends JFrame {
     private void cambiarFiguraSiguiente() {
         if (actual == cardLayoutStatic) {
             cardLayoutStatic.next(cardsPanelStatic);
-            indiceFigura = (indiceFigura + 1) % figurasStatices.size();
+            indiceFigura = (indiceFigura + 1) % figurasStatic.size();
         } else {
             cardLayoutDinamic.next(cardsPanelDinamic);
             indiceFigura = (indiceFigura + 1) % figurasDinamic.size();
