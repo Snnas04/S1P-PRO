@@ -215,13 +215,15 @@ public class DrawingTabbed extends JFrame {
     private void cambiarModo() {
         if (actual == cardLayoutDinamic) {
             actual = cardLayoutStatic;
-            getContentPane().add(cardsPanelStatic);
             getContentPane().remove(cardsPanelDinamic);
+//            getContentPane().add(cardsPanelStatic);
+            setContentPane(cardsPanelStatic);
             setTitle("Figures " + figurasStatic.get(indiceFigura).getTitle());
         } else {
             actual = cardLayoutDinamic;
-            getContentPane().add(cardsPanelDinamic);
             getContentPane().remove(cardsPanelStatic);
+//            getContentPane().add(cardsPanelDinamic);
+            setContentPane(cardsPanelDinamic);
             setTitle("Figures " + figurasDinamic.get(indiceFigura).getTitle());
         }
 
