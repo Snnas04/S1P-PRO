@@ -10,8 +10,8 @@ public class MengerCarpet extends DrawingPanel
     }
 
     public void draw() {
-        if (level > 4) {
-            level = 4;
+        if (level > 5) {
+            level = 5;
         }
 
         double minim = Math.min(width, height);

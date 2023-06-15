@@ -13,8 +13,8 @@ public class MengerCarpetDinamic extends DrawingPanel
 
     public void draw()
     {
-        if (level > 4) {
-            level = 4;
+        if (level > 5) {
+            level = 5;
         }
 
         Point2D.Double x = new Point2D.Double(padding, padding);

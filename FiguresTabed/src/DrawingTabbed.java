@@ -79,6 +79,7 @@ public class DrawingTabbed extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     actual.show(cardsPanelStatic, String.valueOf(finalI));
                     indiceFigura = finalI;
+                    setTitle("Figures " + figurasStatic.get(indiceFigura).getTitle());
                 }
             });
             popupMenuStatic.add(item);
@@ -95,7 +96,7 @@ public class DrawingTabbed extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     actual.show(cardsPanelDinamic, String.valueOf(finalI));
                     indiceFigura = finalI;
-                    setTitle("Figures: " + figurasDinamic.get(indiceFigura).getTitle() + " (responsive)");
+                    setTitle("Figures " + figurasDinamic.get(indiceFigura).getTitle());
                 }
             });
             popupMenuDinamic.add(item);
@@ -124,7 +125,6 @@ public class DrawingTabbed extends JFrame {
 
         // Por defecto, se muestra el panel de las figuras normales en el contentPane
         getContentPane().add(cardsPanelStatic);
-        getContentPane().setBackground(new Color(0x191919));
 
         pack();
         setLocationRelativeTo(null);
@@ -189,9 +189,11 @@ public class DrawingTabbed extends JFrame {
         if (actual == cardLayoutStatic) {
             cardLayoutStatic.previous(cardsPanelStatic);
             indiceFigura = (indiceFigura - 1 + figurasStatic.size()) % figurasStatic.size();
+            setTitle("Figures " + figurasStatic.get(indiceFigura).getTitle());
         } else {
             cardLayoutDinamic.previous(cardsPanelDinamic);
             indiceFigura = (indiceFigura - 1 + figurasDinamic.size()) % figurasDinamic.size();
+            setTitle("Figures " + figurasDinamic.get(indiceFigura).getTitle());
         }
     }
 
@@ -200,30 +202,34 @@ public class DrawingTabbed extends JFrame {
         if (actual == cardLayoutStatic) {
             cardLayoutStatic.next(cardsPanelStatic);
             indiceFigura = (indiceFigura + 1) % figurasStatic.size();
+            setTitle("Figures " + figurasStatic.get(indiceFigura).getTitle());
         } else {
             cardLayoutDinamic.next(cardsPanelDinamic);
             indiceFigura = (indiceFigura + 1) % figurasDinamic.size();
+            setTitle("Figures " + figurasDinamic.get(indiceFigura).getTitle());
         }
     }
 
     // Método para cambiar entre cardLayoutStatic y cardLayoutDinamic
     // y mantener el mismo índice en ambos arrays para cambiar a la misma figura
     private void cambiarModo() {
-        if (actual == cardLayoutStatic) {
-            actual = cardLayoutDinamic;
-            getContentPane().remove(cardsPanelStatic);
-            getContentPane().add(cardsPanelDinamic);
-        } else {
+        if (actual == cardLayoutDinamic) {
             actual = cardLayoutStatic;
-            getContentPane().remove(cardsPanelDinamic);
             getContentPane().add(cardsPanelStatic);
+            getContentPane().remove(cardsPanelDinamic);
+            setTitle("Figures " + figurasStatic.get(indiceFigura).getTitle());
+        } else {
+            actual = cardLayoutDinamic;
+            getContentPane().add(cardsPanelDinamic);
+            getContentPane().remove(cardsPanelStatic);
+            setTitle("Figures " + figurasDinamic.get(indiceFigura).getTitle());
         }
 
         // Mostramos la figura actual en el nuevo cardLayout actual
-        if (actual == cardLayoutStatic) {
-            cardLayoutStatic.show(cardsPanelStatic, String.valueOf(indiceFigura));
-        } else {
+        if (actual == cardLayoutDinamic) {
             cardLayoutDinamic.show(cardsPanelDinamic, String.valueOf(indiceFigura));
+        } else {
+            cardLayoutStatic.show(cardsPanelStatic, String.valueOf(indiceFigura));
         }
 
         pack();
