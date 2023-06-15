@@ -5,24 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6331e04-9d98-4f5d-b2f2-408cf0c3f50d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/SaxonHE11_5J.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jline_2_14_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/xmlresolver_4_6_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/xmlresolver_4_6_4_data.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Celler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Factura.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estil.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/factura.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jline-2.14.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/xmlresolver-4.6.4-data.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/xmlresolver-4.6.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/llistaFactura.xsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Celler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FiguresFinal-marcsans.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../FiguresFinal-marcsans.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FiguresTabed/src/DrawingTabbed.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FiguresTabed/src/DrawingTabbed.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +91,7 @@
       <workItem from="1685278597624" duration="14000" />
       <workItem from="1685717187292" duration="53000" />
       <workItem from="1685717287887" duration="3000" />
+      <workItem from="1686839127220" duration="1000" />
     </task>
     <servers />
   </component>
