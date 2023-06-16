@@ -167,12 +167,6 @@ public class DrawingTabbed extends JFrame {
         // El nivel de una figura es independiente a las demas
         figurasStatic.get(indiceFigura).subirNivel();
         figurasDinamic.get(indiceFigura).subirNivel();
-
-//        if (actual == cardLayoutStatic) {
-//            figurasStatic.get(indiceFigura).subirNivel();
-//        } else {
-//            figurasDinamic.get(indiceFigura).subirNivel();
-//        }
         repaint();
     }
 
@@ -181,12 +175,6 @@ public class DrawingTabbed extends JFrame {
         // El nivel de una figura es independiente a las demas
         figurasStatic.get(indiceFigura).bajarNivel();
         figurasDinamic.get(indiceFigura).bajarNivel();
-
-//        if (actual == cardLayoutStatic) {
-//            figurasStatic.get(indiceFigura).bajarNivel();
-//        } else {
-//            figurasDinamic.get(indiceFigura).bajarNivel();
-//        }
         repaint();
     }
 
